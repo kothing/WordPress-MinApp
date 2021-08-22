@@ -44,6 +44,10 @@
   overflow: hidden;
 }
 
+.header-image {
+  width: 100vmax;
+}
+
 .topic-detail {
   height: 100%;
   position: relative;

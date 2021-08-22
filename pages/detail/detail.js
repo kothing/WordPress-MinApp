@@ -417,7 +417,7 @@ Page({
       }
     } else {
       that.setData({
-        placeholder: "不说算了，口亨",
+        placeholder: "不说算了，哼",
         focus: false
       })
     }
