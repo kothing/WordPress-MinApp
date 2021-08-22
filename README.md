@@ -10,3 +10,5 @@
 - 文章海报生成；
 - 评论跟随；
 - 强大的广告功能；
+
+![demo](https://raw.githubusercontent.com/kothing/WordPress-MinApp/main/qrcode.png)
