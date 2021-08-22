@@ -247,10 +247,14 @@
   align-items: center;
 }
 
+.article-info .article-info__category .cuIcon-qrcode,
+.article-info .article-info__category .cuIcon-time {
+  margin-right: 12rpx;
+}
+
 .article-info .article-info__category .category {
-  font-weight: 700;
-  font-family: PingFangSC-Medium, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #f13b03;
+  margin-right: 20rpx;
+  font-size: 90%;
 }
 
 .article-info .article-info__category i {
