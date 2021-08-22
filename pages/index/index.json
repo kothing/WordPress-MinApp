@@ -1,0 +1,7 @@
+{
+  "enablePullDownRefresh": true,
+  "navigationStyle": "custom",
+  "navigationBarTextStyle": "white",
+  "w-row": "wuss-weapp/w-row/index",
+  "w-col": "wuss-weapp/w-col/index"
+}
