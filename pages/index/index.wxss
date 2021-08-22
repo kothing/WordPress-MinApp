@@ -285,7 +285,9 @@ page::-webkit-scrollbar {
 }
 
 .index_article_box {
-  margin-bottom: 48rpx;
+  margin-bottom: 38rpx;
+  padding-bottom: 38rpx;
+  border-bottom: 1px dotted #c5c5c5;
 }
 
 .index_article_figures {
@@ -308,13 +310,13 @@ page::-webkit-scrollbar {
 .index_article_covers {
   width: 100%;
   height: 380rpx;
-  border-radius: 10rpx;
+  border-radius: 15rpx;
 }
 
 .index_article_cover {
   width: 100%;
   height: 380rpx;
-  border-radius: 10rpx;
+  border-radius: 15rpx;
 }
 
 .index_article {

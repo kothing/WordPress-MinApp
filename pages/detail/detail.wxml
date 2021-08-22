@@ -3,6 +3,9 @@
   <view slot="backText">返回</view>
   <view slot="content">文章详情</view>
 </topbar-view>
+<view class="header-banner">
+  <image src='{{detail.meta.thumbnail?detail.meta.thumbnail:"/images/detail_default.png"}}' class='header-image' mode="widthFix"></image>
+</view>
 <import src="../../wxParse/wxParse.wxml" />
 <view class="topic-detail">
   <view class="article-info" wx:if="{{detail}}">

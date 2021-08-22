@@ -111,7 +111,7 @@ page::-webkit-scrollbar {
 .post_article_cover {
   width: 100%;
   height: 380rpx;
-  border-radius: 10rpx;
+  border-radius: 15rpx;
 }
 
 .post_article {
