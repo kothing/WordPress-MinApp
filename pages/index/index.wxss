@@ -3,19 +3,39 @@
   padding-bottom: 20rpx;
 }
 
+.topbar {
+  background: -webkit-linear-gradient(to right, #6188ef, #98b4f5);
+  background: linear-gradient(to right, #6188ef, #98b4f5);
+}
+
+.app-info {
+  margin: 0 40rpx;
+  color: #fff;
+}
+
+.app-title {
+  font-weight: bold;
+  font-size: 58rpx;
+  line-height: 68rpx;
+}
+
+.app-brief {
+  font-size: 28rpx;
+  line-height: 40rpx;
+  margin-top: 20rpx;
+}
+
+.app-title_text {
+  display: inline-block;
+  vertical-align: middle;
+}
+
 .search-ui {
   background: #12c2e9;
 }
 
 .search-form {
   font-size: 90%;
-}
-
-.bg-bui {
-  background: -webkit-linear-gradient(to right, #6188ef, #98b4f5);
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #6188ef, #98b4f5);
-  border: none;
 }
 
 /* 首页图标 */
@@ -90,6 +110,13 @@
   background: #ffffff;
 }
 
+.banner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /* background: #fff; */
+}
+
 .banner::after {
   content: "";
   display: block;
@@ -101,20 +128,6 @@
   background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #F9F9F9 100%);
   pointer-events: none;
   z-index: -1;
-}
-
-.banner-info {
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: 0 40rpx;
-}
-
-.banner-title {
-  font-weight: bold;
-  font-size: 58rpx;
-  color: #000;
-  line-height: 68rpx;
 }
 
 /* 置顶文章 */
@@ -130,62 +143,23 @@
   background: #FFFFFF;
 }
 
-.banner-title_text {
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.banner-avatar {
-  position: relative;
-  vertical-align: middle;
-  float: right;
-}
-
-.avatar {
-  width: 72rpx;
-  height: 72rpx;
-  border: 5rpx solid #fff;
-  border-radius: 50%;
-  background-size: cover;
-}
-
-.default-avatar {
-  width: 72rpx;
-  height: 72rpx;
-  border: 5rpx solid #fff;
-  border-radius: 50%;
-  background-image: url(https://cloud-minapp-16269.cloud.ifanrusercontent.com/default-avator.jpg);
-  background-size: cover;
-}
-
-.unread-message {
-  display: block;
-  position: absolute;
-  right: 0;
-  top: 0;
-  pointer-events: none;
-}
-
-.banner-brief {
-  font-size: 28rpx;
-  color: #121212;
-  line-height: 40rpx;
-  margin-top: 20rpx;
-  letter-spacing: 4rpx;
-}
-
 .index-search {
-  position: absolute;
-  bottom: -20rpx;
-  left: 40rpx;
-  right: 40rpx;
+  display: flex;
   border-radius: 44rpx;
   box-shadow: 0 4rpx 20rpx 2rpx #FBEBD4;
 }
 
-
 .index {
-  padding: 10rpx 36rpx;
+  margin-top: 40rpx;
+  padding: 0 36rpx;
+}
+
+.index_loading {
+  height: calc(100vh - (500rpx));
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content:center;
 }
 
 .top_text {
@@ -232,20 +206,16 @@ page::-webkit-scrollbar {
   background: rgba(38, 38, 38, 1);
 }
 
-.category {
-  padding: 30rpx 10rpx;
-}
-
 .index_label {
   position: relative;
-  margin-top: 80rpx;
+  height: 120rpx;
 }
 
 .index_label_title {
   font-size: 45rpx;
   color: #262626;
   position: absolute;
-  top: 0;
+  top: 28rpx;
   left: 0;
   z-index: 1;
 }
@@ -256,20 +226,24 @@ page::-webkit-scrollbar {
   background: linear-gradient(270deg, rgba(249, 228, 135, 0) 0%, rgba(241, 197, 79, 1) 100%);
   border-radius: 11rpx;
   position: absolute;
-  top: 48rpx;
+  top: 86rpx;
   left: 0;
 }
 
 .index_label_more {
   position: absolute;
   right: 0;
-  top: -14rpx;
+  top: 40rpx;
   color: #888888;
   font-size: 28rpx;
   line-height: 48rpx;
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+.index_label_more .category {
+  padding: 0 10rpx;
 }
 
 .wz-ui {
@@ -320,7 +294,8 @@ page::-webkit-scrollbar {
 }
 
 .index_article {
-  margin-top: 210rpx;
+  position: relative;
+  margin-top: 36rpx;
 }
 
 .index_article_title {
@@ -418,47 +393,6 @@ page::-webkit-scrollbar {
   color: #fff;
   text-align: center;
   line-height: 70rpx;
-}
-
-.index-search {
-  display: flex;
-  flex-flow: row;
-  background: #FFFFFF;
-  box-shadow: 0 6rpx 8rpx 0 #F5F5F5;
-  border-radius: 44rpx;
-  height: 88rpx;
-  justify-content: center;
-  align-items: center;
-  padding: 24rpx;
-  box-sizing: border-box;
-}
-
-.search-icon {
-  flex-grow: 0;
-  flex-shrink: 0;
-  width: 40rpx;
-  height: 40rpx;
-  background-image: url("https://cloud-minapp-16269.cloud.ifanrusercontent.com/product-search.svg");
-  background-size: contain;
-}
-
-.search-input {
-  flex-grow: 1;
-  flex-shrink: 1;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  margin-left: 20rpx;
-  font-size: 26rpx;
-  color: #A8A8A8;
-}
-
-input.search-input {
-  color: #222222;
-}
-
-search-input-placeholder {
-  color: #A8A8A8;
 }
 
 .close-btn {

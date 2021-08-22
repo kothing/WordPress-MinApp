@@ -1,5 +1,9 @@
 /* pages/list/list.wxss */
-.list {
+page::-webkit-scrollbar {
+  display: none;
+}
+
+.hotposts {
   height: 100vh;
   padding: 20rpx 36rpx;
   background: #fff;
@@ -12,11 +16,7 @@
   font-size: 24rpx;
 }
 
-page::-webkit-scrollbar {
-  display: none;
-}
-
-.list_loading {
+.posts_loading {
   height: 100%;
   background-color: #fff;
   display: flex;
@@ -24,11 +24,11 @@ page::-webkit-scrollbar {
   justify-content:center;
 }
 
-.list_label {
+.posts_label {
   position: relative;
 }
 
-.list_label_title {
+.posts_label_title {
   color: #555;
   line-height: 58rpx;
   position: absolute;
@@ -37,13 +37,13 @@ page::-webkit-scrollbar {
   z-index: 1;
 }
 
-.list_label_bg {
+.posts_label_bg {
   height: 58rpx;
   background: linear-gradient(270deg, rgba(249, 228, 135, 0) 0%, rgba(241, 197, 79, 1) 100%);
   border-radius: 11rpx;
 }
 
-.list_label_more {
+.posts_label_more {
   position: absolute;
   right: 0;
   top: -14rpx;
@@ -55,13 +55,13 @@ page::-webkit-scrollbar {
   align-items: center;
 }
 
-.list_article_box {
+.posts_article_box {
   margin-bottom: 38rpx;
   padding-bottom: 38rpx;
   border-bottom: 1px dotted #c5c5c5;
 }
 
-.list_article_figure {
+.posts_article_figure {
   position: relative;
   display: block;
   width: 100%;
@@ -71,29 +71,29 @@ page::-webkit-scrollbar {
   overflow: hidden;
 }
 
-.list_article_cover {
+.posts_article_cover {
   width: 100%;
   height: 380rpx;
   border-radius: 15rpx;
 }
 
-.list_article {
+.posts_article {
   margin-top: 20rpx;
 }
 
-.list_article_title {
+.posts_article_title {
   width: 100%;
   font-size: 110%;
   font-weight: 500;
   color: rgba(38, 38, 38, 1);
   line-height: 50rpx;
-  margin-top: 20rpx;
+  margin-top: 24rpx;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.list_article_desc {
+.posts_article_desc {
   color: #888888;
   margin-top: 16rpx;
   text-overflow: ellipsis;
@@ -104,7 +104,7 @@ page::-webkit-scrollbar {
   overflow: hidden;
 }
 
-.list_article_during {
+.posts_article_during {
   position: absolute;
   top: 326rpx;
   left: 16rpx;
@@ -117,7 +117,7 @@ page::-webkit-scrollbar {
   text-align: center;
 }
 
-.list_article_during text {
+.posts_article_during text {
   font-size: 80%;
   color: #fff;
 }

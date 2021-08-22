@@ -11,4 +11,4 @@
 - 评论跟随；
 - 强大的广告功能；
 
-![qrcode](https://github.com/kothing/WordPress-MinApp/blob/main/qrcode.png)
+![qrcode](https://github.com/kothing/WordPress-MinApp/blob/main/images/qrcode.png)

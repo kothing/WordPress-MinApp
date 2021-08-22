@@ -1,42 +1,33 @@
 <!--index.wxml-->
 <topbar-view bgColor="bg-gradual-blue">
-  <view slot="content">首页</view>
+  <view slot="content">{{siteInfo.name}} 首页</view>
 </topbar-view>
 <view>
-  <view bgColor="bg-gradual-blue" class="cu-bar search bg-bui">
-    <view class="search-form round">
-      <text class="cuIcon-search"></text>
-      <input bindconfirm="onConfirm" bindinput="onInput" confirmType="search" focus="{{autoFocus}}"
-        placeholder="{{placeHolder}}" placeholderClass="search-input-placeholder" value="{{searchKey}}"
-        wx:if="{{inputEnable}}"></input>
-      <view class="search-input" wx:else>{{placeHolder}}</view>
+  <view class="topbar">
+    <view class="app-info">
+      <view class="app-title">
+        <view class="app-title_text">{{siteInfo.name}}</view>
+      </view>
+      <view class="app-brief">{{siteInfo.description}}</view>
+    </view>
+    <view class="app-search cu-bar" bgColor="bg-gradual-blue">
+      <view class="search-form round">
+        <text class="cuIcon-search"></text>
+        <input bindconfirm="onConfirm" bindinput="onInput" confirmType="search" focus="{{autoFocus}}"
+          placeholder="{{placeHolder}}" placeholderClass="search-input-placeholder" value="{{searchKey}}"
+          wx:if="{{inputEnable}}"></input>
+        <view class="search-input" wx:else>{{placeHolder}}</view>
+      </view>
     </view>
   </view>
   <swiper class="screen-swiper square-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000"
     duration="500">
-    <swiper-item class="index_article_figures" id="{{item.id}}" bindtap="bindDetail" id="{{item.id}}" wx:for="{{stickyPost}}" wx:for-index="i"
-      wx:key="id">
+    <swiper-item class="index_article_figures" id="{{item.id}}" bindtap="bindDetail" id="{{item.id}}"
+      wx:for="{{stickyPost}}" wx:for-index="i" wx:key="id">
       <image class='index_article_covers' src="{{item.meta.thumbnail}}" mode="aspectFill"></image>
     </swiper-item>
   </swiper>
   <view class="banner">
-    <view class="banner-info" style="top: {{navBarHeight+150}}rpx">
-      <view class="banner-title" style="display:none">
-        <view class="banner-title_text">{{siteInfo.name}}</view>
-      </view>
-      <view style="display:none" class="banner-brief">{{siteInfo.description}}</view>
-    </view>
-    <view style="display:none" class="index-search container-class">
-      <view class="search-icon icon-class"></view>
-      <input bindconfirm="onConfirm" bindinput="onInput" class="search-input input-class" confirmType="search"
-        focus="{{autoFocus}}" placeholder="{{placeHolder}}" placeholderClass="search-input-placeholder"
-        value="{{searchKey}}" wx:if="{{inputEnable}}"></input>
-      <view class="search-input" wx:else>{{placeHolder}}</view>
-      <image bindtap="onClear" class="close-btn"
-        src="https://cloud-minapp-16269.cloud.ifanrusercontent.com/product-image-close.svg" wx:if="{{searchKey}}">
-      </image>
-    </view>
-    <!-- 跳转 -->
     <view class="cu-list grid grid col-4 no-border wz-ui">
       <view class="cu-item" bindtap="onJump">
         <view class="bg-img bg-imgz"></view>
@@ -61,12 +52,16 @@
     </view>
   </view>
   <view class="tab-content">
-    <view class="index">
+    <view class="index_loading" wx:if="{{loading == true}}">
+      Loading
+    </view>
+    <view wx:else class="index">
       <view class="index_label" wx:if="{{posts.length>0}}">
         <view class="index_label_title">为你精选</view>
         <view class="index_label_bg"></view>
-        <view class="index_label_more" style='display:none'>
-          <view bindtap="bindDetail" class="category" id="{{item.id}}" wx:for="{{category}}" wx:key="item">{{item.name}}
+        <view class="index_label_more">
+          <view bindtap="bindCateByID" class="category" id="{{item.id}}" wx:for="{{category}}" wx:key="item">
+            {{item.name}}
           </view>
           <image bindtap="bindCateList" src="../../images/more.png"
             style="width: 26rpx;height: 24rpx;padding: 30rpx 15rpx"></image>
@@ -77,7 +72,8 @@
           <block wx:if="{{i%5 == 0}}">
             <view bindtap="bindDetail" class="index_article_box" id="{{item.id}}">
               <view class="index_article_figure">
-                <image mode="aspectFill" class="index_article_cover" src="{{item.meta.thumbnail || '/images/default_thumb.png'}}"></image>
+                <image mode="aspectFill" class="index_article_cover"
+                  src="{{item.meta.thumbnail || '/images/default_thumb.png'}}"></image>
                 <view class="index_article_during">
                   <text>{{item.category[0].name}}</text>
                 </view>
@@ -92,7 +88,8 @@
           <block wx:else>
             <view bindtap="bindDetail" class="index_article_box" id="{{item.id}}">
               <view class="index_article_figure">
-                <image mode="aspectFill" class="index_article_cover" src="{{item.meta.thumbnail || '/images/default_thumb.png'}}"></image>
+                <image mode="aspectFill" class="index_article_cover"
+                  src="{{item.meta.thumbnail || '/images/default_thumb.png'}}"></image>
                 <view class="index_article_during">
                   <text>{{item.category[0].name}}</text>
                 </view>

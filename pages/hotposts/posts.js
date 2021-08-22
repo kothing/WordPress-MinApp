@@ -10,6 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    loading: false,
     page: 1,
     posts: [],
     autoFocus: false,
@@ -24,6 +25,9 @@ Page({
   },
   // 请求所以数据
   getMostViewsPosts: function (data) {
+    this.setData({
+      loading: true,
+    });
     API.getMostViewsPosts(data).then(res => {
       let args = {}
       if (res.length < 10) {
@@ -40,10 +44,16 @@ Page({
         args.posts = [].concat(this.data.posts, res)
         args.page = this.data.page + 1
       }
-      this.setData(args)
+      this.setData({
+        ...args,
+        loading: false
+      });
       wx.stopPullDownRefresh()
     })
       .catch(err => {
+        this.setData({
+          loading: false
+        });
         console.log(err)
         wx.stopPullDownRefresh()
       })
@@ -81,6 +91,7 @@ Page({
    */
   onPullDownRefresh: function () {
     this.setData({
+      loading: true,
       page: 1,
       posts: [],
       isLastPage: false

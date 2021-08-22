@@ -255,7 +255,6 @@
   font-weight: 700;
   font-family: PingFangSC-Medium, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 40rpx;
-  line-height: 40rpx;
 }
 
 .article-info .avator {

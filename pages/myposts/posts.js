@@ -1,4 +1,4 @@
-// pages/posts/posts.js
+// pages/myposts/posts.js
 /**
  * Author: NiceBoy
  * Github 地址: https://github.com/kothing/Wordress-MiniProgram

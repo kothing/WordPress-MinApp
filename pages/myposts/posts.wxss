@@ -1,11 +1,6 @@
-/* pages/list/list.wxss */
-page::-webkit-scrollbar {
-  display: none;
-}
-
-.mostpost {
+/* pages/myposts/posts.wxss */
+.index {
   padding: 20rpx 36rpx;
-  background: #fff;
 }
 
 .top_text {
@@ -13,6 +8,10 @@ page::-webkit-scrollbar {
   text-align: center;
   color: #AAA;
   font-size: 24rpx;
+}
+
+page::-webkit-scrollbar {
+  display: none;
 }
 
 .index_label {
@@ -50,19 +49,62 @@ page::-webkit-scrollbar {
   align-items: center;
 }
 
-.post_article_box {
-  margin-bottom: 38rpx;
-  padding-bottom: 38rpx;
-  border-bottom: 1px dotted #c5c5c5;
+.index_comment_box {
+  margin: 120rpx 30rpx 0 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
-.post_article_figure {
-  position: relative;
-  display: block;
-  width: 100%;
-  height: 0;
-  padding: 0;
-  padding-bottom: 56.25%;
+.index_comment {
+  background: rgba(246, 247, 249, 1);
+  border-radius: 4rpx;
+  padding: 70rpx 40rpx 100rpx 40rpx;
+}
+
+.index_comment_hb {
+  display: flex;
+  flex-direction: row;
+}
+
+.index_comment_avatar {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  background: #888888;
+}
+
+.index_comment_hb_name {
+  color: #888888;
+  font-size: 24rpx;
+  line-height: 37rpx;
+}
+
+.index_comment_hb_title {
+  color: #262626;
+  font-size: 24rpx;
+  line-height: 24rpx;
+  margin-left: 6rpx;
+  width: 220rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.index_comment_content {
+  color: #262626;
+  font-size: 32rpx;
+  height: 240rpx;
+  width: 340rpx;
+  display: inline-block;
+  margin-top: 50rpx;
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
   overflow: hidden;
 }
 
@@ -82,7 +124,7 @@ page::-webkit-scrollbar {
   font-weight: 500;
   color: rgba(38, 38, 38, 1);
   line-height: 50rpx;
-  margin-top: 24rpx;
+  margin-top: 20rpx;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

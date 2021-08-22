@@ -11,9 +11,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+    loading: false,
     id: 0,
     page: 1,
     posts: [],
+    title: '',
     isLoadAll: false
   },
 
@@ -21,7 +23,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({ options: options })
+    this.setData({ 
+      options: options 
+    });
     this.getAdvert()
     if (options.id) {
       this.getPostList({
@@ -77,6 +81,7 @@ Page({
    */
   onPullDownRefresh: function () {
     this.setData({
+      loading: true,
       page: 1,
       posts: []
     })
@@ -134,8 +139,12 @@ Page({
   },
 
   getPostList: function (data) {
+    const _this = this;
+    _this.setData({
+      loading: true
+    });
     API.getPostsList(data).then(res => {
-      let args = {}
+      let args = {};
       if (res.length < 10) {
         this.setData({
           isLastPage: true,
@@ -150,12 +159,18 @@ Page({
         args.posts = [].concat(this.data.posts, res)
         args.page = this.data.page + 1
       }
-      this.setData(args)
+      this.setData({
+        ...args,
+        loading: false
+      });
       wx.stopPullDownRefresh()
     })
       .catch(err => {
-        console.log(err)
-        wx.stopPullDownRefresh()
+        this.setData({
+          loading: false
+        });
+        console.log(err);
+        wx.stopPullDownRefresh();
       })
   },
 

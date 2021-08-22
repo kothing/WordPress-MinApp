@@ -1,12 +1,12 @@
 {
     "pages": [
         "pages/index/index",
-        "pages/detail/detail",
-        "pages/list/list",
         "pages/category/category",
+        "pages/list/list",
+        "pages/detail/detail",
         "pages/mine/mine",
-        "pages/posts/posts",
-        "pages/mostpost/index"
+        "pages/myposts/posts",
+        "pages/hotposts/posts"
     ],
     "window": {
         "backgroundTextStyle": "light",
