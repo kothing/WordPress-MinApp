@@ -29,16 +29,16 @@
   </swiper>
   <view class="banner">
     <view class="cu-list grid grid col-4 no-border wz-ui">
-      <view class="cu-item" bindtap="onJump">
+      <view class="cu-item" bindtap="bindHotPosts">
         <view class="bg-img bg-imgz"></view>
         <text>热门</text>
       </view>
-      <view class="cu-item" bindtap="onJumps">
+      <view class="cu-item" bindtap="toMiniProgram">
         <view class="bg-img bg-imgd">
         </view>
         <text>社区</text>
       </view>
-      <view class="cu-item" bindtap="bindCateLists">
+      <view class="cu-item" bindtap="bindPageLists">
         <view class="bg-img bg-imgh">
         </view>
         <text>资讯</text>

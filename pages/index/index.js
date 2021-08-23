@@ -48,14 +48,14 @@ Page({
 
   },
   // 小程序跳转
-  onJump: function () {
+  bindHotPosts: function () {
     wx.navigateTo({
       url: '/pages/hotposts/posts',
     })
   },
-  onJumps: function () {
+  toMiniProgram: function () {
     wx.navigateToMiniProgram({
-      appId: '',
+      appId: 'wxa01e1baa46426a94',
       path: '',
       extraData: {
 
@@ -66,17 +66,10 @@ Page({
     })
   },
   // 打开栏目
-  bindCateLists: function () {
-    wx.navigateToMiniProgram({
-      appId: '',
-      path: '',
-      extraData: {
-
-      },
-      success(res) {
-        // 打开成功
-      }
-    })
+  bindPageLists: function () {
+    wx.navigateTo({
+      url: '/pages/hotposts/posts',
+    });
   },
   /**
    * 生命周期函数--监听页面显示
