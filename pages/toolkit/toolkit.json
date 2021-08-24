@@ -1,9 +1,10 @@
 {
   "enablePullDownRefresh": true,
   "navigationStyle": "custom",
-  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "ToolKit",
   "usingComponents": {
     "topbar": "/components/topbar/topbar",
-    "loading": "/components/loading/loading"
+    "loading": "/components/loading/loading",
+    "dialog": "/components/dialog/dialog"
   }
 }

@@ -9,7 +9,6 @@ const app = getApp()
 let isFocusing = false
 
 Page({
-
   /**
    * 页面的初始数据
    */

@@ -6,11 +6,11 @@
 const API = require('../../utils/api')
 
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
+    loading: false,
     page: 1,
     posts: []
   },
@@ -85,7 +85,7 @@ Page({
       page: 1,
       posts: [],
       isPull: true,
-      isLastPage: flase
+      isLastPage: false
     })
     if (this.data.options.id == 1) {
       this.getLikePosts();
@@ -120,6 +120,9 @@ Page({
   },
 
   getLikePosts: function (args) {
+    this.setData({
+      loading: true,
+    });
     API.getLikePosts(args).then(res => {
       let args = {}
       if (res.length < 10) {
@@ -139,11 +142,24 @@ Page({
         args.posts = [].concat(this.data.posts, res)
         args.page = this.data.page + 1
       }
-      this.setData(args)
+      this.setData({
+        ...args,
+        loading: false
+      });
     })
+    .catch(err => {
+      this.setData({
+        loading: false
+      });
+      console.log(err)
+      wx.stopPullDownRefresh()
+    });
   },
 
   getFavPosts: function (args) {
+    this.setData({
+      loading: true,
+    });
     API.getFavPosts(args).then(res => {
       let args = {}
       if (res.length < 10) {
@@ -163,11 +179,24 @@ Page({
         args.posts = [].concat(this.data.posts, res)
         args.page = this.data.page + 1
       }
-      this.setData(args)
+      this.setData({
+        ...args,
+        loading: false
+      });
     })
+    .catch(err => {
+      this.setData({
+        loading: false
+      });
+      console.log(err)
+      wx.stopPullDownRefresh()
+    });
   },
 
   getCommentsPosts: function (args) {
+    this.setData({
+      loading: true,
+    });
     API.getCommentsPosts(args).then(res => {
       let args = {}
       if (res.length < 10) {
@@ -187,8 +216,18 @@ Page({
         args.posts = [].concat(this.data.posts, res)
         args.page = this.data.page + 1
       }
-      this.setData(args)
+      this.setData({
+        ...args,
+        loading: false
+      });
     })
+    .catch(err => {
+      this.setData({
+        loading: false
+      });
+      console.log(err)
+      wx.stopPullDownRefresh()
+    });
   },
 
   bindDetail: function (e) {

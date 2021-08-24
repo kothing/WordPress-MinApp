@@ -1,5 +1,5 @@
 <!--pages/mine/mine.wxml-->
-<!-- <topbar-view bgColor="bg-gradual-blue"><view slot="content">个人中心</view></topbar-view> -->
+<!-- <topbar bgColor="bg-gradual-blue"><view slot="content">个人中心</view></topbar> -->
 <view class="user-container" style="min-height: 100vh; padding-top: {{navBarHeight}}px;">
   <view class="user-information relative" bindtap="getProfile">
     <view wx:if="{{user.avatarUrl}}" class="user-information_img" style="background-image: url('{{user.avatarUrl}}')">
@@ -62,6 +62,12 @@
           src="https://cloud-minapp-16269.cloud.ifanrusercontent.com/small-logo-gray-with-radius.svg"></image>
       </view>
       <button class="auth-btn" bindtap="loginOut"></button>
+    </view>
+    <view class="user-item">
+      <text class="user-item_text">Tooltik</text>
+      <view class="user-item_icon">
+      </view>
+      <button class="tooltik-btn" bindtap="bindTooltik"></button>
     </view>
   </view>
 </view>

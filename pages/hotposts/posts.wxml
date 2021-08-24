@@ -43,13 +43,13 @@
         </block>
       </view>
       <view class="posts_article" wx:if="{{isLastPage&&posts.length==0}}">
-        <view style="position: relative;height: 380rpx">
+        <view class="posts_article_null">
           <image mode="aspectFill" class="posts_article_cover" src="../../images/message.png"></image>
         </view>
         <view class="last_text">对不起! 你查看的内容没有找到</view>
       </view>
-      <view class="last_text" wx:if="{{isLastPage&&posts.length>0}}">已经到底啦~</view>
-      <view class="last_text" wx:if="{{!isLastPage&&posts.length>0}}">努力加载中...</view>
+      <view class="last_text" wx:if="{{isLastPage && posts.length > 0}}">已经到底啦~</view>
+      <view class="last_text" wx:if="{{!isLastPage && posts.length > 0}}">努力加载中...</view>
     </block>
   </view>
 </view>

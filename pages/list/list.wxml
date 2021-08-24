@@ -5,7 +5,7 @@
       <view class="list_label_title">{{title}}</view>
       <view class="list_label_bg"></view>
     </view>
-    <view class="list_loading" wx:if="{{loading == true}}">
+    <view class="list_loading" wx:if="{{loading == true && posts.length === 0}}">
       Loading
     </view>
     <block wx:else>
@@ -43,7 +43,7 @@
         </block>
       </view>
       <view class="list_article" wx:if="{{isLastPage && posts.length === 0}}">
-        <view style="position: relative;height: 380rpx">
+        <view class="list_article_null">
           <image mode="aspectFill" class="list_article_cover" src="../../images/message.png"></image>
         </view>
         <view class="last_text">对不起! 你查看的内容没有找到</view>

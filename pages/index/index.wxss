@@ -3,35 +3,32 @@
   padding-bottom: 20rpx;
 }
 
-.topbar {
-  background: -webkit-linear-gradient(to right, #6188ef, #98b4f5);
-  background: linear-gradient(to right, #6188ef, #98b4f5);
+.index {
+  position: relative;
 }
 
-.app-info {
-  margin: 0 40rpx;
+.header {
+  padding: 0 40rpx;
+  background: -webkit-linear-gradient(to right, #6188ef, #98b4f5);
+  background: linear-gradient(to right, #6188ef, #98b4f5);
   color: #fff;
 }
 
-.app-title {
+.header .app-title {
   font-weight: bold;
   font-size: 58rpx;
   line-height: 68rpx;
 }
 
-.app-brief {
+.header .app-brief {
   font-size: 28rpx;
   line-height: 40rpx;
-  margin-top: 20rpx;
+  padding-top: 20rpx;
 }
 
-.app-title_text {
+.header .app-title_text {
   display: inline-block;
   vertical-align: middle;
-}
-
-.search-ui {
-  background: #12c2e9;
 }
 
 .search-form {
@@ -149,7 +146,7 @@
   box-shadow: 0 4rpx 20rpx 2rpx #FBEBD4;
 }
 
-.index {
+.index-box {
   margin-top: 40rpx;
   padding: 0 36rpx;
 }
@@ -157,6 +154,7 @@
 .index_loading {
   height: calc(100vh - (500rpx));
   background-color: #fff;
+  margin-top: 40rpx;
   display: flex;
   align-items: center;
   justify-content:center;

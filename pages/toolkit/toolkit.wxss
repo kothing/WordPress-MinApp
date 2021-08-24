@@ -1,0 +1,12 @@
+/* pages/toolkit/toolkit.wxss */
+.toolkitlex {
+  display: flex;
+}
+
+.showDialog {
+  margin: 40rpx;
+}
+
+.showLoading {
+  margin: 40rpx;
+}

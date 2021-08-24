@@ -1,10 +1,11 @@
 <!--pages/detail/detail.wxml-->
-<topbar-view bgColor="bg-gradual-blue" isBack="{{true}}">
+<topbar bgColor="bg-gradual-blue" isBack="{{true}}">
   <view slot="backText">返回</view>
   <view slot="content">文章详情</view>
-</topbar-view>
+</topbar>
 <view class="header-banner">
-  <image src='{{detail.meta.thumbnail?detail.meta.thumbnail:"/images/detail_default.png"}}' class='header-image' mode="widthFix"></image>
+  <image src='{{detail.meta.thumbnail?detail.meta.thumbnail:"/images/detail_default.png"}}' class='header-image'
+    mode="widthFix"></image>
 </view>
 <import src="../../wxParse/wxParse.wxml" />
 <view class="topic-detail">

@@ -153,5 +153,12 @@ Page({
     wx.showToast({
       title: '清除完毕',
     })
-  }
+  },
+
+  // Tooltik
+  bindTooltik: function (e) {
+    wx.navigateTo({
+      url: '/pages/toolkit/toolkit',
+    })
+  },
 })

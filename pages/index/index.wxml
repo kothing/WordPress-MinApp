@@ -1,15 +1,13 @@
 <!--index.wxml-->
-<topbar-view bgColor="bg-gradual-blue">
+<topbar bgColor="bg-gradual-blue">
   <view slot="content">{{siteInfo.name}} 首页</view>
-</topbar-view>
-<view>
-  <view class="topbar">
-    <view class="app-info">
-      <view class="app-title">
-        <view class="app-title_text">{{siteInfo.name}}</view>
-      </view>
-      <view class="app-brief">{{siteInfo.description}}</view>
+</topbar>
+<view class="index">
+  <view class="header">
+    <!-- <view class="app-title">
+      <view class="app-title_text">{{siteInfo.name}}</view>
     </view>
+    <view class="app-brief">{{siteInfo.description}}</view> -->
     <view class="app-search cu-bar" bgColor="bg-gradual-blue">
       <view class="search-form round">
         <text class="cuIcon-search"></text>
@@ -20,13 +18,15 @@
       </view>
     </view>
   </view>
-  <swiper class="screen-swiper square-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000"
-    duration="500">
-    <swiper-item class="index_article_figures" id="{{item.id}}" bindtap="bindDetail" id="{{item.id}}"
-      wx:for="{{stickyPost}}" wx:for-index="i" wx:key="id">
-      <image class='index_article_covers' src="{{item.meta.thumbnail}}" mode="aspectFill"></image>
-    </swiper-item>
-  </swiper>
+  <view class="feature">
+    <swiper class="screen-swiper square-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000"
+      duration="500">
+      <swiper-item class="index_article_figures" id="{{item.id}}" bindtap="bindDetail" id="{{item.id}}"
+        wx:for="{{stickyPost}}" wx:for-index="i" wx:key="id">
+        <image class='index_article_covers' src="{{item.meta.thumbnail}}" mode="aspectFill"></image>
+      </swiper-item>
+    </swiper>
+  </view>
   <view class="banner">
     <view class="cu-list grid grid col-4 no-border wz-ui">
       <view class="cu-item" bindtap="bindHotPosts">
@@ -52,11 +52,11 @@
     </view>
   </view>
   <view class="tab-content">
-    <view class="index_loading" wx:if="{{loading == true}}">
+    <view class="index_loading" wx:if="{{loading == true && posts.length === 0}}">
       Loading
     </view>
-    <view wx:else class="index">
-      <view class="index_label" wx:if="{{posts.length>0}}">
+    <view wx:else class="index-box">
+      <view class="index_label" wx:if="{{posts.length > 0}}">
         <view class="index_label_title">为你精选</view>
         <view class="index_label_bg"></view>
         <view class="index_label_more">
@@ -67,7 +67,7 @@
             style="width: 26rpx;height: 24rpx;padding: 30rpx 15rpx"></image>
         </view>
       </view>
-      <view class="index_article" wx:if="{{posts.length>0}}">
+      <view class="index_article" wx:if="{{posts.length > 0}}">
         <block wx:for="{{posts}}" wx:for-index="i" wx:key="id">
           <block wx:if="{{i%5 == 0}}">
             <view bindtap="bindDetail" class="index_article_box" id="{{item.id}}">

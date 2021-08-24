@@ -1,7 +1,7 @@
 <!--pages/category/category.wxml-->
-<topbar-view bgColor="bg-gradual-blue">
+<topbar bgColor="bg-gradual-blue">
   <view slot="content">栏目</view>
-</topbar-view>
+</topbar>
 <view class="section section-features">
   <view class="category_loading" wx:if="{{loading == true}}">
     Loading

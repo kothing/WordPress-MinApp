@@ -5,7 +5,6 @@
 const API = require('../../utils/api')
 
 Page({
-
   data: {
     loading: false,
     posts: [],
@@ -272,5 +271,5 @@ Page({
     wx.navigateTo({
       url: '/pages/list/list?s=' + s,
     })
-  }
+  },
 })

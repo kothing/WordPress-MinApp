@@ -6,7 +6,8 @@
         "pages/detail/detail",
         "pages/mine/mine",
         "pages/myposts/posts",
-        "pages/hotposts/posts"
+        "pages/hotposts/posts",
+        "pages/toolkit/toolkit"
     ],
     "window": {
         "backgroundTextStyle": "light",
@@ -41,10 +42,9 @@
         ]
     },
     "usingComponents": {
-        "topbar-view": "/components/topbar-view/topbar-view"
+        "topbar": "/components/topbar/topbar",
+        "loading": "/components/loading/loading",
+        "dialog": "/components/dialog/dialog"
     },
-    "navigateToMiniProgramAppIdList": [
-        ""
-    ],
     "sitemapLocation": "sitemap.json"
 }
