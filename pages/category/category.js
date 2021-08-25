@@ -13,7 +13,7 @@ Page({
   data: {
     loading: false,
     page: 1,
-    category: '',
+    category: [],
     isBottom: false,
     isLastPage: false
   },
@@ -60,7 +60,6 @@ Page({
     this.setData({
       loading: true,
       page: 1,
-      category: '',
       isBottom: false
     })
     this.getCategories()
@@ -74,7 +73,9 @@ Page({
       isBottom: true
     })
     if (!this.data.isLastPage) {
-      this.getCategories({ page: this.data.page })
+      this.getCategories({ page: 
+        this.data.page
+      });
     }
   },
 
@@ -90,23 +91,23 @@ Page({
       loading: true
     });
     API.getCategories().then(res => {
-      let args = {}
+      let args = {};
       if (res.length < 10) {
         this.setData({
           isLastPage: true
-        })
+        });
       }
       if (this.data.isBottom) {
         wx.showToast({
           title: '加载下一页',
           icon: 'loading',
           duration: 1000
-        })
-        args.category = [].concat(this.data.category, res)
-        args.page = this.data.page + 1
+        });
+        args.category = [].concat(this.data.category, res);
+        args.page = this.data.page + 1;
       } else {
-        args.category = res
-        args.page = this.data.page + 1
+        args.category = res;
+        args.page = this.data.page + 1;
       }
       this.setData({
         ...args,
@@ -120,14 +121,13 @@ Page({
         });
         console.log(err)
         wx.stopPullDownRefresh()
-      })
+      });
   },
 
   bindCateByID: function (e) {
     let id = e.currentTarget.id;
     wx.navigateTo({
       url: '/pages/list/list?id=' + id,
-    })
+    });
   }
-
 })

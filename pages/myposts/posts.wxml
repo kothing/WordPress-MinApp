@@ -1,7 +1,7 @@
 <!--pages/myposts/posts.wxml-->
 <view class="tab-content">
     <view class="myposts">
-        <view class="posts_loading" wx:if="{{loading == true}}">
+        <view class="posts_loading" wx:if="{{loading === true}}">
             Loading
         </view>
         <block wx:else>
@@ -19,7 +19,7 @@
                     </view>
                 </block>
             </view>
-            <view class="posts_article" wx:if="{{isLastPage&&posts.length === 0}}">
+            <view class="posts_article" wx:if="{{isLastPage && posts.length === 0}}">
                 <view class="posts_article_null">
                     <image mode="aspectFill" class="posts_article_cover" src="../../images/message.png"></image>
                 </view>

@@ -36,7 +36,7 @@
       <view class="c2"></view>
     </view>
   </view>
-  <view class="advert" wx:if="{{advert.type == 'unit'}}">
+  <view class="advert" wx:if="{{advert.type === 'unit'}}">
     <ad unit-id="{{advert.code}}"></ad>
   </view>
   <view class="topic-title-wrapper" id="comment">
@@ -48,7 +48,7 @@
     </view>
   </view>
   <view class="commentdata">
-    <view class="listnodata" wx:if="{{comments.length==0}}">
+    <view class="listnodata" wx:if="{{comments.length === 0}}">
       <image class="nodataimg" lazyLoad="false" mode="aspectFit|aspectFill|widthFix" src="../../images/message.png">
       </image>
       <view class="nodatatext">
@@ -133,13 +133,13 @@
           <button wx:else class="userLogin" bindtap="tapcomment"></button>
         </view>
         <view class="bottom-btn bottom-comment-container relative">
-          <image class="bottom-comment" src="{{detail.isfav?'../../images/collected.png':'../../images/collect.png'}}">
+          <image class="bottom-comment" src="{{detail.isfav ? '../../images/collected.png' : '../../images/collect.png'}}">
           </image>
           <button wx:if="{{!user}}" class="userLogin" bindgetuserinfo="getProfile" openType="getUserInfo"></button>
           <button wx:else class="userLogin" bindtap="bindFavTap" id="{{detail.id}}"></button>
         </view>
         <view class="bottom-btn bottom-comment-container">
-          <image class="bottom-btn bottom-fav" src="{{detail.islike?'../../images/liked.png':'../../images/like.png'}}">
+          <image class="bottom-btn bottom-fav" src="{{detail.islike ? '../../images/liked.png' : '../../images/like.png'}}">
           </image>
           <button wx:if="{{!user}}" class="userLogin" bindgetuserinfo="getProfile" openType="getUserInfo"></button>
           <button wx:else class="userLogin" bindtap="bindLikeTap" id="{{detail.id}}"></button>

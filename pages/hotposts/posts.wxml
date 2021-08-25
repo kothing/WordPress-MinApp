@@ -5,11 +5,11 @@
       <view class="posts_label_title">HOT</view>
       <view class="posts_label_bg"></view>
     </view>
-    <view class="posts_loading" wx:if="{{loading == true}}">
+    <view class="posts_loading" wx:if="{{loading === true && posts.length === 0}}">
       Loading
     </view>
     <block wx:else>
-      <view class="posts_article" wx:if="{{posts.length>0}}">
+      <view class="posts_article" wx:if="{{posts.length > 0}}">
         <block wx:for="{{posts}}" wx:for-index="i" wx:key="item">
           <block wx:if="{{i%5 == 0}}">
             <view bindtap="bindDetail" class="posts_article_box" id="{{item.id}}">
@@ -42,7 +42,7 @@
           </block>
         </block>
       </view>
-      <view class="posts_article" wx:if="{{isLastPage&&posts.length==0}}">
+      <view class="posts_article" wx:if="{{isLastPage && posts.length === 0}}">
         <view class="posts_article_null">
           <image mode="aspectFill" class="posts_article_cover" src="../../images/message.png"></image>
         </view>

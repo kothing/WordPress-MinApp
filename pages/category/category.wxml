@@ -3,7 +3,7 @@
   <view slot="content">栏目</view>
 </topbar>
 <view class="section section-features">
-  <view class="category_loading" wx:if="{{loading == true}}">
+  <view class="category_loading" wx:if="{{loading === true && category.length === 0}}">
     Loading
   </view>
   <view wx:else class="section-content is-flex center-xs">
@@ -11,7 +11,7 @@
       <block wx:for="{{category}}" wx:key="id">
         <view bindtap='bindCateByID' id="{{item.id}}" class="feature-card card-type-life">
           <view class="card-cover"
-            style='background-image:url({{item.cover}});background-repeat:no-repeat;background-position:center;'></view>
+            style='background-image:url({{item.cover}});'></view>
           <view data-jarallax-element="-80" class="card-main is-flex direction-vert between-xs parallax">
             <view class="card-top">
               <view class="card-title">{{item.name}}</view>
@@ -20,10 +20,8 @@
               </view>
             </view>
             <view class="card-actions is-flex end-xs">
-              <view class="action-item is-flex middle-xs">了解更多
-                <view class="img-icon img-icon-arrow-right theme-black"
-                  style="background-image: url('http://ssupload.qingmang.mobi/qingmang-website/static/images/arrow-right.eb5cba0.svg')">
-                </view>
+              <view class="action-item is-flex middle-xs">
+                <text>更多</text>
               </view>
             </view>
           </view>
