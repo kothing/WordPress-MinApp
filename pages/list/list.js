@@ -83,7 +83,6 @@ Page({
     this.setData({
       loading: true,
       page: 1,
-      posts: []
     })
     if (this.data.options.id) {
       this.getPostList({
