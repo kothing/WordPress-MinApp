@@ -4,36 +4,36 @@
   <view slot="content">文章详情</view>
 </topbar>
 <view class="header-banner">
-  <image src='{{detail.meta.thumbnail?detail.meta.thumbnail:"/images/detail_default.png"}}' class='header-image'
-    mode="widthFix"></image>
+  <image class='header-image' src='{{detail.meta.thumbnail?detail.meta.thumbnail:"/images/detail_default.png"}}' mode="widthFix"></image>
 </view>
 <import src="../../wxParse/wxParse.wxml" />
-<view class="topic-detail">
+<view class="post-detail">
   <view class="article-info" wx:if="{{detail}}">
     <text class="title">{{detail.title.rendered}}</text>
-    <view class="article-info__category">
+    <view class="meta">
+      <text class="category">{{detail.author.name}}</text>
       <text class="cuIcon-qrcode"></text>
       <text class="category">{{detail.category[0].name}}</text>
       <text class="cuIcon-time"></text>
       <text class="time">{{detail.date}}</text>
     </view>
   </view>
-  <view class="article-info" wx:else>
-    <view class="title" style='width:420rpx;height:40rpx;background:#f3f3f3'></view>
-    <view class="article-info__category">
-      <image class="avator" style='background:#f3f3f3' src="{{detail.author.avatar}}"></image>
-      <text class="category" style='width:100rpx;height:40rpx;background:#f3f3f3'>{{detail.author.name}}</text>
+  <view class="article-info skeleton" wx:else>
+    <view class="title"></view>
+    <view class="meta">
+      <image class="avator" src="{{detail.author.avatar}}"></image>
+      <text class="category"></text>
       <i></i>
-      <text class="time" style='width:100rpx;height:40rpx;background:#f3f3f3'>{{detail.time}}</text>
+      <text class="time"></text>
     </view>
   </view>
   <view id="entry-content" wx:if="{{article.nodes}}" class="entry-content clearfix">
     <template is="wxParse" data="{{wxParseData:article.nodes}}" />
   </view>
-  <view id="entry-content" wx:else class="entry-content clearfix">
-    <view style='padding-top:20rpx' wx:for="article" wx:key="index">
-      <view style='width:690rpx;height:40rpx;background:#f3f3f3'></view>
-      <view style='width:690rpx;height:250rpx;background:#f3f3f3;margin-top:20rpx'></view>
+  <view id="entry-content" wx:else class="entry-content skeleton clearfix">
+    <view class="skeleton-content" wx:for="article" wx:key="index">
+      <view class="c1"></view>
+      <view class="c2"></view>
     </view>
   </view>
   <view class="advert" wx:if="{{advert.type == 'unit'}}">
@@ -86,26 +86,26 @@
           <view class="replay-user" catchtap="replyComment" data-id="{{item1.id}}" data-reply="{{item1.author.name}}"
             data-parent="{{item1.id?item1.id:0}}" data-userid="{{item1.userid}}" data-formId="{{item1.formId}}"
             data-commentdate="{{item1.date}}">
-            <text style="font-weight:bold;"> {{item1.author.name}} </text>:{{item1.content}}
+            <text class="font-weight-blod"> {{item1.author.name}} </text>:{{item1.content}}
           </view>
           <!-- 二级回复 -->
           <view wx:for="{{item1.reply}}" wx:key="itemid2" wx:for-index="idx" wx:for-item="item2">
             <view class="replay-user" catchtap="replyComment" data-id="{{item2.id}}" data-reply="{{item2.author.name}}"
               data-userid="{{item2.userid}}" data-formId="{{item2.formId}}" data-commentdate="{{item2.date}}">
-              <text style="font-weight:bold;"> {{item2.author.name}} </text> 回复 {{item1.author.name}}:{{item2.content}}
+              <text class="font-weight-blod"> {{item2.author.name}} </text> 回复 {{item1.author.name}}:{{item2.content}}
             </view>
             <!-- 三级回复 -->
             <view wx:for="{{item2.reply}}" wx:key="itemid3" wx:for-index="idx" wx:for-item="item3">
               <view class="replay-user" catchtap="replyComment" data-id="{{item3.id}}"
                 data-reply="{{item3.author.name}}" data-userid="{{item3.userid}}" data-formId="{{item3.formId}}"
                 data-commentdate="{{item3.date}}">
-                <text style="font-weight:bold;"> {{item3.author.name}} </text> 回复
+                <text class="font-weight-blod"> {{item3.author.name}} </text> 回复
                 {{item2.author.name}}:{{item3.content}}
               </view>
               <!-- 四级回复 -->
               <view wx:for="{{item3.reply}}" wx:key="itemid4" wx:for-index="idx" wx:for-item="item4">
                 <view class="replay-user">
-                  <text style="font-weight:bold;"> {{item4.author.name}} </text> 回复
+                  <text class="font-weight-blod"> {{item4.author.name}} </text> 回复
                   {{item3.author.name}}:{{item4.content}}
                 </view>
               </view>
@@ -117,7 +117,7 @@
         </view>
         <!-- 一级回复  -->
         <view class="comment-footer">
-          <view style="height:1px;background:#f1f1f1;margin-right:20rpx"></view>
+          <view class="comment-footer-inner"></view>
         </view>
       </view>
     </view>
@@ -127,7 +127,7 @@
     <form catchsubmit="formSubmit" report-submit="true" wx:if="{{!showTextarea}}">
       <view class="bottom-bar {{isIphoneX?'bottom-bar-iphonex':''}} {{newsItem.forbidcomment?'forbid-comment':''}}">
         <image bindtap="bindBack" class="bottom-btn bottom-back" src="../../images/back.png"></image>
-        <view class="bottom-btn bottom-text relative" style="width:260rpx">
+        <view class="bottom-btn bottom-text relative width-260rpx">
           <text>{{placeholder}}</text>
           <button wx:if="{{!user}}" class="userLogin" bindgetuserinfo="getProfile" openType="getUserInfo"></button>
           <button wx:else class="userLogin" bindtap="tapcomment"></button>
@@ -177,7 +177,7 @@
         <view class="textareaInput" wx:if="{{!focus}}">{{content}}</view>
         <textarea autoFocus="true" name="inputComment" bindinput="bindInputContent" bindblur="onReplyBlur"
           bindfocus="onRepleyFocus" class="textareaInput {{focus?'':'hide'}}" fixed="true" focus="{{focus}}"
-          maxlength="1000" placeholder="{{placeholder}}" showConfirmBar="{{false}}" style="height: 286rpx;"
+          maxlength="1000" placeholder="{{placeholder}}" showConfirmBar="{{false}}" class="height-286rpx"
           value="{{content}}"></textarea>
         <view class="textNum">{{textNum}}/1000</view>
       </view>
@@ -186,5 +186,5 @@
   <view bindtap="closeCommentary" class="pagemake" wx:if="{{showTextarea}}"></view>
 </view>
 <view class="canvas">
-  <canvas canvas-id="prefix" style="width: 600px;height: 970px;"></canvas>
+  <canvas canvas-id="prefix" class="canvas-prefix"></canvas>
 </view>
