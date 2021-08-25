@@ -104,7 +104,6 @@ Page({
     this.setData({
       loading: true,
       page: 1,
-      posts: [],
       isLastPage: false
     })
     this.getPostList()
