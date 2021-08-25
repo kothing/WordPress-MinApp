@@ -83,7 +83,6 @@ Page({
   onPullDownRefresh: function () {
     this.setData({
       page: 1,
-      posts: [],
       isPull: true,
       isLastPage: false
     })
