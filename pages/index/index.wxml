@@ -19,8 +19,11 @@
     </view>
   </view>
   <view class="feature">
-    <swiper class="screen-swiper square-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000"
-      duration="500">
+    <view class="skeleton" wx:if="{{stickyLoading && stickyPost.length === 0}}">
+      <view class="skeleton-rect"></view>
+    </view>
+    <swiper wx:else class="screen-swiper square-dot" indicator-dots="true" circular="true" autoplay="true"
+      interval="5000" duration="500">
       <swiper-item class="index_article_figures" id="{{item.id}}" bindtap="bindDetail" id="{{item.id}}"
         wx:for="{{stickyPost}}" wx:for-index="i" wx:key="id">
         <image class='index_article_covers' src="{{item.meta.thumbnail}}" mode="aspectFill"></image>
@@ -34,26 +37,24 @@
         <text>热门</text>
       </view>
       <view class="cu-item" bindtap="toMiniProgram">
-        <view class="bg-img bg-imgd">
-        </view>
+        <view class="bg-img bg-imgd"></view>
         <text>社区</text>
       </view>
       <view class="cu-item" bindtap="bindPageLists">
-        <view class="bg-img bg-imgh">
-        </view>
+        <view class="bg-img bg-imgh"></view>
         <text>资讯</text>
       </view>
       <view class="cu-item">
-        <view class="bg-img bg-imge">
-        </view>
+        <view class="bg-img bg-imge"></view>
         <text>客服</text>
         <button class="auth-btn" open-type="contact"></button>
       </view>
     </view>
   </view>
   <view class="tab-content">
-    <view class="index_loading" wx:if="{{loading == true && posts.length === 0}}">
-      Loading
+    <view class="index_loading skeleton" wx:if="{{listLoading == true && posts.length === 0}}">
+      <view class="skeleton-rect"></view>
+      <view class="skeleton-rect"></view>
     </view>
     <view wx:else class="index-box">
       <view class="index_label" wx:if="{{posts.length > 0}}">

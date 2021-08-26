@@ -1,20 +1,13 @@
 /* pages/list/list.wxss */
+page::-webkit-scrollbar {
+  display: none;
+}
+
 .list {
   height: 100%;
   min-height: 100vh;
   padding: 20rpx 36rpx;
   background: #fff;
-}
-
-.top_text {
-  width: 100%;
-  text-align: center;
-  color: #AAA;
-  font-size: 24rpx;
-}
-
-page::-webkit-scrollbar {
-  display: none;
 }
 
 .list_loading {

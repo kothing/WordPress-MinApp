@@ -10,13 +10,6 @@ page::-webkit-scrollbar {
   background: #fff;
 }
 
-.top_text {
-  width: 100%;
-  text-align: center;
-  color: #AAA;
-  font-size: 24rpx;
-}
-
 .posts_loading {
   height: 90vh;
   background-color: #fff;

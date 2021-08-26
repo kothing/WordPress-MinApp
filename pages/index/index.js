@@ -6,7 +6,9 @@ const API = require('../../utils/api')
 
 Page({
   data: {
-    loading: false,
+    stickyLoading: false,
+    listLoading: false,
+    stickyPost: [],
     posts: [],
     page: 1,
     siteInfo: '',
@@ -34,10 +36,8 @@ Page({
     this.getSiteInfo();
     this.getStickyPosts();
     this.getCategories();
-    this.getAdvert();
     this.getPostList();
-    this.getMostViewsPosts()
-    // this.getCategoryByID({per_page:'id'})
+    this.getAdvert();
   },
 
   /**
@@ -46,12 +46,15 @@ Page({
   onReady: function () {
 
   },
-  // 小程序跳转
+
+  // 热门日志
   bindHotPosts: function () {
     wx.navigateTo({
       url: '/pages/hotposts/posts',
     })
   },
+
+  // 打开小程序
   toMiniProgram: function () {
     wx.navigateToMiniProgram({
       appId: 'wxa01e1baa46426a94',
@@ -64,12 +67,16 @@ Page({
       }
     })
   },
-  // 打开栏目
+
+
+  // 打开页面
   bindPageLists: function () {
     wx.navigateTo({
       url: '/pages/hotposts/posts',
     });
   },
+
+
   /**
    * 生命周期函数--监听页面显示
    */
@@ -102,11 +109,11 @@ Page({
    */
   onPullDownRefresh: function () {
     this.setData({
-      loading: true,
       page: 1,
       isLastPage: false
-    })
-    this.getPostList()
+    });
+    this.getStickyPosts();
+    this.getPostList();
   },
 
   /**
@@ -116,7 +123,7 @@ Page({
     if (!this.data.isLastPage) {
       this.getPostList({
         page: this.data.page
-      })
+      });
     }
   },
 
@@ -154,12 +161,19 @@ Page({
   },
 
   getStickyPosts: function () {
+    this.setData({
+      stickyLoading: true
+    });
     API.getStickyPosts().then(res => {
       this.setData({
-        stickyPost: res
-      })
+        stickyLoading: false,
+        stickyPost: res || []
+      });
     })
       .catch(err => {
+        this.setData({
+          stickyLoading: false,
+        });
         console.log(err)
       })
   },
@@ -174,101 +188,79 @@ Page({
         console.log(err)
       })
   },
-  // 热门文章
-  getMostViewsPosts: function (args) {
-    API.getMostViewsPosts(args).then(res => {
-      this.setData({
-        mostviewsposts: res
-      })
-    })
-      .catch(err => {
-        console.log(err)
-      })
-  },
-  // 页面
-  getPageByID: function (id) {
-    API.getPageByID(id).then(res => {
-      this.setData({
-        pagebyid: res
-      })
-    })
-      .catch(err => {
-        console.log(err)
-      })
-  },
+
   getPostList: function (data) {
     this.setData({
-      loading: true,
+      listLoading: true,
     });
     API.getPostsList(data).then(res => {
-      let args = {}
+      let args = {};
       if (res.length < 10) {
         this.setData({
           isLastPage: true,
           loadtext: '到底啦',
           showloadmore: false
-        })
+        });
       }
       if (this.data.isBottom) {
-        args.posts = [].concat(this.data.posts, res)
-        args.page = this.data.page + 1
+        args.posts = [].concat(this.data.posts, res);
+        args.page = this.data.page + 1;
       } else {
-        args.posts = [].concat(this.data.posts, res)
-        args.page = this.data.page + 1
+        args.posts = [].concat(this.data.posts, res);
+        args.page = this.data.page + 1;
       }
       this.setData({
         ...args,
-        loading: false
+        listLoading: false
       });
-      wx.stopPullDownRefresh()
+      wx.stopPullDownRefresh();
     })
       .catch(err => {
         this.setData({
-          loading: false
+          listLoading: false
         });
-        console.log(err)
-        wx.stopPullDownRefresh()
-      })
+        console.log(err);
+        wx.stopPullDownRefresh();
+      });
   },
 
   getAdvert: function () {
     API.indexAdsense().then(res => {
-      console.log(res)
       if (res.status === 200) {
         this.setData({
           advert: res.data
-        })
+        });
       }
     })
       .catch(err => {
         console.log(err)
-      })
+      });
   },
 
   bindCateByID: function (e) {
     let id = e.currentTarget.id;
     wx.navigateTo({
       url: '/pages/list/list?id=' + id,
-    })
+    });
   },
 
   bindCateList: function () {
     wx.switchTab({
       url: '/pages/category/category',
-    })
+    });
   },
 
   bindDetail: function (e) {
     let id = e.currentTarget.id;
     wx.navigateTo({
       url: '/pages/detail/detail?id=' + id,
-    })
+    });
   },
 
   onConfirm: function (e) {
     let s = e.detail.value;
     wx.navigateTo({
       url: '/pages/list/list?s=' + s,
-    })
+    });
   },
 })

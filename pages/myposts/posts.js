@@ -84,7 +84,8 @@ Page({
     this.setData({
       page: 1,
       isPull: true,
-      isLastPage: false
+      isLastPage: false,
+      isBottom: false
     })
     if (this.data.options.id == 1) {
       this.getLikePosts();
@@ -99,7 +100,9 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    this.setData({ isBottom: true })
+    this.setData({ 
+      isBottom: true
+     });
     if (!this.data.isLastPage) {
       if (this.data.options.id == 1) {
         this.getLikePosts({ page: this.data.page });
@@ -131,15 +134,12 @@ Page({
           showloadmore: false
         })
       }
-      if (this.data.isPull) {
-        args.posts = [].concat(this.data.posts, res)
-        args.page = this.data.page + 1
-      } else if (this.data.isBottom) {
+      if (this.data.isBottom) {
         args.posts = [].concat(this.data.posts, res)
         args.page = this.data.page + 1
       } else {
-        args.posts = [].concat(this.data.posts, res)
-        args.page = this.data.page + 1
+        args.posts = res || [];
+        args.page = 1
       }
       this.setData({
         ...args,
@@ -168,15 +168,12 @@ Page({
           showloadmore: false
         })
       }
-      if (this.data.isPull) {
+      if (this.data.isBottom) {
         args.posts = [].concat(this.data.posts, res)
-        args.page = this.data.page + 1
-      } else if (this.data.isBottom) {
-        args.posts = [].concat(this.data.posts, res)
-        args.page = this.data.page + 1
+        args.page = this.data.page + 1;
       } else {
-        args.posts = [].concat(this.data.posts, res)
-        args.page = this.data.page + 1
+        args.posts = res || [];
+        args.page = 1;
       }
       this.setData({
         ...args,
@@ -205,15 +202,12 @@ Page({
           showloadmore: false
         })
       }
-      if (this.data.isPull) {
-        args.posts = [].concat(this.data.posts, res)
-        args.page = this.data.page + 1
-      } else if (this.data.isBottom) {
+      if (this.data.isBottom) {
         args.posts = [].concat(this.data.posts, res)
         args.page = this.data.page + 1
       } else {
-        args.posts = [].concat(this.data.posts, res)
-        args.page = this.data.page + 1
+        args.posts = res || [];
+        args.page = 1
       }
       this.setData({
         ...args,
