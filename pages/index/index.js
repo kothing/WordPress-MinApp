@@ -121,8 +121,11 @@ Page({
    */
   onReachBottom: function () {
     if (!this.data.isLastPage) {
+      this.setData({ 
+        isBottom: true
+      });
       this.getPostList({
-        page: this.data.page
+        page: this.data.page + 1
       });
     }
   },
@@ -206,8 +209,8 @@ Page({
         args.posts = [].concat(this.data.posts, res);
         args.page = this.data.page + 1;
       } else {
-        args.posts = [].concat(this.data.posts, res);
-        args.page = this.data.page + 1;
+        args.posts = res || [];
+        args.page = 1;
       }
       this.setData({
         ...args,

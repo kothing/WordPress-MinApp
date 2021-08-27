@@ -105,11 +105,17 @@ Page({
      });
     if (!this.data.isLastPage) {
       if (this.data.options.id == 1) {
-        this.getLikePosts({ page: this.data.page });
+        this.getLikePosts({ 
+          page: this.data.page + 1
+        });
       } else if (this.data.options.id == 2) {
-        this.getFavPosts({ page: this.data.page });
+        this.getFavPosts({ 
+          page: this.data.page + 1
+        });
       } else if (this.data.options.id == 3) {
-        this.getCommentsPosts({ page: this.data.page });
+        this.getCommentsPosts({ 
+          page: this.data.page + 1
+        });
       }
     }
   },

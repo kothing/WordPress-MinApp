@@ -104,13 +104,13 @@ Page({
       if (this.data.options.id) {
         this.getPostList({
           categories: this.data.options.id,
-          page: this.data.page
+          page: this.data.page + 1
         });
       }
       if (this.data.options.s) {
         this.getPostList({
           search: this.data.options.s,
-          page: this.data.page
+          page: this.data.page + 1
         });
       }
     }
@@ -153,16 +153,16 @@ Page({
       }
       if (this.data.isBottom) {
         args.posts = [].concat(this.data.posts, res)
-        args.page = this.data.page + 1
+        args.page = this.data.page + 1;
       } else {
-        args.posts = [].concat(this.data.posts, res)
-        args.page = this.data.page + 1
+        args.posts = res || [];
+        args.page = 1;
       }
       this.setData({
         ...args,
         loading: false
       });
-      wx.stopPullDownRefresh()
+      wx.stopPullDownRefresh();
     })
       .catch(err => {
         this.setData({
