@@ -25,10 +25,10 @@ Page({
   },
 
   onLoad: function () {
-    let that = this;
+    let _this = this;
     wx.getSystemInfo({
       success: function (a) {
-        that.setData({
+        _this.setData({
           isIphoneX: a.model.match(/iPhone X/gi)
         });
       }
@@ -72,7 +72,7 @@ Page({
   // 打开页面
   bindPageLists: function () {
     wx.navigateTo({
-      url: '/pages/hotposts/posts',
+      url: '/pages/pages/pages',
     });
   },
 
@@ -189,7 +189,7 @@ Page({
     })
       .catch(err => {
         console.log(err)
-      })
+      });
   },
 
   getPostList: function (data) {

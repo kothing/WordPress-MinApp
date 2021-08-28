@@ -3,18 +3,19 @@
  * Author: NiceBoy
  * Github 地址: https://github.com/kothing/Wordress-MiniProgram
  */
-const API = require('../../utils/api')
-const WxParse = require('../../wxParse/wxParse')
-const app = getApp()
-let isFocusing = false
+const API = require('../../utils/api');
+const WxParse = require('../../wxParse/wxParse');
+const app = getApp();
+let isFocusing = false;
 
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    page: 1,
+    loading: false,
     detail: '',
+    commentsPage: 1,
     textNum: 0,
     comments: [],
     placeholder: '输入评论'
@@ -24,17 +25,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let that = this
+    let _this = this
     wx.getSystemInfo({
       success: function (a) {
-        that.setData({
+        _this.setData({
           isIphoneX: a.model.match(/iPhone X/gi)
-        })
+        });
       }
-    })
-    this.setData({ options: options })
-    this.getPostsbyID(options.id)
-    this.getAdvert()
+    });
+    this.setData({ 
+      options: options 
+    });
+    this.getPostsByID(options.id);
+    this.getAdvert();
   },
 
   /**
@@ -54,7 +57,7 @@ Page({
     }
     this.setData({
       user: user,
-    })
+    });
   },
 
   /**
@@ -76,12 +79,12 @@ Page({
    */
   onPullDownRefresh: function () {
     this.setData({
-      page: 1,
+      commentsPage: 1,
       detail: '',
       comments: []
-    })
-    this.getPostsbyID(this.data.options.id)
-    this.getComments()
+    });
+    this.getPostsByID(this.data.options.id);
+    this.getComments();
   },
 
   /**
@@ -101,91 +104,88 @@ Page({
       title: this.data.detail.title.rendered,
       path: '/pages/detail/detail?id=' + this.data.detail.id,
       imageUrl: this.data.detail.meta.thumbnail
-    }
+    };
   },
 
-  getPostsbyID: function (id) {
-    let that = this;
-    API.getPostsbyID(id).then(res => {
-      that.setData({
+  getPostsByID: function (id) {
+    let _this = this;
+    API.getPostsByID(id).then(res => {
+      _this.setData({
         id: id,
         detail: res
       })
-      WxParse.wxParse('article', 'html', res.content.rendered, this, 5);
+      WxParse.wxParse('article', 'html', res.content.rendered, _this, 5);
       if (res.comments != 0) {
-        this.getComments()
+        this.getComments();
       }
     })
       .catch(err => {
         console.log(err)
-      })
+      });
   },
 
   getAdvert: function () {
     API.detailAdsense().then(res => {
-      console.log(res)
       if (res.status === 200) {
         this.setData({
           advert: res.data
-        })
+        });
       }
     })
       .catch(err => {
         console.log(err)
-      })
+      });
   },
 
   getComments: function () {
     API.getComments({
       id: this.data.options.id,
-      page: this.data.page
+      page: this.data.commentsPage + 1
     }).then(res => {
-      let data = {}
+      let data = {};
       if (res.length < 10) {
         this.setData({
           isLastPage: true,
           loadtext: '到底啦',
           showloadmore: false
-        })
+        });
       }
       if (this.data.isBottom) {
-        data.comments = [].concat(this.data.comments, res)
-        data.page = this.data.page + 1
+        data.comments = [].concat(this.data.comments, res);
+        data.commentsPage = this.data.commentsPage + 1;
       } else {
-        data.comments = [].concat(this.data.comments, res)
-        data.page = this.data.page + 1
+        data.comments = res || [];
+        data.commentsPage = 1;
       }
-      this.setData(data)
+      this.setData(data);
     })
   },
 
   bindFavTap: function (e) {
-    console.log(e)
-    let args = {}
-    let detail = this.data.detail
-    args.id = detail.id
+    let args = {};
+    let detail = this.data.detail;
+    args.id = detail.id;
     API.fav(args).then(res => {
-      //console.log(res)
       if (res.status === 200) {
         detail.isfav = true
         this.setData({
           detail: detail
-        })
+        });
         wx.showToast({
           title: '加入收藏!',
           icon: 'success',
           duration: 900,
-        })
+        });
       } else if (res.status === 202) {
-        detail.isfav = false
+        detail.isfav = false;
         this.setData({
           detail: detail
-        })
+        });
         wx.showToast({
           title: '取消收藏!',
           icon: 'success',
           duration: 900,
-        })
+        });
       } else {
         wx.showModal({
           title: '温馨提示',
@@ -195,41 +195,40 @@ Page({
             wx.removeStorageSync('token')
             wx.removeStorageSync('expired_in')
           }
-        })
+        });
       }
     })
       .catch(err => {
         console.log(err)
-      })
+      });
   },
 
   bindLikeTap: function (e) {
-    console.log(e)
-    let args = {}
-    let detail = this.data.detail
-    args.id = detail.id
+    let args = {};
+    let detail = this.data.detail;
+    args.id = detail.id;
     API.like(args).then(res => {
       //console.log(res)
       if (res.status === 200) {
-        detail.islike = true
+        detail.islike = true;
         this.setData({
           detail: detail,
-        })
+        });
         wx.showToast({
           title: '谢谢点赞!',
           icon: 'success',
           duration: 900,
-        })
+        });
       } else if (res.status === 202) {
-        detail.islike = false
+        detail.islike = false;
         this.setData({
           detail: detail,
-        })
+        });
         wx.showToast({
           title: '取消点赞!',
           icon: 'success',
           duration: 900,
-        })
+        });
       } else {
         wx.showModal({
           title: '温馨提示',
@@ -239,77 +238,75 @@ Page({
             wx.removeStorageSync('token')
             wx.removeStorageSync('expired_in')
           }
-        })
+        });
       }
     })
       .catch(err => {
         console.log(err)
-      })
+      });
   },
 
   addComment: function (e) {
-    console.log(e)
-    let args = {}
-    let that = this
-    args.id = this.data.detail.id
-    args.content = this.data.content
-    args.parent = this.data.parent
+    let args = {};
+    let _this = this;
+    args.id = this.data.detail.id;
+    args.content = this.data.content;
+    args.parent = this.data.parent;
     if (!this.data.user) {
       wx.showModal({
         title: '提示',
         content: '必须授权登录才可以评论',
         success: function (res) {
           if (res.confirm) {
-            that.getProfile();
+            _this.getProfile();
           }
         }
-      })
+      });
     } else if (args.content.length === 0) {
       wx.showModal({
         title: '提示',
         content: '评论内容不能为空'
-      })
+      });
     } else {
       API.addComment(args).then(res => {
-        console.log(res)
         if (res.status === 200) {
           this.setData({
-            page: 1,
+            commentsPage: 1,
             showTextarea: false,
             content: "",
             comments: [],
             placeholder: "",
             focus: false
-          })
+          });
           setTimeout(function () {
             wx.showModal({
               title: '温馨提示',
               content: res.message
             })
-          }, 900)
+          }, 900);
           if (!this.data.isComments) {
             this.setData({
               isComments: true,
               placeholder: ''
-            })
+            });
           }
-          this.bindSubscribe()
-          this.getComments()
+          this.bindSubscribe();
+          this.getComments();
         } else if (res.status === 500) {
           wx.showModal({
             title: '提示',
             content: '评论失败，请稍后重试。'
-          })
+          });
         } else {
           wx.showModal({
             title: '提示',
             content: '必须授权登录才可以评论',
             success: function (res) {
               if (res.confirm) {
-                that.getProfile();
+                _this.getProfile();
               }
             }
-          })
+          });
         }
       })
         .catch(err => {
@@ -318,13 +315,12 @@ Page({
             title: '提示',
             content: '评论失败，请稍后重试。'
           })
-        })
+        });
     }
   },
 
   replyComment: function (e) {
-    console.log(e)
-    isFocusing = true
+    isFocusing = true;
     let parent = e.currentTarget.dataset.parent
     let reply = e.currentTarget.dataset.reply
     this.setData({
@@ -336,91 +332,87 @@ Page({
   },
 
   subscribeMessage: function (template, status) {
-    let args = {}
-    args.openid = this.data.user.openId
-    args.template = template
-    args.status = status
-    args.pages = getCurrentPages()[0].route
-    args.platform = wx.getSystemInfoSync().platform
-    args.program = 'WeChat'
+    let args = {};
+    args.openid = this.data.user.openId;
+    args.template = template;
+    args.status = status;
+    args.pages = getCurrentPages()[0].route;
+    args.platform = wx.getSystemInfoSync().platform;
+    args.program = 'WeChat';
     API.subscribeMessage(args).then(res => {
       console.log(res)
     })
       .catch(err => {
         console.log(err)
-      })
+      });
   },
 
   bindSubscribe: function () {
-    let that = this
-    let templates = API.template().comments
+    let _this = this;
+    let templates = API.template().comments;
     wx.requestSubscribeMessage({
       tmplIds: templates,
       success(res) {
         if (res.errMsg == "requestSubscribeMessage:ok") {
           for (let i = 0; i < templates.length; i++) {
             let template = templates[i]
-            that.subscribeMessage(template, "accept")
+            _this.subscribeMessage(template, "accept")
           }
           wx.showToast({
             title: "订阅完成",
             icon: 'success',
             duration: 1000
-          })
+          });
         }
       },
       fail: function (res) {
-        console.log(res)
+        console.log(res);
       }
     })
   },
 
   getProfile: function (e) {
-    console.log(e)
     wx.showLoading({
       title: '正在登录...',
-    })
+    });
     API.getProfile().then(res => {
-      console.log(res)
       this.setData({
         user: res
-      })
-      wx.hideLoading()
+      });
+      wx.hideLoading();
     })
       .catch(err => {
         console.log(err)
         wx.hideLoading()
-      })
+      });
   },
 
   onRepleyFocus: function (e) {
-    isFocusing = false
-    console.log('onRepleyFocus', isFocusing)
+    isFocusing = false;
     if (!this.data.isFocus) {
       this.setData({
         focus: true
-      })
+      });
     }
   },
 
   onReplyBlur: function (e) {
-    var that = this;
-    if (!that.data.focus) {
+    let _this = this;
+    if (!_this.data.focus) {
       const text = e.detail.value.trim();
       if (text === '') {
-        that.setData({
+        _this.setData({
           parent: "0",
           placeholder: "评论...",
           commentdate: ""
         });
       }
     } else {
-      that.setData({
+      _this.setData({
         placeholder: "不说算了，哼",
         focus: false
       })
     }
-    console.log(isFocusing)
   },
 
   bindInputContent: function (e) {
@@ -429,29 +421,29 @@ Page({
         content: e.detail.value,
         textNum: e.detail.value.length,
         iscanpublish: true
-      })
+      });
     } else {
       this.setData({
         iscanpublish: false
-      })
+      });
     }
   },
 
   tapcomment: function (e) {
-    var self = this;
+    let _this = this;
     let id = e.currentTarget.id;
     if (id) {
       this.setData({
         id: id,
         showTextarea: true
-      })
+      });
     } else {
       this.setData({
         showTextarea: true
-      })
+      });
     }
     setTimeout(function () {
-      self.setData({
+      _this.setData({
         focus: true
       });
     }, 100);
@@ -464,29 +456,29 @@ Page({
   },
 
   bindBack: function () {
-    wx.navigateBack()
+    wx.navigateBack();
   },
 
   shareClick: function () {
     this.setData({
       shareshow: true,
-    })
+    });
   },
 
   _handleZanActionsheetMaskClick: function () {
     this.setData({
       shareshow: false,
-    })
+    });
   },
 
   downloadPrefix: function () {
-    let that = this
-    let args = {}
-    let qrcodePath = ''
-    let prefixPath = ''
-    let title = this.data.detail.title.rendered
-    let excerpt = this.data.detail.excerpt.rendered
-    args.id = this.data.detail.id
+    let _this = this;
+    let args = {};
+    let qrcodePath = '';
+    let prefixPath = '';
+    let title = this.data.detail.title.rendered;
+    let excerpt = this.data.detail.excerpt.rendered;
+    args.id = this.data.detail.id;
     API.getCodeImg(args).then(res => {
       if (res.status === 200) {
         const downloadTaskqrCode = wx.downloadFile({
@@ -502,7 +494,7 @@ Page({
                     prefixPath = response.tempFilePath;
                     console.log("文章图片本地位置：" + response.tempFilePath);
                     if (prefixPath && qrcodePath) {
-                      that.createPostPrefix(prefixPath, qrcodePath, title, excerpt);
+                      _this.createPostPrefix(prefixPath, qrcodePath, title, excerpt);
                     }
                   } else {
                     wx.hideLoading();
@@ -543,7 +535,6 @@ Page({
   },
   //将canvas转换为图片保存到本地，然后将路径传给image图片的src
   createPostPrefix: function (prefixPath, qrcodePath, title, excerpt) {
-    //console.log(excerpt);
     wx.showLoading({
       title: "正在生成海报",
       mask: true,
@@ -614,5 +605,4 @@ Page({
     context.stroke()
     context.save()
   }
-
 })

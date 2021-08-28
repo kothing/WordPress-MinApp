@@ -1,9 +1,5 @@
-// pages/category/category.js
-/**
- * Author: NiceBoy
- * Github 地址: https://github.com/kothing/Wordress-MiniProgram
- */
-const API = require('../../utils/api')
+// pages/pages/pages.js
+const API = require('../../utils/api');
 
 Page({
   /**
@@ -12,7 +8,7 @@ Page({
   data: {
     loading: false,
     page: 1,
-    category: [],
+    pages: [],
     isBottom: false,
     isLastPage: false
   },
@@ -21,7 +17,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getCategories(options);
+    this.getPagesList(options);
   },
 
   /**
@@ -56,26 +52,14 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    this.setData({
-      loading: true,
-      page: 1,
-      isBottom: false
-    })
-    this.getCategories()
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    this.setData({
-      isBottom: true
-    })
-    if (!this.data.isLastPage) {
-      this.getCategories({ 
-        page: this.data.page + 1
-      });
-    }
+
   },
 
   /**
@@ -85,7 +69,7 @@ Page({
 
   },
 
-  getCategories: function () {
+  getPagesList: function () {
     this.setData({
       loading: true
     });
@@ -94,7 +78,7 @@ Page({
         title: 'Loading',
       });
     }, 100);
-    API.getCategories().then(res => {
+    API.getPagesList().then(res => {
       wx.hideLoading();
       let args = {};
       if (res.length < 10) {
@@ -108,10 +92,10 @@ Page({
           icon: 'loading',
           duration: 1000
         });
-        args.category = [].concat(this.data.category, res);
+        args.pages = [].concat(this.data.pages, res);
         args.page = this.data.page + 1;
       } else {
-        args.category = res || [];
+        args.pages = res || [];
         args.page = 1;
       }
       this.setData({
@@ -124,15 +108,15 @@ Page({
         this.setData({
           loading: false,
         });
-        console.log(err);
-        wx.stopPullDownRefresh();
+        console.log(err)
+        wx.stopPullDownRefresh()
       });
   },
 
-  bindCateByID: function (e) {
+  bindPageByID: function (e) {
     let id = e.currentTarget.id;
     wx.navigateTo({
-      url: '/pages/list/list?id=' + id,
+      url: '/pages/page/page?id=' + id,
     });
-  }
+  },
 })

@@ -1,4 +1,4 @@
-/* pages/category/category.wxss */
+/* pages/pages/pages.wxss */
 .is-flex {
   display: flex;
 }

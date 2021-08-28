@@ -1,22 +1,22 @@
-<!--pages/category/category.wxml-->
+<!--pages/pages/pages.wxml-->
 <topbar bgColor="bg-gradual-blue">
-  <view slot="content">栏目</view>
+  <view slot="content">页面</view>
 </topbar>
 <view class="section section-features">
-  <view class="category_loading skeleton" wx:if="{{loading === true && category.length === 0}}">
+  <view class="pages_loading skeleton" wx:if="{{loading === true && pages.length === 0}}">
     <view class="skeleton-rect"></view>
     <view class="skeleton-rect"></view>
     <view class="skeleton-rect"></view>
   </view>
   <view wx:else class="section-content is-flex center-xs">
     <view class="feature-list is-flex direction-vert middle-xs">
-      <block wx:for="{{category}}" wx:key="id">
-        <view bindtap='bindCateByID' id="{{item.id}}" class="feature-card card-type-life">
+      <block wx:for="{{pages}}" wx:key="id">
+        <view bindtap='bindPageByID' id="{{item.id}}" class="feature-card card-type-life">
           <view class="card-cover"
-            style='background-image:url({{item.cover}});'></view>
+            style='background-image:url({{item.meta.thumbnail}});'></view>
           <view data-jarallax-element="-80" class="card-main is-flex direction-vert between-xs parallax">
             <view class="card-top">
-              <view class="card-title">{{item.name}}</view>
+              <view class="card-title">{{item.title.rendered}}</view>
               <view class="card-content">
                 <text>{{item.description}}</text>
               </view>

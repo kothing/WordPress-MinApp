@@ -2,7 +2,7 @@
  * Author: NiceBoy
  * Github 地址: https://github.com/kothing/Wordress-MiniProgram
  */
-const API = require('/utils/base')
+const API = require('/utils/base');
 
 App({
 
@@ -26,5 +26,4 @@ App({
     StatusBar: '',
     CustomBar: ''
   }
-
 })

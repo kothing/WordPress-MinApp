@@ -21,7 +21,7 @@ const getPostsList = function (data) {
 }
 
 // 文章详情
-const getPostsbyID = function (id) {
+const getPostsByID = function (id) {
 	return API.get('/wp-json/wp/v2/posts/' + id, {}, { token: true });
 }
 
@@ -187,7 +187,7 @@ const markComment = function (args) {
 API.getSiteInfo = getSiteInfo
 API.getStickyPosts = getStickyPosts
 API.getPostsList = getPostsList
-API.getPostsbyID = getPostsbyID
+API.getPostsByID = getPostsByID
 API.getPagesList = getPagesList
 API.getPageByID = getPageByID
 API.getCategories = getCategories

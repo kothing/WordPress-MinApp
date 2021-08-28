@@ -87,7 +87,6 @@ API.getUser = function () {
 	} else {
 		return false;
 	}
-
 }
 
 API.login = function () {

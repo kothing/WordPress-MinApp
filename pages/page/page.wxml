@@ -1,0 +1,40 @@
+<!--pages/page/page.wxml-->
+<topbar bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">页面详情</view>
+</topbar>
+<view class="header-banner">
+  <image class='header-image' src='{{detail.meta.thumbnail?detail.meta.thumbnail:"/images/detail_default.png"}}'
+    mode="widthFix"></image>
+</view>
+<import src="../../wxParse/wxParse.wxml" />
+<view class="page-detail">
+  <view class="page-info" wx:if="{{detail}}">
+    <text class="title">{{detail.title.rendered}}</text>
+    <view class="meta">
+      <text class="category">{{detail.author.name}}</text>
+      <text class="cuIcon-qrcode"></text>
+      <text class="category">{{detail.category[0].name}}</text>
+      <text class="cuIcon-time"></text>
+      <text class="time">{{detail.date}}</text>
+    </view>
+  </view>
+  <view class="page-info skeleton" wx:else>
+    <view class="title"></view>
+    <view class="meta">
+      <image class="avator" src="{{detail.author.avatar}}"></image>
+      <text class="category"></text>
+      <i></i>
+      <text class="time"></text>
+    </view>
+  </view>
+  <view id="entry-content" wx:if="{{page.nodes}}" class="entry-content clearfix">
+    <template is="wxParse" data="{{wxParseData:page.nodes}}" />
+  </view>
+  <view id="entry-content" wx:else class="entry-content skeleton clearfix">
+    <view class="skeleton-content">
+      <view class="c1"></view>
+      <view class="c2"></view>
+    </view>
+  </view>
+</view>

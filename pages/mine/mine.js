@@ -129,7 +129,7 @@ Page({
   },
 
   bindSubscribe: function () {
-    let that = this
+    let _this = this
     let templates = API.template().subscribe
     wx.requestSubscribeMessage({
       tmplIds: templates,
@@ -137,7 +137,7 @@ Page({
         if (res.errMsg == "requestSubscribeMessage:ok") {
           for (let i = 0; i < templates.length; i++) {
             let template = templates[i]
-            that.subscribeMessage(template, "accept")
+            _this.subscribeMessage(template, "accept")
           }
         }
       },

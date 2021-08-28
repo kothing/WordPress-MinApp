@@ -32,7 +32,7 @@
     <template is="wxParse" data="{{wxParseData:article.nodes}}" />
   </view>
   <view id="entry-content" wx:else class="entry-content skeleton clearfix">
-    <view class="skeleton-content" wx:for="article" wx:key="index">
+    <view class="skeleton-content">
       <view class="c1"></view>
       <view class="c2"></view>
     </view>
