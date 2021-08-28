@@ -50,8 +50,8 @@ Page({
   // 热门日志
   bindHotPosts: function () {
     wx.navigateTo({
-      url: '/pages/hotposts/posts',
-    })
+      url: `/pages/postsList/posts?type=mostViews`,
+    });
   },
 
   // 打开小程序
@@ -72,7 +72,7 @@ Page({
   // 打开页面
   bindPageLists: function () {
     wx.navigateTo({
-      url: '/pages/pages/pages',
+      url: '/pages/pagesList/pages',
     });
   },
 
@@ -121,7 +121,7 @@ Page({
    */
   onReachBottom: function () {
     if (!this.data.isLastPage) {
-      this.setData({ 
+      this.setData({
         isBottom: true
       });
       this.getPostList({
@@ -140,6 +140,9 @@ Page({
     }
   },
 
+  /**
+   * 获取小程序信息
+   */
   getSiteInfo: function () {
     API.getSiteInfo().then(res => {
       this.setData({
@@ -243,7 +246,7 @@ Page({
   bindCateByID: function (e) {
     let id = e.currentTarget.id;
     wx.navigateTo({
-      url: '/pages/list/list?id=' + id,
+      url: '/pages/postsList/posts?id=' + id,
     });
   },
 
@@ -256,14 +259,14 @@ Page({
   bindDetail: function (e) {
     let id = e.currentTarget.id;
     wx.navigateTo({
-      url: '/pages/detail/detail?id=' + id,
+      url: '/pages/post/post?id=' + id,
     });
   },
 
   onConfirm: function (e) {
     let s = e.detail.value;
     wx.navigateTo({
-      url: '/pages/list/list?s=' + s,
+      url: '/pages/postsList/posts?s=' + s,
     });
   },
 })

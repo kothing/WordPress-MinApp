@@ -1,12 +1,18 @@
-<!--pages/list/list.wxml-->
+<!--pages/postsList/posts.wxml-->
+<topbar bgColor="bg-gradual-blue" isBack="{{true}}">
+  <!-- <view slot="backText">返回</view> -->
+  <view slot="content">{{siteInfo.name}}</view>
+</topbar>
 <view class="tab-content">
   <view class="list">
     <view class="list_label">
       <view class="list_label_title">{{title}}</view>
       <view class="list_label_bg"></view>
     </view>
-    <view class="list_loading" wx:if="{{loading == true && posts.length === 0}}">
-      Loading
+    <view class="list_loading skeleton" wx:if="{{loading == true && posts.length === 0}}">
+      <view class="skeleton-rect"></view>
+      <view class="skeleton-rect"></view>
+      <view class="skeleton-rect"></view>
     </view>
     <block wx:else>
       <view class="list_article" wx:if="{{posts.length > 0}}">

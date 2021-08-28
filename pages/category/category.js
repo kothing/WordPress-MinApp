@@ -61,7 +61,7 @@ Page({
       page: 1,
       isBottom: false
     })
-    this.getCategories()
+    this.getCategories();
   },
 
   /**
@@ -70,7 +70,7 @@ Page({
   onReachBottom: function () {
     this.setData({
       isBottom: true
-    })
+    });
     if (!this.data.isLastPage) {
       this.getCategories({ 
         page: this.data.page + 1
@@ -90,9 +90,7 @@ Page({
       loading: true
     });
     setTimeout(() => {
-      wx.showLoading({
-        title: 'Loading',
-      });
+      wx.showLoading();
     }, 100);
     API.getCategories().then(res => {
       wx.hideLoading();
@@ -121,18 +119,19 @@ Page({
       wx.stopPullDownRefresh();
     })
       .catch(err => {
+        wx.hideLoading();
         this.setData({
           loading: false,
         });
-        console.log(err);
         wx.stopPullDownRefresh();
+        console.log(err);
       });
   },
 
   bindCateByID: function (e) {
     let id = e.currentTarget.id;
     wx.navigateTo({
-      url: '/pages/list/list?id=' + id,
+      url: '/pages/postsList/posts?id=' + id,
     });
   }
 })

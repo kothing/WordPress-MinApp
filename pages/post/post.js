@@ -1,4 +1,4 @@
-// pages/detail/detail.js
+// pages/post/post.js
 /**
  * Author: NiceBoy
  * Github 地址: https://github.com/kothing/Wordress-MiniProgram
@@ -102,7 +102,7 @@ Page({
   onShareAppMessage: function () {
     return {
       title: this.data.detail.title.rendered,
-      path: '/pages/detail/detail?id=' + this.data.detail.id,
+      path: '/pages/post/post?id=' + this.data.detail.id,
       imageUrl: this.data.detail.meta.thumbnail
     };
   },

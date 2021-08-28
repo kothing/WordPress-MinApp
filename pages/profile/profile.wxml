@@ -1,5 +1,7 @@
-<!--pages/mine/mine.wxml-->
-<!-- <topbar bgColor="bg-gradual-blue"><view slot="content">个人中心</view></topbar> -->
+<!--pages/profile/profile.wxml-->
+<topbar bgColor="bg-gradual-blue">
+  <view slot="content">个人中心</view>
+</topbar>
 <view class="user-container" style="min-height: 100vh; padding-top: {{navBarHeight}}px;">
   <view class="user-information relative" bindtap="getProfile">
     <view wx:if="{{user.avatarUrl}}" class="user-information_img" style="background-image: url('{{user.avatarUrl}}')">
@@ -19,7 +21,7 @@
         <view class="user-item_icon_sup" wx:if="{{unreadMessageCount > 0}}">{{unreadMessageCount}}</view>
       </view>
       <button wx:if="{{!user}}" class="userLogin" bindgetuserinfo="getProfile" openType="getUserInfo"></button>
-      <button wx:else class="userLogin" data-url="/pages/myposts/posts?id=1" bindtap="bindHandler"></button>
+      <button wx:else class="userLogin" data-url="/pages/postsList/posts?type=userLike" bindtap="bindHandler"></button>
     </view>
     <view class="user-item relative">
       <text class="user-item_text">我的收藏</text>
@@ -28,7 +30,7 @@
         </image>
       </view>
       <button wx:if="{{!user}}" class="userLogin" bindgetuserinfo="getProfile" openType="getUserInfo"></button>
-      <button wx:else class="userLogin" data-url="/pages/myposts/posts?id=2" bindtap="bindHandler"></button>
+      <button wx:else class="userLogin" data-url="/pages/postsList/posts?type=userFav" bindtap="bindHandler"></button>
     </view>
     <view class="user-item relative">
       <text class="user-item_text">我的评论</text>
@@ -37,7 +39,7 @@
         </image>
       </view>
       <button wx:if="{{!user}}" class="userLogin" bindgetuserinfo="getProfile" openType="getUserInfo"></button>
-      <button wx:else class="userLogin" data-url="/pages/myposts/posts?id=3" bindtap="bindHandler"></button>
+      <button wx:else class="userLogin" data-url="/pages/postsList/posts?type=userComments" bindtap="bindHandler"></button>
     </view>
     <view class="user-item relative">
       <text class="user-item_text">订阅更新</text>

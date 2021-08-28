@@ -1,8 +1,13 @@
-<!--pages/pages/pages.wxml-->
-<topbar bgColor="bg-gradual-blue">
-  <view slot="content">页面</view>
+<!--pages/pagesList/pages.wxml-->
+<topbar bgColor="bg-gradual-blue" isBack="{{true}}">
+  <!-- <view slot="backText">返回</view> -->
+  <view slot="content">{{siteInfo.name}}</view>
 </topbar>
 <view class="section section-features">
+  <view class="pages_label">
+    <view class="pages_label_title">{{title}}</view>
+    <view class="pages_label_bg"></view>
+  </view>
   <view class="pages_loading skeleton" wx:if="{{loading === true && pages.length === 0}}">
     <view class="skeleton-rect"></view>
     <view class="skeleton-rect"></view>

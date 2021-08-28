@@ -2,13 +2,11 @@
   "pages": [
     "pages/index/index",
     "pages/category/category",
-    "pages/pages/pages",
+    "pages/pagesList/pages",
     "pages/page/page",
-    "pages/list/list",
-    "pages/detail/detail",
-    "pages/mine/mine",
-    "pages/myposts/posts",
-    "pages/hotposts/posts",
+    "pages/postsList/posts",
+    "pages/post/post",
+    "pages/profile/profile",
     "pages/toolkit/toolkit"
   ],
   "window": {
@@ -37,7 +35,7 @@
       },
       {
         "text": "我的",
-        "pagePath": "pages/mine/mine",
+        "pagePath": "pages/profile/profile",
         "iconPath": "images/user.png",
         "selectedIconPath": "images/user_on.png"
       }

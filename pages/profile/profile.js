@@ -2,12 +2,11 @@
  * Author: NiceBoy
  * Github 地址: https://github.com/kothing/Wordress-MiniProgram
  */
-// pages/mine/mine.js
-const API = require('../../utils/api')
-const app = getApp()
+// pages/profile/profile.js
+const API = require('../../utils/api');
+const app = getApp();
 
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -33,13 +32,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    let user = app.globalData.user
+    let user = app.globalData.user;
     if (!user) {
       user = '';
     }
     this.setData({
       user: user,
-    })
+    });
   },
 
   /**
@@ -77,24 +76,46 @@ Page({
 
   },
 
+  /**
+   * 登录|登出
+   */
   getProfile: function (e) {
-    console.log(e);
     wx.showLoading({
       title: '正在登录...',
-    })
+    });
     API.getProfile().then(res => {
-      console.log(res)
       this.setData({
         user: res
-      })
-      wx.hideLoading()
+      });
+      wx.hideLoading();
     })
       .catch(err => {
-        console.log(err)
-        wx.hideLoading()
-      })
+        console.log(err);
+        wx.hideLoading();
+      });
   },
 
+  loginOut: function () {
+    API.Loginout();
+    wx.clearStorageSync();
+    wx.showToast({
+      title: '清除完毕',
+    })
+  },
+
+  /**
+   * 跳转
+   */
+  bindHandler: function (e) {
+    let url = e.currentTarget.dataset.url;
+    wx.navigateTo({
+      url: url,
+    });
+  },
+
+  /**
+   * 订阅
+   */
   subscribeMessage: function (template, status) {
     let args = {}
     args.openid = this.data.user.openId
@@ -104,28 +125,19 @@ Page({
     args.platform = wx.getSystemInfoSync().platform
     args.program = 'WeChat'
     API.subscribeMessage(args).then(res => {
-      console.log(res)
       wx.showToast({
         title: res.message,
         icon: 'success',
         duration: 1000
-      })
+      });
     })
       .catch(err => {
-        console.log(err)
         wx.showToast({
           title: err.message,
-          icon: 'success',
+          icon: 'error',
           duration: 1000
         })
       })
-  },
-
-  bindHandler: function (e) {
-    let url = e.currentTarget.dataset.url;
-    wx.navigateTo({
-      url: url,
-    })
   },
 
   bindSubscribe: function () {
@@ -144,14 +156,6 @@ Page({
       fail: function (res) {
         console.log(res)
       }
-    })
-  },
-
-  loginOut: function () {
-    API.Loginout()
-    wx.clearStorageSync();
-    wx.showToast({
-      title: '清除完毕',
     })
   },
 

@@ -1,4 +1,4 @@
-/* pages/pages/pages.wxss */
+/* pages/pagesList/pages.wxss */
 .is-flex {
   display: flex;
 }
@@ -31,7 +31,27 @@
   min-height: 100vh;
 }
 
-.category_loading.skeleton .skeleton-rect {
+.pages_label {
+  position: relative;
+  margin-bottom: 36rpx;
+}
+
+.pages_label_title {
+  color: #fff;
+  line-height: 58rpx;
+  position: absolute;
+  top: 0;
+  left: 20rpx;
+  z-index: 1;
+}
+
+.pages_label_bg {
+  height: 58rpx;
+  background: linear-gradient(270deg, rgba(249, 228, 135, 0) 0%, rgba(241, 197, 79, 1) 100%);
+  border-radius: 11rpx;
+}
+
+.pages_loading.skeleton .skeleton-rect {
   height: 33vh;
   margin-top: 40rpx;
   background: #fff;

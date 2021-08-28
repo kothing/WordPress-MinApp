@@ -1,5 +1,4 @@
 /* pages/page/page.wxss */
-/* pages/detail/detail.wxss */
 @import "../../wxParse/wxParse.wxss";
 @import "../../wxParse/icon.wxss";
 
@@ -17,7 +16,7 @@
   width: 100vmax;
 }
 
-.post-detail {
+.page-detail {
   height: 100%;
   position: relative;
   background-color: #fff;
@@ -479,10 +478,6 @@ button {
 
 .width-260rpx {
   width: 260px;
-}
-
-.height-286rpx {
-  height: 286rpx;
 }
 
 @-webkit-keyframes infinite-move {

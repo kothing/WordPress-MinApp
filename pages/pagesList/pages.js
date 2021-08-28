@@ -1,4 +1,4 @@
-// pages/pages/pages.js
+// pages/pagesList/pages.js
 const API = require('../../utils/api');
 
 Page({
@@ -7,6 +7,8 @@ Page({
    */
   data: {
     loading: false,
+    siteInfo: '',
+    title: '页面',
     page: 1,
     pages: [],
     isBottom: false,
@@ -17,6 +19,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getSiteInfo();
     this.getPagesList(options);
   },
 
@@ -52,7 +55,10 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.setData({
+      page: 1,
+    });
+    this.getPagesList();
   },
 
   /**
@@ -69,14 +75,29 @@ Page({
 
   },
 
+  /**
+   * 获取小程序信息
+   */
+  getSiteInfo: function () {
+    API.getSiteInfo().then(res => {
+      this.setData({
+        siteInfo: res
+      });
+    })
+      .catch(err => {
+        console.log(err)
+      });
+  },
+
+  /**
+   * 获取页面列表
+   */
   getPagesList: function () {
     this.setData({
       loading: true
     });
     setTimeout(() => {
-      wx.showLoading({
-        title: 'Loading',
-      });
+      wx.showLoading();
     }, 100);
     API.getPagesList().then(res => {
       wx.hideLoading();
@@ -105,11 +126,12 @@ Page({
       wx.stopPullDownRefresh();
     })
       .catch(err => {
+        wx.hideLoading();
         this.setData({
           loading: false,
         });
-        console.log(err)
-        wx.stopPullDownRefresh()
+        wx.stopPullDownRefresh();
+        console.log(err);
       });
   },
 

@@ -1,4 +1,4 @@
-<!--pages/detail/detail.wxml-->
+<!--pages/post/post.wxml-->
 <topbar bgColor="bg-gradual-blue" isBack="{{true}}">
   <view slot="backText">返回</view>
   <view slot="content">文章详情</view>
@@ -124,7 +124,7 @@
     </view>
   </view>
 
-  <view class="bottom">
+  <view class="post-bottom">
     <form catchsubmit="formSubmit" report-submit="true" wx:if="{{!showTextarea}}">
       <view class="bottom-bar {{isIphoneX?'bottom-bar-iphonex':''}} {{newsItem.forbidcomment?'forbid-comment':''}}">
         <image bindtap="bindBack" class="bottom-btn bottom-back" src="../../images/back.png"></image>
@@ -179,8 +179,8 @@
       <view class="textareaBox" wx:if="{{showTextarea}}">
         <view class="textareaInput" wx:if="{{!focus}}">{{content}}</view>
         <textarea autoFocus="true" name="inputComment" bindinput="bindInputContent" bindblur="onReplyBlur"
-          bindfocus="onRepleyFocus" class="textareaInput {{focus?'':'hide'}}" fixed="true" focus="{{focus}}"
-          maxlength="1000" placeholder="{{placeholder}}" showConfirmBar="{{false}}" class="height-286rpx"
+          bindfocus="onRepleyFocus" class="textareaInput {{focus ? '' : 'hide'}}" fixed="true" focus="{{focus}}"
+          maxlength="1000" placeholder="{{placeholder}}" showConfirmBar="{{false}}" class="absolute-top-0 width-100vw height-286rpx padding-24rpx"
           value="{{content}}"></textarea>
         <view class="textNum">{{textNum}}/1000</view>
       </view>

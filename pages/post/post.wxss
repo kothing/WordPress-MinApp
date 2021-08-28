@@ -1,4 +1,4 @@
-/* pages/detail/detail.wxss */
+/* pages/post/post.wxss */
 @import "../../wxParse/wxParse.wxss";
 @import "../../wxParse/icon.wxss";
 
@@ -22,9 +22,7 @@
   background-color: #fff;
   box-shadow: 0px 5px 20px -5px #ddd;
   border-radius: 10px;
-  margin-left: 38rpx;
-  margin-right: 38rpx;
-  margin-top: -90rpx;
+  margin: -90rpx 38rpx 120rpx 38rpx;
   z-index: 2;
   -webkit-overflow-scrolling: touch;
 }
@@ -551,7 +549,7 @@ button::after {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 1000rpx;
+  height: 50vh;
   border-top-left-radius: 16rpx;
   border-top-right-radius: 16rpx;
   background-color: #fff;
@@ -602,10 +600,9 @@ button::after {
 }
 
 .textareacontent .textareaInput {
-  width: 686rpx;
-  padding: 32rpx 32rpx 42rpx 32rpx;
+  width: 100%;
+  padding: 32rpx 42rpx;
   height: 286rpx;
-  font-size: 34rpx;
   line-height: 65rpx;
 }
 
@@ -759,12 +756,25 @@ button {
   font-weight: bold;
 }
 
+.width-100vw {
+  width: 100%;
+}
+
 .width-260rpx {
   width: 260px;
 }
 
 .height-286rpx {
   height: 286rpx;
+}
+
+.absolute-top-0 {
+  position: absolute;
+  top: 0;
+}
+
+.padding-24rpx {
+  padding: 24rpx;
 }
 
 @-webkit-keyframes infinite-move {
