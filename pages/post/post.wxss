@@ -13,7 +13,7 @@
 }
 
 .header-banner .header-image {
-  width: 100vmax;
+  width: 100vw;
 }
 
 .post-detail {
