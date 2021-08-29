@@ -115,21 +115,21 @@ const getTagByID = function (id) {
 
 
 /**
- * 评论 API
+ * 评论|收藏|点赞 API
  * ==================
  */
-// 评论
+// 获取评论
 const getComments = function (data) {
 	return API.get('/wp-json/mp/v1/comments', data);
 }
 
-// 收藏评论
-const getFavComments = function (data) {
+// 收藏评论文章
+const setFavComments = function (data) {
 	return API.post('/wp-json/mp/v1/comments?type=fav', data, { token: true });
 }
 
-// 点赞评论
-const getLikeComments = function (data) {
+// 点赞评论文章
+const setLikeComments = function (data) {
 	return API.post('/wp-json/mp/v1/comments?type=like', data, { token: true });
 }
 
@@ -213,7 +213,6 @@ const pageAdsense = function (data) {
 }
 
 
-
 /**
  * 推文 API
  * ==================
@@ -264,8 +263,8 @@ API.getMostLikePosts = getMostLikePosts;
 API.getMostCommentPosts = getMostCommentPosts;
 API.getRecentCommentPosts = getRecentCommentPosts;
 API.getComments = getComments;
-API.getFavComments = API.guard(getFavComments);
-API.getLikeComments = API.guard(getLikeComments);
+API.setFavComments = API.guard(setFavComments);
+API.setLikeComments = API.guard(setLikeComments);
 API.getUserFavPosts = API.guard(getUserFavPosts);
 API.getUserLikePosts = API.guard(getUserLikePosts);
 API.getUserCommentsPosts = API.guard(getUserCommentsPosts);
