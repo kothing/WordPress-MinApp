@@ -61,9 +61,9 @@
       </view>
     </view>
     <view class="comment-reply">
-      <view class="comment-reply-item" bindtap="replyComment" id="{{detail.id}}" data-parent="{{item.id || 0}}"
+      <view class="comment-reply-item" bindtap="replyComment" id="{{detail.id}}" data-parent="{{item.id || '0'}}"
         data-reply="{{item.author.name}}" data-formId="{{item.formId}}" wx:for="{{comments}}" wx:for-item="item"
-        wx:key="{{id}}">
+        wx:key="{{item.id}}">
         <view class="comment-header">
           <view class="comment-header-left">
             <image class="comment-avatar" src="{{item.author.avatar}}"></image>
@@ -77,7 +77,7 @@
           </view>
         </view>
         <view class="comment-content" bindtap="replyComment" data-id="{{item.id}}" data-reply="{{item.author.name}}"
-          data-parent="{{item.id?item.id:0}}" data-userid="{{item.userid}}" data-formId="{{item.formId}}"
+          data-parent="{{item.id ? item.id : 0}}" data-userid="{{item.userid}}" data-formId="{{item.formId}}"
           data-commentdate="{{item.date}}">
           <text bindtap="replay" data-id="{{item.id}}" data-name="{{item.author_name}}" data-userid="{{item.userid}}"
             data-formId="{{item.formId}}" data-commentdate="{{item.date}}"></text> {{item.content}}
@@ -89,7 +89,7 @@
         <!-- 一级回复 -->
         <view class="replay-content" wx:for="{{item.reply}}" wx:key="itemid1" wx:for-index="idx" wx:for-item="item1">
           <view class="replay-user" catchtap="replyComment" data-id="{{item1.id}}" data-reply="{{item1.author.name}}"
-            data-parent="{{item1.id?item1.id:0}}" data-userid="{{item1.userid}}" data-formId="{{item1.formId}}"
+            data-parent="{{item1.id ? item1.id : 0}}" data-userid="{{item1.userid}}" data-formId="{{item1.formId}}"
             data-commentdate="{{item1.date}}">
             <text class="font-weight-blod"> {{item1.author.name}} </text>:{{item1.content}}
           </view>

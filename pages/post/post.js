@@ -169,7 +169,7 @@ Page({
     let args = {};
     let detail = this.data.detail;
     args.id = detail.id;
-    API.fav(args).then(res => {
+    API.getUserFavPosts(args).then(res => {
       if (res.status === 200) {
         detail.isfav = true
         this.setData({
@@ -211,8 +211,7 @@ Page({
     let args = {};
     let detail = this.data.detail;
     args.id = detail.id;
-    API.like(args).then(res => {
-      //console.log(res)
+    API.getUserLikePosts(args).then(res => {
       if (res.status === 200) {
         detail.islike = true;
         this.setData({
