@@ -22,7 +22,7 @@
   background-color: #fff;
   box-shadow: 0px 5px 20px -5px #ddd;
   border-radius: 10px;
-  margin: -90rpx 38rpx 60rpx;
+  margin: -90rpx 38rpx 100rpx;
   z-index: 2;
   -webkit-overflow-scrolling: touch;
 }
