@@ -97,7 +97,9 @@ Page({
       loading: true
     });
     setTimeout(() => {
-      wx.showLoading();
+      wx.showLoading({
+        title: 'Loading'
+      });
     }, 100);
     API.getPagesList().then(res => {
       wx.hideLoading();

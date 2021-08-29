@@ -8,7 +8,7 @@
     <view class="pages_label_title">{{title}}</view>
     <view class="pages_label_bg"></view>
   </view>
-  <view class="pages_loading skeleton" wx:if="{{loading === true && pages.length === 0}}">
+  <view wx:if="{{loading === true && pages.length === 0}}" class="pages_loading skeleton">
     <view class="skeleton-rect"></view>
     <view class="skeleton-rect"></view>
     <view class="skeleton-rect"></view>

@@ -3,7 +3,7 @@
   <view slot="content">栏目</view>
 </topbar>
 <view class="section section-features">
-  <view class="category_loading skeleton" wx:if="{{loading === true && category.length === 0}}">
+  <view wx:if="{{loading === true && category.length === 0}}" class="category_loading skeleton">
     <view class="skeleton-rect"></view>
     <view class="skeleton-rect"></view>
     <view class="skeleton-rect"></view>

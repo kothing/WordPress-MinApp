@@ -90,7 +90,9 @@ Page({
       loading: true
     });
     setTimeout(() => {
-      wx.showLoading();
+      wx.showLoading({
+        title: 'Loading'
+      });
     }, 100);
     API.getCategories().then(res => {
       wx.hideLoading();

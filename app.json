@@ -6,7 +6,7 @@
     "pages/page/page",
     "pages/postsList/posts",
     "pages/post/post",
-    "pages/profile/profile",
+    "pages/userProfile/profile",
     "pages/toolkit/toolkit"
   ],
   "window": {
@@ -35,7 +35,7 @@
       },
       {
         "text": "我的",
-        "pagePath": "pages/profile/profile",
+        "pagePath": "pages/userProfile/profile",
         "iconPath": "images/user.png",
         "selectedIconPath": "images/user_on.png"
       }

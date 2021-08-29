@@ -64,7 +64,7 @@ const getRecentCommentPosts = function (data) {
 /**
  * 文章详情 API
  */
-const getPostsByID = function (id) {
+const getPostByID = function (id) {
 	return API.get('/wp-json/wp/v2/posts/' + id, {}, { token: true });
 }
 
@@ -249,7 +249,7 @@ const Loginout = function () {
 API.getSiteInfo = getSiteInfo;
 API.getStickyPosts = getStickyPosts;
 API.getPostsList = getPostsList;
-API.getPostsByID = getPostsByID;
+API.getPostByID = getPostByID;
 API.getPagesList = getPagesList;
 API.getPageByID = getPageByID;
 API.getCategories = getCategories;

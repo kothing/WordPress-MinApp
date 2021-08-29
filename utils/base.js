@@ -116,7 +116,7 @@ API.logout = function () {
 	}
 }
 
-API.getProfile = function () {
+API.getUserProfile = function () {
 	return new Promise(function (resolve, reject) {
 		Auth.getUserInfo().then(data => {
 			API.post('/wp-json/mp/v1/user/login', data, { token: false }).then(res => {
@@ -159,7 +159,7 @@ API.guard = function (fn) {
 		if (API.getUser()) {
 			return fn.apply(_this, arguments);
 		} else {
-			return API.getProfile().then(res => {
+			return API.getUserProfile().then(res => {
 				console.log('登录成功', res);
 				return fn.apply(_this, arguments);
 			}, err => {

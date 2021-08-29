@@ -1,6 +1,6 @@
 <!--pages/post/post.wxml-->
 <topbar bgColor="bg-gradual-blue" isBack="{{true}}">
-  <view slot="backText">返回</view>
+  <!-- <view slot="backText">返回</view> -->
   <view slot="content">文章详情</view>
 </topbar>
 <view class="header-banner">
@@ -9,7 +9,7 @@
 </view>
 <import src="../../wxParse/wxParse.wxml" />
 <view class="post-detail">
-  <view class="article-info" wx:if="{{detail}}">
+  <view wx:if="{{detail}}" class="article-info">
     <text class="title">{{detail.title.rendered}}</text>
     <view class="meta">
       <text class="category">{{detail.author.name}}</text>
@@ -19,28 +19,32 @@
       <text class="time">{{detail.date}}</text>
     </view>
   </view>
-  <view class="article-info skeleton" wx:else>
+  <view wx:else class="article-info skeleton">
     <view class="title"></view>
     <view class="meta">
-      <image class="avator" src="{{detail.author.avatar}}"></image>
+      <text class="avator"></text>
+      <i></i>
       <text class="category"></text>
       <i></i>
       <text class="time"></text>
     </view>
   </view>
-  <view id="entry-content" wx:if="{{article.nodes}}" class="entry-content clearfix">
+  <view wx:if="{{article.nodes}}" id="entry-content" class="entry-content">
     <template is="wxParse" data="{{wxParseData:article.nodes}}" />
   </view>
-  <view id="entry-content" wx:else class="entry-content skeleton clearfix">
-    <view class="skeleton-content">
-      <view class="c1"></view>
-      <view class="c2"></view>
-    </view>
+  <view wx:else id="entry-content" class="entry-content skeleton">
+    <view class="skeleton-rect"></view>
+    <view class="skeleton-rect"></view>
+    <view class="skeleton-rect"></view>
   </view>
-  <view class="advert" wx:if="{{advert.type === 'unit'}}">
+</view>
+
+<view class="post-footer">
+  <view wx:if="{{advert.type === 'unit'}}" class="advert">
     <ad unit-id="{{advert.code}}"></ad>
   </view>
-  <view class="topic-title-wrapper" id="comment">
+  
+  <view class="topic-wrapper" id="comment">
     <view class="topic-title">话题讨论</view>
     <view class="onlooker-amount relative">
       <text>邀请好友讨论 </text>
@@ -48,11 +52,11 @@
       <button open-type='share' class="userLogin"></button>
     </view>
   </view>
-  <view class="commentdata">
-    <view class="listnodata" wx:if="{{comments.length === 0}}">
-      <image class="nodataimg" lazyLoad="false" mode="aspectFit|aspectFill|widthFix" src="../../images/message.png">
+  <view class="comment-data">
+    <view wx:if="{{comments.length === 0}}" class="list-nodata">
+      <image class="nodata-img" lazyLoad="false" mode="aspectFit|aspectFill|widthFix" src="../../images/message.png">
       </image>
-      <view class="nodatatext">
+      <view class="nodata-text">
         <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;&nbsp;</text>还没有评论，快来抢沙发吧！
       </view>
     </view>
@@ -125,26 +129,26 @@
   </view>
 
   <view class="post-bottom">
-    <form catchsubmit="formSubmit" report-submit="true" wx:if="{{!showTextarea}}">
+    <form wx:if="{{!showTextarea}}" catchsubmit="formSubmit" report-submit="true">
       <view class="bottom-bar {{isIphoneX?'bottom-bar-iphonex':''}} {{newsItem.forbidcomment?'forbid-comment':''}}">
         <image bindtap="bindBack" class="bottom-btn bottom-back" src="../../images/back.png"></image>
         <view class="bottom-btn bottom-text relative width-260rpx">
           <text>{{placeholder}}</text>
-          <button wx:if="{{!user}}" class="userLogin" bindgetuserinfo="getProfile" openType="getUserInfo"></button>
+          <button wx:if="{{!user}}" class="userLogin" bindgetuserinfo="getUserProfile" openType="getUserInfo"></button>
           <button wx:else class="userLogin" bindtap="tapcomment"></button>
         </view>
         <view class="bottom-btn bottom-comment-container relative">
           <image class="bottom-comment"
             src="{{detail.isfav ? '../../images/collected.png' : '../../images/collect.png'}}">
           </image>
-          <button wx:if="{{!user}}" class="userLogin" bindgetuserinfo="getProfile" openType="getUserInfo"></button>
+          <button wx:if="{{!user}}" class="userLogin" bindgetuserinfo="getUserProfile" openType="getUserInfo"></button>
           <button wx:else class="userLogin" bindtap="bindFavTap" id="{{detail.id}}"></button>
         </view>
         <view class="bottom-btn bottom-comment-container">
           <image class="bottom-btn bottom-fav"
             src="{{detail.islike ? '../../images/liked.png' : '../../images/like.png'}}">
           </image>
-          <button wx:if="{{!user}}" class="userLogin" bindgetuserinfo="getProfile" openType="getUserInfo"></button>
+          <button wx:if="{{!user}}" class="userLogin" bindgetuserinfo="getUserProfile" openType="getUserInfo"></button>
           <button wx:else class="userLogin" bindtap="bindLikeTap" id="{{detail.id}}"></button>
         </view>
         <button bindtap="shareClick" class="bottom-btn bottom-share bottom-fav btn-clear-style" plain="true">
@@ -169,15 +173,15 @@
     </view>
   </view>
 
-  <view capture-catch:touchmove class="textareacontent" wx:if="{{showTextarea}}">
+  <view wx:if="{{showTextarea}}" capture-catch:touchmove class="textareacontent">
     <form catchsubmit="addComment">
       <view class="textheaders">
         <view bindtap="closeCommentary" class="cancel">取消</view>
-        <button wx:if="{{!user}}" class="nopublish" bindgetuserinfo="getProfile" openType="getUserInfo">登录</button>
+        <button wx:if="{{!user}}" class="nopublish" bindgetuserinfo="getUserProfile" openType="getUserInfo">登录</button>
         <button wx:else bindtap="addComment" class="publish">发布</button>
       </view>
-      <view class="textareaBox" wx:if="{{showTextarea}}">
-        <view class="textareaInput" wx:if="{{!focus}}">{{content}}</view>
+      <view wx:if="{{showTextarea}}" class="textareaBox">
+        <view wx:if="{{!focus}}" class="textareaInput">{{content}}</view>
         <textarea autoFocus="true" name="inputComment" bindinput="bindInputContent" bindblur="onReplyBlur"
           bindfocus="onRepleyFocus" class="textareaInput {{focus ? '' : 'hide'}}" fixed="true" focus="{{focus}}"
           maxlength="1000" placeholder="{{placeholder}}" showConfirmBar="{{false}}" class="absolute-top-0 width-100vw height-286rpx padding-24rpx"
@@ -186,7 +190,7 @@
       </view>
     </form>
   </view>
-  <view bindtap="closeCommentary" class="pagemake" wx:if="{{showTextarea}}"></view>
+  <view wx:if="{{showTextarea}}" bindtap="closeCommentary" class="pagemake"></view>
 </view>
 <view class="canvas">
   <canvas canvas-id="prefix" class="canvas-prefix"></canvas>

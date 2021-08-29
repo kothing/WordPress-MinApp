@@ -79,11 +79,11 @@ Page({
   /**
    * 登录|登出
    */
-  getProfile: function (e) {
+  getUserProfile: function (e) {
     wx.showLoading({
       title: '正在登录...',
     });
-    API.getProfile().then(res => {
+    API.getUserProfile().then(res => {
       this.setData({
         user: res
       });

@@ -9,7 +9,7 @@
 </view>
 <import src="../../wxParse/wxParse.wxml" />
 <view class="page-detail">
-  <view class="page-info" wx:if="{{detail}}">
+  <view wx:if="{{detail}}" class="page-info">
     <text class="title">{{detail.title.rendered}}</text>
     <view class="meta">
       <text class="category">{{detail.author.name}}</text>
@@ -19,7 +19,7 @@
       <text class="time">{{detail.date}}</text>
     </view>
   </view>
-  <view class="page-info skeleton" wx:else>
+  <view wx:else class="page-info skeleton">
     <view class="title"></view>
     <view class="meta">
       <image class="avator" src="{{detail.author.avatar}}"></image>
@@ -28,10 +28,10 @@
       <text class="time"></text>
     </view>
   </view>
-  <view id="entry-content" wx:if="{{page.nodes}}" class="entry-content clearfix">
+  <view wx:if="{{page.nodes}}" id="entry-content" class="entry-content clearfix">
     <template is="wxParse" data="{{wxParseData:page.nodes}}" />
   </view>
-  <view id="entry-content" wx:else class="entry-content skeleton clearfix">
+  <view wx:else id="entry-content" class="entry-content skeleton clearfix">
     <view class="skeleton-content">
       <view class="c1"></view>
       <view class="c2"></view>

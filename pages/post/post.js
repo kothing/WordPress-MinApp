@@ -36,7 +36,7 @@ Page({
     this.setData({ 
       options: options 
     });
-    this.getPostsByID(options.id);
+    this.getPostByID(options.id);
     this.getAdvert();
   },
 
@@ -79,12 +79,13 @@ Page({
    */
   onPullDownRefresh: function () {
     this.setData({
-      commentsPage: 1,
-      detail: '',
-      comments: []
+      commentsPage: 1
     });
-    this.getPostsByID(this.data.options.id);
-    this.getComments();
+    this.getPostByID(this.data.options.id);
+    this.getComments({
+      id: this.data.options.id,
+      page: this.data.commentsPage
+    });
   },
 
   /**
@@ -92,7 +93,10 @@ Page({
    */
   onReachBottom: function () {
     if (!this.data.isLastPage) {
-      this.getComments();
+      this.getComments({
+        id: this.data.options.id,
+        page: this.data.commentsPage + 1
+      });
     }
   },
 
@@ -107,16 +111,19 @@ Page({
     };
   },
 
-  getPostsByID: function (id) {
+  getPostByID: function (id) {
     let _this = this;
-    API.getPostsByID(id).then(res => {
+    API.getPostByID(id).then(res => {
       _this.setData({
         id: id,
         detail: res
       })
       WxParse.wxParse('article', 'html', res.content.rendered, _this, 5);
-      if (res.comments != 0) {
-        this.getComments();
+      if (res.comments !== 0) {
+        this.getComments({
+          id: id,
+          page: 1
+        });
       }
     })
       .catch(err => {
@@ -137,11 +144,8 @@ Page({
       });
   },
 
-  getComments: function () {
-    API.getComments({
-      id: this.data.options.id,
-      page: this.data.commentsPage + 1
-    }).then(res => {
+  getComments: function (params) {
+    API.getComments(params).then(res => {
       let data = {};
       if (res.length < 10) {
         this.setData({
@@ -258,7 +262,7 @@ Page({
         content: '必须授权登录才可以评论',
         success: function (res) {
           if (res.confirm) {
-            _this.getProfile();
+            _this.getUserProfile();
           }
         }
       });
@@ -291,7 +295,10 @@ Page({
             });
           }
           this.bindSubscribe();
-          this.getComments();
+          this.getComments({
+            id: this.data.options.id,
+            page: this.data.commentsPage
+          });
         } else if (res.status === 500) {
           wx.showModal({
             title: '提示',
@@ -303,7 +310,7 @@ Page({
             content: '必须授权登录才可以评论',
             success: function (res) {
               if (res.confirm) {
-                _this.getProfile();
+                _this.getUserProfile();
               }
             }
           });
@@ -371,11 +378,11 @@ Page({
     })
   },
 
-  getProfile: function (e) {
+  getUserProfile: function (e) {
     wx.showLoading({
       title: '正在登录...',
     });
-    API.getProfile().then(res => {
+    API.getUserProfile().then(res => {
       this.setData({
         user: res
       });
