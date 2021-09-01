@@ -98,15 +98,20 @@
 }
 
 .entry-content {
-  clear: both;
   color: #404246;
   margin: 0;
-  padding: 0 30rpx 30rpx;
+  padding: 0 30rpx 50rpx;
   line-height: 68rpx;
   text-align: justify;
+  font-family: PingFangSC-Regular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 90%;
   word-wrap: break-word;
   word-break: normal;
-  font-family: PingFangSC-Regular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  clear: both;
+}
+
+.entry-content .wxParse-p {
+  text-indent: 32px;
 }
 
 .entry-content video {
@@ -426,7 +431,7 @@
 }
 
 .nodata-text {
-
+  font-size: 90%;
 }
 
 .comment-footer .comment-footer-inner {

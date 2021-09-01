@@ -26,7 +26,10 @@
       interval="5000" duration="500">
       <swiper-item class="index_article_figures" id="{{item.id}}" bindtap="bindDetail" id="{{item.id}}"
         wx:for="{{stickyPost}}" wx:for-index="i" wx:key="id">
-        <image class='index_article_covers' src="{{item.meta.thumbnail}}" mode="aspectFill"></image>
+        <image class='index_article_figure_cover' src="{{item.meta.thumbnail}}" mode="aspectFill"></image>
+        <view class="index_article_figure_title">
+          <text>{{item.title.rendered}}</text>
+        </view>
       </swiper-item>
     </swiper>
   </view>
