@@ -6,7 +6,6 @@
 const app = getApp();
 const API = require('../../utils/api');
 const Date = require('../../utils/date');
-const WxParse = require('../../wxParse/wxParse');
 let isFocusing = false;
 
 Page({
@@ -121,8 +120,7 @@ Page({
           ...res,
           date: Date.formatDate(res.date, "Y-M-D")
         }
-      })
-      WxParse.wxParse('article', 'html', res.content.rendered, _this, 5);
+      });
       if (res.comments !== 0) {
         this.getComments({
           id: id,

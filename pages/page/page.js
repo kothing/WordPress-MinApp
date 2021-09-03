@@ -1,6 +1,5 @@
 // pages/page/page.js
 const API = require('../../utils/api');
-const WxParse = require('../../wxParse/wxParse');
 
 Page({
 
@@ -75,7 +74,6 @@ Page({
         id: id,
         detail: res
       });
-      WxParse.wxParse('page', 'html', res.content.rendered, _this, 5);
     })
       .catch(err => {
         console.log(err);

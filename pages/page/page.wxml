@@ -7,7 +7,6 @@
   <image class='header-image' src='{{detail.meta.thumbnail?detail.meta.thumbnail:"/images/detail_default.png"}}'
     mode="widthFix"></image>
 </view>
-<import src="../../wxParse/wxParse.wxml" />
 <view class="page-detail">
   <view wx:if="{{detail}}" class="page-info">
     <text class="title">{{detail.title.rendered}}</text>
@@ -28,8 +27,8 @@
       <text class="time"></text>
     </view>
   </view>
-  <view wx:if="{{page.nodes}}" id="entry-content" class="entry-content clearfix">
-    <template is="wxParse" data="{{wxParseData:page.nodes}}" />
+  <view wx:if="{{detail.content && detail.content.rendered}}" id="entry-content" class="entry-content clearfix">
+    <wxParse nodes="{{ detail.content.rendered }}" />
   </view>
   <view wx:else id="entry-content" class="entry-content skeleton clearfix">
     <view class="skeleton-content">

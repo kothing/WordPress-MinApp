@@ -1,7 +1,4 @@
 /* pages/post/post.wxss */
-@import "../../wxParse/wxParse.wxss";
-@import "../../wxParse/icon.wxss";
-
 .header-banner {
   position: relative;
   display: block;

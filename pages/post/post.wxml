@@ -7,7 +7,6 @@
   <image class='header-image' src='{{detail.meta.thumbnail?detail.meta.thumbnail:"/images/detail_default.png"}}'
     mode="widthFix"></image>
 </view>
-<import src="../../wxParse/wxParse.wxml" />
 <view class="post-detail">
   <view wx:if="{{detail}}" class="article-info">
     <text class="title">{{detail.title.rendered}}</text>
@@ -30,8 +29,8 @@
       <text class="time"></text>
     </view>
   </view>
-  <view wx:if="{{article.nodes}}" id="entry-content" class="entry-content">
-    <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+  <view wx:if="{{detail.content && detail.content.rendered}}" id="entry-content" class="entry-content">
+    <wxParse nodes="{{detail.content.rendered}}" />
   </view>
   <view wx:else id="entry-content" class="entry-content skeleton">
     <view class="skeleton-rect"></view>
@@ -44,7 +43,7 @@
   <view wx:if="{{advert.type === 'unit'}}" class="advert">
     <ad unit-id="{{advert.code}}"></ad>
   </view>
-  
+
   <view class="topic-wrapper display-none" id="comment">
     <view class="topic-title">话题讨论</view>
     <view class="onlooker-amount relative">
@@ -185,8 +184,8 @@
         <view wx:if="{{!focus}}" class="textareaInput">{{content}}</view>
         <textarea autoFocus="true" name="inputComment" bindinput="bindInputContent" bindblur="onReplyBlur"
           bindfocus="onRepleyFocus" class="textareaInput {{focus ? '' : 'hide'}}" fixed="true" focus="{{focus}}"
-          maxlength="1000" placeholder="{{placeholder}}" showConfirmBar="{{false}}" class="absolute-top-0 width-100vw height-286rpx padding-24rpx"
-          value="{{content}}"></textarea>
+          maxlength="1000" placeholder="{{placeholder}}" showConfirmBar="{{false}}"
+          class="absolute-top-0 width-100vw height-286rpx padding-24rpx" value="{{content}}"></textarea>
         <view class="textNum">{{textNum}}/1000</view>
       </view>
     </form>
