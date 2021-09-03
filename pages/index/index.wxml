@@ -1,6 +1,11 @@
 <!--index.wxml-->
 <topbar bgColor="bg-gradual-blue">
-  <view slot="content">{{siteInfo.name}} 首页</view>
+  <view slot="avatar" class="index-headAvatar">
+    <image wx:if="{{user == null || user == ''}}" src="/images/avatar-default.png" mode="widthFix"></image>
+    <image wx:else src="{{user.avatarUrl}}" mode="widthFix"></image>
+    <button class="login-button" bindtap="getUserProfile"></button>
+  </view>
+  <view slot="content" class="index-headTitle">{{siteInfo.name}} 首页</view>
 </topbar>
 <view class="index">
   <view class="header">

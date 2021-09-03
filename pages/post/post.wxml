@@ -12,7 +12,8 @@
   <view wx:if="{{detail}}" class="article-info">
     <text class="title">{{detail.title.rendered}}</text>
     <view class="meta">
-      <text class="category">{{detail.author.name}}</text>
+      <text class="cuIcon-profile"></text>
+      <text class="author">{{detail.author.name}}</text>
       <text class="cuIcon-qrcode"></text>
       <text class="category">{{detail.category[0].name}}</text>
       <text class="cuIcon-time"></text>
@@ -44,7 +45,7 @@
     <ad unit-id="{{advert.code}}"></ad>
   </view>
   
-  <view class="topic-wrapper" id="comment">
+  <view class="topic-wrapper display-none" id="comment">
     <view class="topic-title">话题讨论</view>
     <view class="onlooker-amount relative">
       <text>邀请好友讨论 </text>
@@ -52,7 +53,7 @@
       <button open-type='share' class="userLogin"></button>
     </view>
   </view>
-  <view class="comment-data">
+  <view class="comment-data display-none">
     <view wx:if="{{comments.length === 0}}" class="list-nodata">
       <image class="nodata-img" lazyLoad="false" mode="aspectFit|aspectFill|widthFix" src="../../images/message.png">
       </image>
@@ -132,7 +133,7 @@
     <form wx:if="{{!showTextarea}}" catchsubmit="formSubmit" report-submit="true">
       <view class="bottom-bar {{isIphoneX?'bottom-bar-iphonex':''}} {{newsItem.forbidcomment?'forbid-comment':''}}">
         <image bindtap="bindBack" class="bottom-btn bottom-back" src="../../images/back.png"></image>
-        <view class="bottom-btn bottom-text relative width-260rpx">
+        <view class="bottom-btn bottom-text relative width-260rpx display-none">
           <text>{{placeholder}}</text>
           <button wx:if="{{!user}}" class="userLogin" bindgetuserinfo="getUserProfile" openType="getUserInfo"></button>
           <button wx:else class="userLogin" bindtap="tapcomment"></button>

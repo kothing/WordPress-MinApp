@@ -3,9 +3,10 @@
  * Author: NiceBoy
  * Github 地址: https://github.com/kothing/Wordress-MiniProgram
  */
-const API = require('../../utils/api');
-const WxParse = require('../../wxParse/wxParse');
 const app = getApp();
+const API = require('../../utils/api');
+const Date = require('../../utils/date');
+const WxParse = require('../../wxParse/wxParse');
 let isFocusing = false;
 
 Page({
@@ -14,7 +15,7 @@ Page({
    */
   data: {
     loading: false,
-    detail: '',
+    detail: null,
     commentsPage: 1,
     textNum: 0,
     comments: [],
@@ -116,7 +117,10 @@ Page({
     API.getPostByID(id).then(res => {
       _this.setData({
         id: id,
-        detail: res
+        detail: {
+          ...res,
+          date: Date.formatDate(res.date, "Y-M-D")
+        }
       })
       WxParse.wxParse('article', 'html', res.content.rendered, _this, 5);
       if (res.comments !== 0) {

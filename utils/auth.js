@@ -3,14 +3,14 @@
  * Github 地址: https://github.com/kothing/Wordress-MiniProgram
  */
 
-const Auth = {}
+const Auth = {};
 
 /**
  * 获取当前登陆用户信息
  * @return {object}
  */
 Auth.user = function () {
-    return wx.getStorageSync('user');
+  return wx.getStorageSync('user');
 }
 
 /**
@@ -18,7 +18,7 @@ Auth.user = function () {
  * @return {string}
  */
 Auth.token = function () {
-    return wx.getStorageSync('token');
+  return wx.getStorageSync('token');
 }
 
 /**
@@ -26,14 +26,14 @@ Auth.token = function () {
  * @return {boolean}
  */
 Auth.check = function () {
-    let user = Auth.user()
-    let token = Auth.token()
-    if (user && Date.now() < wx.getStorageSync('expired_in') && token) {
-        console.log('access_token过期时间：', (wx.getStorageSync('expired_in') - Date.now()) / 1000, '秒');
-        return true;
-    } else {
-        return false;
-    }
+  let user = Auth.user();
+  let token = Auth.token();
+  if (user && Date.now() < wx.getStorageSync('expired_in') && token) {
+    console.log('access_token过期时间：', (wx.getStorageSync('expired_in') - Date.now()) / 1000, '秒');
+    return true;
+  } else {
+    return false;
+  }
 }
 
 /**
@@ -41,16 +41,16 @@ Auth.check = function () {
  * @return {Promise} 登录信息
  */
 Auth.login = function () {
-    return new Promise(function (resolve, reject) {
-        wx.login({
-            success: function (res) {
-                resolve(res);
-            },
-            fail: function (err) {
-                reject(err);
-            }
-        });
+  return new Promise(function (resolve, reject) {
+    wx.login({
+      success: function (res) {
+        resolve(res);
+      },
+      fail: function (err) {
+        reject(err);
+      }
     });
+  });
 }
 
 /**
@@ -58,33 +58,32 @@ Auth.login = function () {
  * @return {boolean}
  */
 Auth.logout = function () {
-    wx.removeStorageSync('user')
-    wx.removeStorageSync('token')
-    wx.removeStorageSync('expired_in')
-    return true
+  wx.removeStorageSync('user');
+  wx.removeStorageSync('token');
+  wx.removeStorageSync('expired_in');
+  return true;
 }
 
 /**
  * 获取授权登录加密数据
  */
 Auth.getUserInfo = function () {
-    return new Promise(function (resolve, reject) {
-        Auth.login().then(data => {
-            let args = {}
-            args.code = data.code;
-            wx.getUserInfo({
-                success: function (res) {
-                    //console.log(res);
-                    args.iv = encodeURIComponent(res.iv);
-                    args.encryptedData = encodeURIComponent(res.encryptedData);
-                    resolve(args);
-                },
-                fail: function (err) {
-                    reject(err);
-                }
-            });
-        })
-    });
+  return new Promise(function (resolve, reject) {
+    Auth.login().then(data => {
+      let args = {};
+      args.code = data.code;
+      wx.getUserInfo({
+        success: function (res) {
+          args.iv = encodeURIComponent(res.iv);
+          args.encryptedData = encodeURIComponent(res.encryptedData);
+          resolve(args);
+        },
+        fail: function (err) {
+          reject(err);
+        }
+      });
+    })
+  });
 }
 
 module.exports = Auth

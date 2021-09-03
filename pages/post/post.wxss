@@ -22,14 +22,14 @@
   background-color: #fff;
   box-shadow: 0px 5px 20px -5px #ddd;
   border-radius: 10px;
-  margin: -90rpx 38rpx 50rpx 38rpx;
+  margin: -90rpx 38rpx 150rpx 38rpx;
   z-index: 2;
   -webkit-overflow-scrolling: touch;
 }
 
 .article-info {
   padding: 58rpx 0 40rpx;
-  margin: 0rpx 30rpx;
+  margin: 0rpx 45rpx;
   border-radius: 15rpx;
 }
 
@@ -55,9 +55,15 @@
   border-radius: 50%;
 }
 
+.article-info .meta .cuIcon-profile,
 .article-info .meta .cuIcon-qrcode,
 .article-info .meta .cuIcon-time {
   margin-right: 12rpx;
+}
+
+.article-info .meta .author {
+  margin-right: 20rpx;
+  font-size: 90%;
 }
 
 .article-info .meta .category {
@@ -100,7 +106,7 @@
 .entry-content {
   color: #404246;
   margin: 0;
-  padding: 0 30rpx 50rpx;
+  padding: 0 45rpx 50rpx;
   line-height: 68rpx;
   text-align: justify;
   font-family: PingFangSC-Regular, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -111,7 +117,9 @@
 }
 
 .entry-content .wxParse-p {
-  text-indent: 32px;
+  /* text-indent: 28.8px; */
+  line-height: 28px;
+  min-height: 14px;
 }
 
 .entry-content video {
@@ -760,35 +768,6 @@ button {
 
 .icons {
   padding-right: 20rpx;
-}
-
-.flex {
-  display: flex;
-}
-
-.font-weight-blod {
-  font-weight: bold;
-}
-
-.width-100vw {
-  width: 100%;
-}
-
-.width-260rpx {
-  width: 260px;
-}
-
-.height-286rpx {
-  height: 286rpx;
-}
-
-.absolute-top-0 {
-  position: absolute;
-  top: 0;
-}
-
-.padding-24rpx {
-  padding: 24rpx;
 }
 
 @-webkit-keyframes infinite-move {

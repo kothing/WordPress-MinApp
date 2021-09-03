@@ -7,6 +7,35 @@ page::-webkit-scrollbar {
   padding-bottom: 20rpx;
 }
 
+.index-headAvatar {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.index-headAvatar image {
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+}
+.index-headAvatar .login-button {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.index-headTitle {
+
+}
+
 .index {
   position: relative;
 }

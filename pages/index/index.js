@@ -2,16 +2,18 @@
  * Author: NiceBoy
  * Github 地址: https://github.com/kothing/Wordress-MiniProgram
  */
-const API = require('../../utils/api')
+const app = getApp();
+const API = require('../../utils/api');
 
 Page({
   data: {
+    siteInfo: '',
+    user: app.globalData.user,
     stickyLoading: false,
     listLoading: false,
     stickyPost: [],
     posts: [],
     page: 1,
-    siteInfo: '',
     category: '',
     indicatorDots: !1,
     autoplay: !0,
@@ -68,14 +70,12 @@ Page({
     })
   },
 
-
   // 打开页面
   bindPageLists: function () {
     wx.navigateTo({
       url: '/pages/pagesList/pages',
     });
   },
-
 
   /**
    * 生命周期函数--监听页面显示
@@ -151,7 +151,34 @@ Page({
     })
       .catch(err => {
         console.log(err)
-      })
+      });
+  },
+
+  /**
+   * 登录
+   */
+  getUserProfile: function () {
+    if(this.data.user) {
+      wx.showToast({
+        title: '已经登录',
+        icon: 'success',
+        duration: 800
+      });
+      return;
+    }
+    wx.showLoading({
+      title: '正在登录...',
+    });
+    API.getUserProfile().then(res => {
+      this.setData({
+        user: res
+      });
+      wx.hideLoading();
+    })
+      .catch(err => {
+        console.log(err);
+        wx.hideLoading();
+      });
   },
 
   onInput: function (e) {

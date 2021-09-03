@@ -34,3 +34,39 @@ button::after {
   margin-top: 40rpx;
   margin-bottom: 40rpx;
 }
+
+/* display */
+.flex {
+  display: flex !important;
+}
+.display-none {
+  display: none !important;
+}
+
+/* font */
+.font-weight-blod {
+  font-weight: bold !important;
+}
+
+/* size */
+.width-100vw {
+  width: 100% !important;
+}
+.width-260rpx {
+  width: 260px;
+}
+.height-286rpx {
+  height: 286rpx;
+}
+
+/* position */
+.absolute-top-0 {
+  position: absolute;
+  top: 0;
+}
+
+
+/* 边距 */
+.padding-24rpx {
+  padding: 24rpx;
+}
