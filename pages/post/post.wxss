@@ -19,7 +19,7 @@
   background-color: #fff;
   box-shadow: 0px 5px 20px -5px #ddd;
   border-radius: 10px;
-  margin: -90rpx 38rpx 150rpx 38rpx;
+  margin: -90rpx 38rpx 200rpx 38rpx;
   z-index: 2;
   -webkit-overflow-scrolling: touch;
 }
@@ -101,13 +101,12 @@
 }
 
 .entry-content {
-  color: #404246;
-  margin: 0;
   padding: 0 45rpx 50rpx;
   line-height: 68rpx;
   text-align: justify;
   font-family: PingFangSC-Regular, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 90%;
+  color: #404246;
   word-wrap: break-word;
   word-break: normal;
   clear: both;

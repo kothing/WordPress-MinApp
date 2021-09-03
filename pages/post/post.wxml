@@ -158,7 +158,7 @@
     </form>
   </view>
 
-  <view class="zan-actionsheet {{isIphoneX?'bottom-bar-iphonex':''}} {{shareshow?'zan-actionsheet--show':''}}">
+  <view class="zan-actionsheet {{isIphoneX?'bottom-bar-iphonex':''}} {{shareshow?'zan-actionsheet--show':''}} display-none">
     <view catchtap="_handleZanActionsheetMaskClick" class="zan-actionsheet__mask"
       data-close-on-click-overlay="{{closeOnClickOverlay}}" data-component-id="{{componentId}}"></view>
     <view class="zan-actionsheet__container">
