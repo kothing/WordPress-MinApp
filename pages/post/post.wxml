@@ -68,9 +68,9 @@
         data-parent="{{item.id || '0'}}"
         data-reply="{{item.author.name}}" 
         data-formId="{{item.formId}}"
-        wx:for="{{comments}}" 
+        wx:for="{{comments || []}}" 
         wx:for-item="item"
-        wx:key="{{item.id}}"
+        wx:key="id"
       >
         <view class="comment-header">
           <view class="comment-header-left">

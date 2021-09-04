@@ -14,9 +14,9 @@ Page({
   data: {
     loading: false,
     detail: null,
-    commentsPage: 1,
     textNum: 0,
     comments: [],
+    commentsPage: 1,
     placeholder: '输入评论'
   },
 
