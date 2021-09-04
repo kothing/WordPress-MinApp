@@ -19,7 +19,7 @@
   background-color: #fff;
   box-shadow: 0px 5px 20px -5px #ddd;
   border-radius: 10px;
-  margin: -90rpx 38rpx 200rpx 38rpx;
+  margin: -90rpx 38rpx 60rpx 38rpx;
   z-index: 2;
   -webkit-overflow-scrolling: touch;
 }
@@ -135,12 +135,11 @@
 }
 
 .post-footer {
-  height: 100%;
   position: relative;
   background-color: #fff;
   box-shadow: 0px 5px 20px -5px #ddd;
   border-radius: 10px;
-  margin: 0 38rpx 120rpx 38rpx;
+  margin: 0 38rpx 150rpx 38rpx;
   z-index: 2;
   -webkit-overflow-scrolling: touch;
 }
@@ -428,6 +427,10 @@
 
 .nodata-text {
   font-size: 90%;
+}
+
+.comment-submit {
+  min-height: 0.5px;
 }
 
 .comment-footer .comment-footer-inner {

@@ -136,10 +136,12 @@
     </view>
   </view>
 
-  <view class="post-bottom">
+  <view class="comment-submit">
     <form wx:if="{{!showTextarea}}" catchsubmit="formSubmit" report-submit="true">
       <view class="bottom-bar {{isIphoneX?'bottom-bar-iphonex':''}} {{newsItem.forbidcomment?'forbid-comment':''}}">
-        <image bindtap="bindBack" class="bottom-btn bottom-back" src="../../images/back.png"></image>
+        <view class="bottom-btn bottom-comment-container relative">
+          <image bindtap="bindBack" class="bottom-back" src="../../images/back.png"></image>
+        </view>
         <view class="bottom-btn bottom-text relative width-260rpx display-none">
           <text>{{placeholder}}</text>
           <button wx:if="{{!user}}" class="userLogin" bindgetuserinfo="getUserProfile" openType="getUserInfo"></button>
@@ -166,18 +168,20 @@
     </form>
   </view>
 
-  <view class="zan-actionsheet {{isIphoneX?'bottom-bar-iphonex':''}} {{shareshow?'zan-actionsheet--show':''}} display-none">
-    <view catchtap="_handleZanActionsheetMaskClick" class="zan-actionsheet__mask"
-      data-close-on-click-overlay="{{closeOnClickOverlay}}" data-component-id="{{componentId}}"></view>
-    <view class="zan-actionsheet__container">
-      <button catchtap="downloadPrefix" class="zan-btn zan-actionsheet__btn">
-        <image class="down-icon" mode="aspectFit" src="../../images/down.svg"></image>
-        <text>分享海报图</text>
-      </button>
-      <button open-type="share" class="zan-btn zan-actionsheet__btn">
-        <image class="down-icon" mode="aspectFit" src="../../images/wechat.svg"></image>
-        <text>分享给朋友</text>
-      </button>
+  <view class="post-share">
+    <view class="zan-actionsheet {{shareshow?'zan-actionsheet--show':''}}">
+      <view catchtap="_handleZanActionsheetMaskClick" class="zan-actionsheet__mask"
+        data-close-on-click-overlay="{{closeOnClickOverlay}}" data-component-id="{{componentId}}"></view>
+      <view class="zan-actionsheet__container {{isIphoneX ? 'bottom-bar-iphonex' : ''}}">
+        <button catchtap="downloadPrefix" class="zan-btn zan-actionsheet__btn">
+          <image class="down-icon" mode="aspectFit" src="../../images/down.svg"></image>
+          <text>分享海报图</text>
+        </button>
+        <button open-type="share" class="zan-btn zan-actionsheet__btn">
+          <image class="down-icon" mode="aspectFit" src="../../images/wechat.svg"></image>
+          <text>分享给朋友</text>
+        </button>
+      </view>
     </view>
   </view>
 
