@@ -179,6 +179,9 @@ Page({
    */
   onReachBottom: function () {
     if (!this.data.isLastPage) {
+      this.setData({
+        isBottom: true
+      });
       if (this.data.options.id) {
         this.getPostsList('id', {
           categories: this.data.options.id,

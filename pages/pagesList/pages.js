@@ -65,7 +65,14 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    if (!this.data.isLastPage) {
+      this.setData({
+        isBottom: true
+      });
+      this.getPagesList({
+        page: this.data.page + 1
+      });
+    }
   },
 
   /**
