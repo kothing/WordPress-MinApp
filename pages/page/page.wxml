@@ -10,13 +10,14 @@
 <view class="page-detail">
   <view wx:if="{{detail}}" class="page-info">
     <text class="title">{{detail.title.rendered}}</text>
+    <!--
     <view class="meta">
-      <text class="category">{{detail.author.name}}</text>
-      <text class="cuIcon-qrcode"></text>
-      <text class="category">{{detail.category[0].name}}</text>
+      <text class="cuIcon-profile"></text>
+      <text class="author">{{detail.author.name}}</text>
       <text class="cuIcon-time"></text>
       <text class="time">{{detail.date}}</text>
     </view>
+    -->
   </view>
   <view wx:else class="page-info skeleton">
     <view class="title"></view>

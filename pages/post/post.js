@@ -5,7 +5,6 @@
  */
 const app = getApp();
 const API = require('../../utils/api');
-const Date = require('../../utils/date');
 let isFocusing = false;
 
 Page({
@@ -118,7 +117,7 @@ Page({
         id: id,
         detail: {
           ...res,
-          date: Date.formatDate(res.date, "Y-M-D")
+          date: res.date ? /\d{4}-\d{1,2}-\d{1,2}/g.exec(res.date) : '-'
         }
       });
       if (res.comments !== 0) {

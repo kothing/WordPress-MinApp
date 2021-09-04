@@ -40,7 +40,6 @@
 
 .article-info .meta {
   margin-top: 30rpx;
-  font-size: 32rpx;
   display: flex;
   align-items: center;
 }
@@ -58,19 +57,12 @@
   margin-right: 12rpx;
 }
 
-.article-info .meta .author {
-  margin-right: 20rpx;
-  font-size: 90%;
-}
-
-.article-info .meta .category {
-  margin-right: 20rpx;
-  font-size: 90%;
-}
-
+.article-info .meta .author,
+.article-info .meta .category,
 .article-info .meta .time {
-  font-weight: 400;
+  margin-right: 20rpx;
   font-family: PingFangSC-Regular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 90%;
   color: #7d7d7d;
 }
 

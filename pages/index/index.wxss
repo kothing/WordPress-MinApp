@@ -226,7 +226,7 @@ page::-webkit-scrollbar {
 }
 
 .index_label_title {
-  font-size: 45rpx;
+  font-size: 40rpx;
   color: #262626;
   position: absolute;
   top: 28rpx;

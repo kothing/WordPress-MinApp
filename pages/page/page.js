@@ -72,7 +72,10 @@ Page({
     API.getPageByID(id).then(res => {
       _this.setData({
         id: id,
-        detail: res
+        detail: {
+          ...res,
+          date: res.date ? /\d{4}-\d{1,2}-\d{1,2}/g.exec(res.date) : '-'
+        }
       });
     })
       .catch(err => {

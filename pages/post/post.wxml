@@ -61,9 +61,17 @@
       </view>
     </view>
     <view class="comment-reply">
-      <view class="comment-reply-item" bindtap="replyComment" id="{{detail.id}}" data-parent="{{item.id || '0'}}"
-        data-reply="{{item.author.name}}" data-formId="{{item.formId}}" wx:for="{{comments}}" wx:for-item="item"
-        wx:key="{{item.id}}">
+      <view 
+        class="comment-reply-item" 
+        bindtap="replyComment" 
+        id="{{detail.id}}" 
+        data-parent="{{item.id || '0'}}"
+        data-reply="{{item.author.name}}" 
+        data-formId="{{item.formId}}"
+        wx:for="{{comments}}" 
+        wx:for-item="item"
+        wx:key="{{item.id}}"
+      >
         <view class="comment-header">
           <view class="comment-header-left">
             <image class="comment-avatar" src="{{item.author.avatar}}"></image>
