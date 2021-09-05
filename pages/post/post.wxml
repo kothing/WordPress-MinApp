@@ -38,7 +38,7 @@
     <view class="skeleton-rect"></view>
   </view>
 </view>
-<view class="post-footer">
+<view class="post-footer {{isIphoneX ? 'post-footer-iphonex' : ''}}">
   <view wx:if="{{advert.type === 'unit'}}" class="advert">
     <ad unit-id="{{advert.code}}"></ad>
   </view>
@@ -87,7 +87,7 @@
           data-commentdate="{{item.date}}">
           <text bindtap="replay" data-id="{{item.id}}" data-name="{{item.author_name}}" data-userid="{{item.userid}}"
             data-formId="{{item.formId}}" data-commentdate="{{item.date}}"></text> {{item.content}}
-          <view class="{{item.images.length==1?'images-list':'image-list'}}">
+          <view class="{{item.images.length == 1 ? 'images-list' : 'image-list'}}">
             <image mode="widthFix" data-url="{{image}}" data-urls="{{item.images}}" catchtap='openimage'
               class="comment-image" src="{{image}}" wx:for="{{item.images}}" wx:for-item="image" wx:key="key"></image>
           </view>
@@ -135,7 +135,7 @@
   </view>
   <view class="comment-submit">
     <form wx:if="{{!showTextarea}}" catchsubmit="formSubmit" report-submit="true">
-      <view class="bottom-bar {{isIphoneX?'bottom-bar-iphonex':''}} {{newsItem.forbidcomment?'forbid-comment':''}}">
+      <view class="bottom-bar {{isIphoneX ? 'bottom-bar-iphonex' : ''}} {{newsItem.forbidcomment?'forbid-comment':''}}">
         <view class="bottom-btn bottom-comment-container relative">
           <image bindtap="bindBack" class="bottom-back" src="../../images/back.png"></image>
         </view>

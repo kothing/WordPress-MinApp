@@ -2,9 +2,8 @@
  * Author: NiceBoy
  * Github 地址: https://github.com/kothing/Wordress-MiniProgram
  */
-// pages/profile/profile.js
-const API = require('../../utils/api');
 const app = getApp();
+const API = require('../../utils/api');
 
 Page({
   /**

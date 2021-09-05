@@ -149,7 +149,7 @@
 
   <!-- 判断是否为文本节点 -->
   <block wx:elif="{{item.node == 'text'}}">
-    <view class="WxEmojiView wxParse-inline" style="{{item.styleStr}}">
+    <view class="WxEmojiView wxParse-inlineBlock" style="{{item.styleStr}}">
       <block wx:for="{{item.textArray}}" wx:key="index" wx:for-index="index" wx:for-item="textItem">
         <block wx:if="{{textItem.node == 'text' && textItem.text !== '\\n'}}">
           <text selectable="{{true}}" user-select="{{true}}">{{textItem.text}}</text>
