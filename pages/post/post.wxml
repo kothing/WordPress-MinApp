@@ -38,12 +38,10 @@
     <view class="skeleton-rect"></view>
   </view>
 </view>
-
 <view class="post-footer">
   <view wx:if="{{advert.type === 'unit'}}" class="advert">
     <ad unit-id="{{advert.code}}"></ad>
   </view>
-
   <view class="topic-wrapper display-none" id="comment">
     <view class="topic-title">话题讨论</view>
     <view class="onlooker-amount relative">
@@ -135,7 +133,6 @@
       </view>
     </view>
   </view>
-
   <view class="comment-submit">
     <form wx:if="{{!showTextarea}}" catchsubmit="formSubmit" report-submit="true">
       <view class="bottom-bar {{isIphoneX?'bottom-bar-iphonex':''}} {{newsItem.forbidcomment?'forbid-comment':''}}">
@@ -167,7 +164,6 @@
       </view>
     </form>
   </view>
-
   <view class="post-share">
     <view class="zan-actionsheet {{shareshow?'zan-actionsheet--show':''}}">
       <view catchtap="_handleZanActionsheetMaskClick" class="zan-actionsheet__mask"
@@ -184,7 +180,6 @@
       </view>
     </view>
   </view>
-
   <view wx:if="{{showTextarea}}" capture-catch:touchmove class="textareacontent">
     <form catchsubmit="addComment">
       <view class="textheaders">
