@@ -19,7 +19,9 @@
   background-color: #fff;
   box-shadow: 0px 5px 20px -5px #ddd;
   border-radius: 10px;
-  margin: -90rpx 38rpx 60rpx 38rpx;
+  margin: -90rpx 38rpx 0 38rpx;
+  margin-bottom: calc(120rpx + constant(safe-area-inset-bottom));
+  margin-bottom: calc(120rpx + env(safe-area-inset-bottom));
   z-index: 2;
   -webkit-overflow-scrolling: touch;
 }
@@ -32,7 +34,7 @@
 
 .article-info .title {
   display: block;
-  text-align: center;
+  /* text-align: center; */
   font-weight: 700;
   font-family: PingFangSC-Medium, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 40rpx;
@@ -139,13 +141,11 @@
   background-color: #fff;
   box-shadow: 0px 5px 20px -5px #ddd;
   border-radius: 10px;
-  margin: 0 38rpx 80rpx 38rpx;
+  margin: 0 38rpx 0 38rpx;
+  margin-bottom: calc(120rpx + constant(safe-area-inset-bottom));
+  margin-bottom: calc(120rpx + env(safe-area-inset-bottom));
   z-index: 2;
   -webkit-overflow-scrolling: touch;
-}
-
-.post-footer.post-footer-iphonex {
-  margin: 0 38rpx 150rpx 38rpx;
 }
 
 /* 话题 */
@@ -418,7 +418,7 @@
 }
 
 .comment-data {
-  padding-top: 60rpx;
+
 }
 
 .list-nodata {
@@ -434,7 +434,7 @@
 }
 
 .comment-submit {
-  min-height: 1rpx;
+
 }
 
 .comment-footer .comment-footer-inner {
@@ -448,7 +448,6 @@
 .bottom-bar {
   position: fixed;
   width: 100%;
-  line-height: 100rpx;
   bottom: 0;
   left: 0;
   z-index: 99;
@@ -456,10 +455,6 @@
   background: #f8f9fb;
   padding-bottom: constant(safe-area-inset-bottom);
   padding-bottom: env(safe-area-inset-bottom);
-}
-
-.bottom-bar-iphonex {
-  padding-bottom: 68rpx;
 }
 
 .bottom-bar .bottom-btn {

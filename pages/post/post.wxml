@@ -38,19 +38,19 @@
     <view class="skeleton-rect"></view>
   </view>
 </view>
-<view class="post-footer {{isIphoneX ? 'post-footer-iphonex' : ''}}">
+<view class="post-footer">
   <view wx:if="{{advert.type === 'unit'}}" class="advert">
     <ad unit-id="{{advert.code}}"></ad>
   </view>
-  <view class="topic-wrapper display-none" id="comment">
-    <view class="topic-title">话题讨论</view>
-    <view class="onlooker-amount relative">
-      <text>邀请好友讨论 </text>
-      <text class="onlooker-arrow">>></text>
-      <button open-type='share' class="userLogin"></button>
-    </view>
-  </view>
   <view class="comment-data display-none">
+    <view class="topic-wrapper" id="comment">
+      <view class="topic-title">话题讨论</view>
+      <view class="onlooker-amount relative">
+        <text>邀请好友讨论 </text>
+        <text class="onlooker-arrow">>></text>
+        <button open-type='share' class="userLogin"></button>
+      </view>
+    </view>
     <view wx:if="{{comments.length === 0}}" class="list-nodata">
       <image class="nodata-img" lazyLoad="false" mode="aspectFit|aspectFill|widthFix" src="../../images/message.png">
       </image>
@@ -59,17 +59,9 @@
       </view>
     </view>
     <view class="comment-reply">
-      <view 
-        class="comment-reply-item" 
-        bindtap="replyComment" 
-        id="{{detail.id}}" 
-        data-parent="{{item.id || '0'}}"
-        data-reply="{{item.author.name}}" 
-        data-formId="{{item.formId}}"
-        wx:for="{{comments || []}}" 
-        wx:for-item="item"
-        wx:key="id"
-      >
+      <view class="comment-reply-item" bindtap="replyComment" id="{{detail.id}}" data-parent="{{item.id || '0'}}"
+        data-reply="{{item.author.name}}" data-formId="{{item.formId}}" wx:for="{{comments || []}}" wx:for-item="item"
+        wx:key="id">
         <view class="comment-header">
           <view class="comment-header-left">
             <image class="comment-avatar" src="{{item.author.avatar}}"></image>
@@ -135,7 +127,7 @@
   </view>
   <view class="comment-submit">
     <form wx:if="{{!showTextarea}}" catchsubmit="formSubmit" report-submit="true">
-      <view class="bottom-bar {{isIphoneX ? 'bottom-bar-iphonex' : ''}} {{newsItem.forbidcomment?'forbid-comment':''}}">
+      <view class="bottom-bar {{newsItem.forbidcomment ? 'forbid-comment' : ''}}">
         <view class="bottom-btn bottom-comment-container relative">
           <image bindtap="bindBack" class="bottom-back" src="../../images/back.png"></image>
         </view>
@@ -168,7 +160,7 @@
     <view class="zan-actionsheet {{shareshow?'zan-actionsheet--show':''}}">
       <view catchtap="_handleZanActionsheetMaskClick" class="zan-actionsheet__mask"
         data-close-on-click-overlay="{{closeOnClickOverlay}}" data-component-id="{{componentId}}"></view>
-      <view class="zan-actionsheet__container {{isIphoneX ? 'bottom-bar-iphonex' : ''}}">
+      <view class="zan-actionsheet__container">
         <button catchtap="downloadPrefix" class="zan-btn zan-actionsheet__btn">
           <image class="down-icon" mode="aspectFit" src="../../images/down.svg"></image>
           <text>分享海报图</text>

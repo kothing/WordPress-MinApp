@@ -144,10 +144,6 @@
   padding-bottom: env(safe-area-inset-bottom);
 }
 
-.bottom-bar-iphonex {
-  padding-bottom: 68rpx;
-}
-
 .bottom-bar .bottom-btn {
   margin: auto 0;
   width: 85rpx;
