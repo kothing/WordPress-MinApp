@@ -52,9 +52,7 @@ button::after {
 .width-100vw {
   width: 100% !important;
 }
-.width-260rpx {
-  width: 260px;
-}
+
 .height-286rpx {
   height: 286rpx;
 }

@@ -87,23 +87,16 @@
 .section-features .feature-list .feature-card .card-main {
   position: relative;
   padding: 0;
-  padding-top: 280rpx;
-  -webkit-transform: translate3d(0, 0, 0) !important;
-  transform: translate3d(0, 0, 0) !important;
   text-align: left;
 }
 
 .section-features .feature-list .feature-card .card-main .card-top {
-  padding: 30rpx 29rpx;
-  position: absolute;
-  top: 0;
+  padding: 30rpx 30rpx;
 }
 
 .section-features .feature-list .feature-card .card-title {
-  line-height: 44rpx;
+  line-height: 48rpx;
   font-weight: 400;
-  padding-top: 20rpx;
-  margin-bottom: 29.5rpx;
 }
 
 .section-features .feature-list .feature-card .card-content text {
@@ -113,11 +106,7 @@
 }
 
 .section-features .feature-list .feature-card .card-main .card-actions {
-  bottom: 0;
-  right: 0;
-  margin-right: 0;
-  padding: 30rpx 29rpx;
-  position: absolute;
+  padding: 0 30rpx 30rpx;
 }
 
 .section-features .feature-list .feature-card .action-item {

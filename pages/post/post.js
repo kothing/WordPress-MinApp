@@ -15,6 +15,7 @@ Page({
     loading: false,
     detail: null,
     textNum: 0,
+    forbidComment: true,
     comments: [],
     commentsPage: 1,
     placeholder: '输入评论'
@@ -251,11 +252,12 @@ Page({
   },
 
   addComment: function (e) {
-    let args = {};
-    let _this = this;
-    args.id = this.data.detail.id;
-    args.content = this.data.content;
-    args.parent = this.data.parent;
+    const _this = this;
+    let args = {
+      id: this.data.detail.id,
+      content: this.data.content,
+      parent: this.data.parent
+    };
     if (!this.data.user) {
       wx.showModal({
         title: '提示',
@@ -472,7 +474,7 @@ Page({
     });
   },
 
-  _handleZanActionsheetMaskClick: function () {
+  handleActionsheetMaskClick: function () {
     this.setData({
       shareshow: false,
     });
