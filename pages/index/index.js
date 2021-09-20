@@ -14,7 +14,7 @@ Page({
     stickyPost: [],
     posts: [],
     page: 1,
-    category: '',
+    category: [],
     indicatorDots: !1,
     autoplay: !0,
     interval: 3e3,
@@ -23,7 +23,9 @@ Page({
     placeHolder: '搜索、文章、图片、视频',
     autoFocus: false,
     inputEnable: true,
-    isLastPage: false
+    isLastPage: false,
+    tabs: [],
+    activeTab: 0,
   },
 
   onLoad: function () {
@@ -214,8 +216,13 @@ Page({
   getCategories: function (args) {
     API.getCategories(args).then(res => {
       this.setData({
-        category: res
-      })
+        category: res,
+        tabs: res.map((item, index) => ({
+          ...item,
+          title: item.name,
+          index
+        }))
+      });
     })
       .catch(err => {
         console.log(err)
@@ -255,6 +262,20 @@ Page({
         console.log(err);
         wx.stopPullDownRefresh();
       });
+  },
+
+  onTabClick(e) {
+    const index = e.detail.index
+    this.setData({ 
+      activeTab: index 
+    })
+  },
+
+  onTabChange(e) {
+    const index = e.detail.index
+    this.setData({ 
+      activeTab: index 
+    })
   },
 
   getAdvert: function () {

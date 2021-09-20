@@ -81,6 +81,29 @@
       </view>
     </view>
   </view>
+
+  <!-- Tabs -->
+  <tabs 
+    tabs="{{tabs}}" 
+    activeTab="{{activeTab}}" 
+    swiperClass="weui-tabs-swiper"
+    bindtabclick="onTabClick"
+    bindchange="onTabChange"
+    activeClass="tab-bar-title__selected"
+  >
+    <block wx:for="{{tabs}}" wx:key="{{id}}">
+      <view class="tabs-content" data-set="{{item}}" slot="tab-content-{{index}}" bind:tap="handleClick" >
+        <image src="{{item.cover}}" mode="widthFix"></image>
+        <view class="item-title">
+          {{item.title || item.name}}
+        </view>
+        <view class="item-desc">
+          {{item.description}}
+        </view>
+      </view>
+    </block>
+  </tabs>
+
   <view class="tab-content">
     <view wx:if="{{listLoading == true && posts.length === 0}}" class="index_loading skeleton">
       <view class="skeleton-rect"></view>

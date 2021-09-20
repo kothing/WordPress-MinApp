@@ -44,6 +44,7 @@
   "usingComponents": {
     "topbar": "/components/topbar/topbar",
     "loading": "/components/loading/loading",
+    "tabs": "/components/tabs/tabs",
     "dialog": "/components/dialog/dialog"
   },
   "sitemapLocation": "sitemap.json"
