@@ -7,6 +7,7 @@ Component({
   },
   properties: {
     tabs: {type: Array, value: []}, // 数据项格式为 `{title}`
+    activeTab: {type: Number, value: 0}, // 当前激活tab
     tabClass: {type: String, value: ''}, // 选项卡样式
     swiperClass: {type: String, value: ''}, // 内容区域swiper的样式
     activeClass: {type: String, value: ''}, // 选中选项卡样式
@@ -14,9 +15,7 @@ Component({
     tabActiveTextColor: {type: String, value: '#000000'}, // 选中选项卡字体颜色
     tabInactiveTextColor: {type: String, value: '#000000'}, // 未选中选项卡字体颜色
     tabBackgroundColor: {type: String, value: '#ffffff'}, // 选项卡背景颜色
-    activeTab: {type: Number, value: 0}, // 当前激活tab
     duration: {type: Number, value: 500}, // 内容区域切换时长
-
   },
   data: {
     currentView: 0
@@ -42,15 +41,16 @@ Component({
 
   methods: {
     handleTabClick(e) {
-      const index = e.currentTarget.dataset.index
-      this.setData({activeTab: index})
-      this.triggerEvent('tabclick', {index})
+      const index = e.currentTarget.dataset.index;
+      const item = e.currentTarget.dataset.item;
+      this.setData({activeTab: index});
+      this.triggerEvent('tabclick', {index, item});
     },
 
     handleSwiperChange(e) {
-      const index = e.detail.current
-      this.setData({activeTab: index})
-      this.triggerEvent('change', {index})
+      const index = e.detail.current;
+      this.setData({activeTab: index});
+      this.triggerEvent('change', {index});
     }
   }
 })

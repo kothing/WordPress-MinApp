@@ -24,7 +24,9 @@ Page({
     autoFocus: false,
     inputEnable: true,
     isLastPage: false,
+    tabsLoading: false,
     tabs: [],
+    tabsPaneData: [],
     activeTab: 0,
   },
 
@@ -40,7 +42,7 @@ Page({
     this.getSiteInfo();
     this.getStickyPosts();
     this.getCategories();
-    this.getPostList();
+    this.getPostsList();
     this.getAdvert();
   },
 
@@ -115,7 +117,7 @@ Page({
       isLastPage: false
     });
     this.getStickyPosts();
-    this.getPostList();
+    this.getPostsList();
   },
 
   /**
@@ -126,7 +128,7 @@ Page({
       this.setData({
         isBottom: true
       });
-      this.getPostList({
+      this.getPostsList({
         page: this.data.page + 1
       });
     }
@@ -222,6 +224,8 @@ Page({
           title: item.name,
           index
         }))
+      }, () => {
+        this.getPostsListById(res[0].id);
       });
     })
       .catch(err => {
@@ -229,7 +233,7 @@ Page({
       });
   },
 
-  getPostList: function (data) {
+  getPostsList: function (data) {
     this.setData({
       listLoading: true,
     });
@@ -264,14 +268,35 @@ Page({
       });
   },
 
-  onTabClick(e) {
-    const index = e.detail.index
-    this.setData({ 
-      activeTab: index 
+  getPostsListById: function(id) {
+    this.setData({
+      tabsLoading: true,
+    });
+    API.getPostsList({
+      categories: id
+    }).then(res => {
+      this.setData({
+        tabsPaneData: res || [],
+        tabsLoading: false
+      });
     })
+      .catch(err => {
+        this.setData({
+          tabsLoading: false
+        });
+        console.log(err);
+      });
   },
 
-  onTabChange(e) {
+  onTabClick: function(e) {
+    const { index, item } = e.detail;
+    this.setData({ 
+      activeTab: index
+    });
+    this.getPostsListById(item.id);
+  },
+
+  onTabChange: function(e) {
     const index = e.detail.index
     this.setData({ 
       activeTab: index 
