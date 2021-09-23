@@ -39,8 +39,6 @@ API.request = function (url, method = "GET", data = {}, args = { token: true }) 
 				console.warn('[提示]', '部分数据需要授权，检测出当前访问用户未授权登录小程序');
 			}
 		}
-		console.log(url)
-		console.log(data)
 		wx.request({
 			url: url,
 			data: data,

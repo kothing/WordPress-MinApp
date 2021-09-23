@@ -81,7 +81,6 @@
       </view>
     </view>
   </view>
-
   <!-- Tabs -->
   <view class="tabs-list">
     <tabs 
@@ -93,22 +92,36 @@
       activeClass="tab-bar-title__selected"
     >
       <block wx:for="{{tabs}}" wx:key="{{id}}">
-        <view class="tabs-content" slot="tab-content-{{index}}">
-          <view class="item-desc">{{item.description}}</view>
-          <view wx:if="{{tabsLoading}}">
-            <view class="">Loading</view>
+        <view class="tabs-panel" slot="tab-content-{{index}}">
+          <!-- <view class="panel-desc">{{item.description}}</view> -->
+          <view wx:if="{{tabsLoading}}" class="panel-box">
+            <block wx:for="{{[1,2,3,4,5]}}">
+              <view class="panel skeleton">
+                <view class="item-media-box__hd"></view>
+                <view class="item-media-box__bd"></view>
+              </view>
+            </block>
           </view>
-          <view wx:else class="cat-posts-list">
-            <view class="sub-item-title" wx:for="{{tabsPaneData}}" wx:for-item="subItem">
-              <text class="before-dot"></text>
-              <text bindtap="bindDetail" id="{{subItem.id}}">{{subItem.title.rendered}}</text>
-            </view>
+          <view wx:else class="panel-box">
+            <block wx:for="{{tabsPaneData}}" wx:for-item="subItem">
+              <a class="panel" href="javascript:" bindtap="bindDetail" id="{{subItem.id}}">
+                <view class="item-media-box__hd">
+                  <image mode="widthFix" class="item-media-box__cover" src="{{item.meta.thumbnail || '/images/default_thumb.png'}}"></image>
+                </view>
+                <text class="item-media-box__bd">{{subItem.title.rendered}}</text>
+              </a>
+            </block>
+          </view>
+          <view class="tabs-panel__ft">
+            <a class="tabs-panel-more" bindtap="bindCateByID" id="{{item.id}}">
+              <text class="cell__hd">查看更多</text>
+              <text class="cell__bd"></text>
+            </a>
           </view>
         </view>
       </block>
     </tabs>
   </view>
-
   <view class="tab-content">
     <view wx:if="{{listLoading == true && posts.length === 0}}" class="index_loading skeleton">
       <view class="skeleton-rect"></view>
@@ -122,8 +135,7 @@
           <view bindtap="bindCateByID" class="category" id="{{item.id}}" wx:for="{{category}}" wx:key="item">
             {{item.name}}
           </view>
-          <image bindtap="bindCateList" src="../../images/more.png"
-            style="width: 26rpx;height: 24rpx;padding: 30rpx 15rpx"></image>
+          <image class="more" mode="heightFix" bindtap="bindCateList" src="../../images/more.png"></image>
         </view>
       </view>
       <view wx:if="{{posts.length > 0}}" class="index_article">

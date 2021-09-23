@@ -276,7 +276,7 @@ Page({
       categories: id
     }).then(res => {
       this.setData({
-        tabsPaneData: res || [],
+        tabsPaneData: (res || []).slice(0, 5),
         tabsLoading: false
       });
     })
