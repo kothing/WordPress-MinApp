@@ -106,7 +106,7 @@
             <block wx:for="{{tabsPaneData}}" wx:for-item="subItem">
               <a class="panel" href="javascript:" bindtap="bindDetail" id="{{subItem.id}}">
                 <view class="item-media-box__hd">
-                  <image mode="widthFix" class="item-media-box__cover" src="{{item.meta.thumbnail || '/images/default_thumb.png'}}"></image>
+                  <image mode="widthFix" class="item-media-box__cover" src="{{subItem.meta.thumbnail || '/images/default_thumb.png'}}"></image>
                 </view>
                 <text class="item-media-box__bd">{{subItem.title.rendered}}</text>
               </a>
