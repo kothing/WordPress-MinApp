@@ -15,7 +15,7 @@ Page({
     loading: false,
     detail: null,
     textNum: 0,
-    forbidComment: true,
+    enableComment: true,
     comments: [],
     commentsPage: 1,
     placeholder: '输入评论'

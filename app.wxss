@@ -63,7 +63,6 @@ button::after {
   top: 0;
 }
 
-
 /* 边距 */
 .padding-24rpx {
   padding: 24rpx;

@@ -172,10 +172,12 @@
 }
 
 .wxParse-blockquote {
-  padding: 10px 0 10px 5px;
-  font-family: Courier, Calibri, "宋体";
+  padding: 10px 0 10px 10px;
+  font-family: inherit;
+  font-style: normal;
   background: #f5f5f5;
-  border-left: 3px solid #dbdbdb;
+  /* border-left: 3px solid #dbdbdb; */
+  border-left: 3px solid #98b4f5;
 }
 
 .wxParse-code,
