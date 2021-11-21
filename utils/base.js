@@ -44,7 +44,6 @@ API.request = function (url, method = "GET", data = {}, args = { token: true }) 
 			data: data,
 			method: method,
 			success: function (res) {
-				console.log(res);
 				if (res.statusCode == 200) {
 					resolve(res.data);
 				} else if (res.data.code === "rest_post_invalid_page_number") {
@@ -93,7 +92,6 @@ API.login = function () {
 			resolve(Auth.user());
 		} else {
 			Auth.login().then(res => {
-				//console.log(res);
 				resolve(res);
 			}).catch(err => {
 				reject(err);
@@ -119,7 +117,6 @@ API.getUserProfile = function () {
 		Auth.getUserInfo().then(data => {
 			API.post('/wp-json/mp/v1/user/login', data, { token: false }).then(res => {
 				API.storageUser(res);
-				console.log(res);
 				resolve(res.user);
 			}, err => {
 				reject(err);

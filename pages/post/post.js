@@ -15,7 +15,7 @@ Page({
     loading: false,
     detail: null,
     textNum: 0,
-    enableComment: true,
+    enableComment: false,
     comments: [],
     commentsPage: 1,
     placeholder: '输入评论'
@@ -349,7 +349,7 @@ Page({
     args.platform = wx.getSystemInfoSync().platform;
     args.program = 'WeChat';
     API.subscribeMessage(args).then(res => {
-      console.log(res)
+      // console.log(res)
     })
       .catch(err => {
         console.log(err)
@@ -374,8 +374,8 @@ Page({
           });
         }
       },
-      fail: function (res) {
-        console.log(res);
+      fail: function (err) {
+        console.log(err);
       }
     })
   },
@@ -582,8 +582,8 @@ Page({
           })
           console.log("海报图片路径：" + res.tempFilePath);
         },
-        fail: function (res) {
-          console.log(res);
+        fail: function (err) {
+          console.log(err);
           wx.hideLoading();
         }
       });

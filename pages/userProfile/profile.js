@@ -152,8 +152,8 @@ Page({
           }
         }
       },
-      fail: function (res) {
-        console.log(res)
+      fail: function (err) {
+        console.log(err)
       }
     })
   },

@@ -91,11 +91,11 @@
       bindchange="onTabChange"
       activeClass="tab-bar-title__selected"
     >
-      <block wx:for="{{tabs}}" wx:key="{{id}}">
+      <block wx:for="{{tabs}}" wx:key="id">
         <view class="tabs-panel" slot="tab-content-{{index}}">
           <!-- <view class="panel-desc">{{item.description}}</view> -->
           <view wx:if="{{tabsLoading}}" class="panel-box">
-            <block wx:for="{{[1,2,3,4,5]}}">
+            <block wx:for="{{[1,2,3,4,5]}}" wx:key="key">
               <view class="panel skeleton">
                 <view class="item-media-box__hd"></view>
                 <view class="item-media-box__bd"></view>
@@ -103,7 +103,7 @@
             </block>
           </view>
           <view wx:else class="panel-box">
-            <block wx:for="{{tabsPaneData}}" wx:for-item="subItem">
+            <block wx:for="{{tabsPaneData}}" wx:key="key" wx:for-item="subItem">
               <a class="panel" href="javascript:" bindtap="bindDetail" id="{{subItem.id}}">
                 <view class="item-media-box__hd">
                   <image mode="widthFix" class="item-media-box__cover" src="{{subItem.meta.thumbnail || '/images/default_thumb.png'}}"></image>

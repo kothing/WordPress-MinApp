@@ -33,8 +33,8 @@
 }
 
 .post-detail.disable-comment {
-  margin-bottom: calc(constant(safe-area-inset-bottom) + 120rpx);
-  margin-bottom: calc(env(safe-area-inset-bottom) + 120rpx);
+  margin-bottom: constant(safe-area-inset-bottom);
+  margin-bottom: env(safe-area-inset-bottom);
 }
 
 .article-info {
@@ -148,9 +148,10 @@
 }
 
 .post-footer {
-  /* position: relative; */
   width: 100%;
-  position: fixed;
+  min-height: 85rpx;
+  /* position: fixed; */
+  position: sticky;
   bottom: 0;
   left: 0;
   right: 0;
@@ -409,8 +410,8 @@
 }
 
 .post-comment.enable {
-  margin-bottom: calc(constant(safe-area-inset-bottom) + 120rpx);
-  margin-bottom: calc(env(safe-area-inset-bottom) + 120rpx);
+  margin-bottom: constant(safe-area-inset-bottom);
+  margin-bottom: env(safe-area-inset-bottom);
 }
 
 .post-comment .topic-wrapper {
