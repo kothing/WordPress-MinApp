@@ -68,7 +68,9 @@ page::-webkit-scrollbar {
 }
 
 .feature {
+  margin-bottom: 36rpx;
   background: #fff;
+  box-shadow: 0px 5px 20px -5px #DDD;
 }
 
 .feature .skeleton {
@@ -90,40 +92,21 @@ page::-webkit-scrollbar {
 }
 
 /* 首页图标 */
-.banner-bg {
-  position: absolute;
-  width: 100vw;
-  bottom: 0;
-  left: 0;
-}
-
-.banner {
+.portfolio {
   position: relative;
   display: flex;
   flex-direction: column;
   /* background: #fff; */
   margin-bottom: 36rpx;
+  box-shadow: 0px 5px 20px -5px #DDD;
 }
 
-.banner::after {
-  content: "";
-  display: block;
-  height: 80rpx;
-  width: 100vw;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #F9F9F9 100%);
-  pointer-events: none;
-  z-index: -1;
-}
-
-.banner .skeleton .cu-item {
+.portfolio .skeleton .cu-item {
   display: flex;
   align-items: center;
 }
 
-.banner .skeleton .skeleton-circle {
+.portfolio .skeleton .skeleton-circle {
   width: 100rpx;
   height: 100rpx;
   border-radius: 50%;
@@ -192,6 +175,7 @@ page::-webkit-scrollbar {
 /* Tabs */
 .tabs-list {
   margin-bottom: 36rpx;
+  box-shadow: 0px 5px 20px -5px #DDD;
 }
 
 .tabs-list .weui-tabs {
@@ -200,8 +184,8 @@ page::-webkit-scrollbar {
 
 .weui-tabs-bar__wrp {
   width: 100%;
-  border-bottom: 1px solid #fff;
-  padding: 36rpx 36rpx;
+  /* border-bottom: 1px solid #fff; */
+  padding: 36rpx 36rpx 20rpx;
   background: #fff
 }
 
@@ -251,10 +235,11 @@ page::-webkit-scrollbar {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  padding-bottom: 24rpx;
 }
 
 .tabs-panel .panel-box {
-  margin: 0;
+  padding: 16rpx 0;
 }
 
 .tabs-panel .panel-box .panel {
@@ -266,7 +251,7 @@ page::-webkit-scrollbar {
   -webkit-align-items: center;
   align-items: center;
   width: 100%;
-  padding: 18rpx 10rpx;
+  padding: 20rpx 10rpx;
 }
 
 .tabs-panel .panel-box .panel:active {
@@ -309,7 +294,7 @@ page::-webkit-scrollbar {
 
 .tabs-panel__ft {
   position: absolute;
-  bottom: 0;
+  bottom: 12rpx;
   left: 0;
   right: 0;
 }
@@ -322,7 +307,7 @@ page::-webkit-scrollbar {
   -webkit-box-align: center;
   -webkit-align-items: center;
   align-items: center;
-  padding: 28rpx 10rpx;
+  padding: 24rpx 10rpx;
 }
 
 .tabs-panel__ft .tabs-panel-more:active {
@@ -389,7 +374,6 @@ page::-webkit-scrollbar {
 }
 
 .index-box {
-  margin-top: 40rpx;
   padding: 0 36rpx;
 }
 

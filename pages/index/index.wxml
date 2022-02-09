@@ -38,7 +38,7 @@
       </swiper-item>
     </swiper>
   </view>
-  <view class="banner">
+  <view class="portfolio">
     <view wx:if="{{stickyLoading && stickyPost.length === 0}}" class="skeleton cu-list grid grid col-4 no-border wz-ui">
       <view class="cu-item">
         <view class="skeleton-circle"></view>
@@ -53,28 +53,28 @@
         <view class="skeleton-circle"></view>
       </view>
     </view>
-    <view wx:else class="cu-list grid grid col-4 no-border wz-ui">
+    <view wx:else class="cu-list grid grid col-4 no-border">
       <view class="cu-item" bindtap="bindHotPosts">
         <view class="bg-img bg-imgz">
-          <image src="../../images/banner-icon-hot.png"></image>
+          <image src="../../images/portfolio-icon-hot.png"></image>
         </view>
         <text>热门</text>
       </view>
       <view class="cu-item" bindtap="toMiniProgram">
         <view class="bg-img bg-imgd">
-          <image src="../../images/banner-icon-app.png"></image>
+          <image src="../../images/portfolio-icon-app.png"></image>
         </view>
         <text>社区</text>
       </view>
       <view class="cu-item" bindtap="bindPageLists">
         <view class="bg-img bg-imgh">
-          <image src="../../images/banner-icon-news.png"></image>
+          <image src="../../images/portfolio-icon-news.png"></image>
         </view>
         <text>资讯</text>
       </view>
       <view class="cu-item">
         <view class="bg-img bg-imge">
-          <image src="../../images/banner-icon-service.png"></image>
+          <image src="../../images/portfolio-icon-service.png"></image>
         </view>
         <text>客服</text>
         <button class="auth-btn" open-type="contact"></button>

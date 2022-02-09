@@ -293,7 +293,7 @@ Page({
     this.setData({ 
       activeTab: index
     });
-    this.getPostsListById(item.id);
+    // this.getPostsListById(item.id);
   },
 
   onTabChange: function(e) {
