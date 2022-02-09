@@ -1,8 +1,7 @@
 Component({
   options: {
     addGlobalClass: true,
-    // 指定所有 _ 开头的数据字段为纯数据字段
-    pureDataPattern: /^_/,
+    pureDataPattern: /^_/, // 指定所有 _ 开头的数据字段为纯数据字段
     multipleSlots: true // 在组件定义时的选项中启用多slot支持
   },
   properties: {
@@ -24,12 +23,19 @@ Component({
   observers: {
     activeTab: function(activeTab) {
       const len = this.data.tabs.length
-      if (len === 0) return
-
+      if (len === 0) {
+        return;
+      }
       let currentView = activeTab - 1
-      if (currentView < 0) currentView = 0
-      if (currentView > len - 1) currentView = len - 1
-      this.setData({currentView})
+      if (currentView < 0) {
+        currentView = 0;
+      }
+      if (currentView > len - 1) {
+        currentView = len - 1;
+      }
+      this.setData({
+        currentView
+      });
     }
   },
 
@@ -41,16 +47,18 @@ Component({
 
   methods: {
     handleTabClick(e) {
-      const index = e.currentTarget.dataset.index;
-      const item = e.currentTarget.dataset.item;
-      this.setData({activeTab: index});
-      this.triggerEvent('tabclick', {index, item});
+      const { index, item } = e.currentTarget.dataset;
+      this.setData({
+        activeTab: index
+      });
+      this.triggerEvent('tabclick', { index, item });
     },
-
     handleSwiperChange(e) {
       const index = e.detail.current;
-      this.setData({activeTab: index});
-      this.triggerEvent('change', {index});
+      this.setData({ 
+        activeTab: index
+      });
+      this.triggerEvent('change', { index });
     }
   }
 })

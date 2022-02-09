@@ -297,10 +297,13 @@ Page({
   },
 
   onTabChange: function(e) {
-    const index = e.detail.index
+    const { index } = e.detail;
+    const { tabs } = this.data;
+    const item = tabs[index];
     this.setData({ 
       activeTab: index 
-    })
+    });
+    this.getPostsListById(item.id);
   },
 
   getAdvert: function () {

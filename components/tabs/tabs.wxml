@@ -27,7 +27,7 @@
     current="{{activeTab}}" 
     duration="{{duration}}" 
     bindchange="handleSwiperChange"
-    >
+  >
     <swiper-item wx:for="{{tabs}}" wx:key="id" class="tabs-swiper-item">
       <slot name="tab-content-{{index}}"></slot>
     </swiper-item>

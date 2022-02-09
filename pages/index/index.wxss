@@ -285,6 +285,7 @@ page::-webkit-scrollbar {
   -webkit-transform-origin: 0 0;
   transform-origin: 0 0;
   -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
 }
 
 .tabs-panel .panel-box .panel .item-media-box__hd {
@@ -547,7 +548,7 @@ page::-webkit-scrollbar {
 .index_article_desc {
   color: #888888;
   margin-top: 16rpx;
-  font-size: 90%;
+  /* font-size: 90%; */
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2;
