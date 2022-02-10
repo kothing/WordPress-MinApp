@@ -39,7 +39,7 @@
     </swiper>
   </view>
   <view class="portfolio">
-    <view wx:if="{{stickyLoading && stickyPost.length === 0}}" class="skeleton cu-list grid grid col-4 no-border wz-ui">
+    <view wx:if="{{stickyLoading && stickyPost.length === 0}}" class="skeleton cu-list grid grid col-4 no-border">
       <view class="cu-item">
         <view class="skeleton-circle"></view>
       </view>
@@ -167,6 +167,10 @@
               </view>
               <view class="index_article_title">{{item.title.rendered}}</view>
               <view class="index_article_desc">{{item.excerpt.rendered}}</view>
+              <span class="article-separator">
+                <i class="before"></i>
+                <i class="after"></i>
+              </span>
             </view>
           </block>
         </block>
