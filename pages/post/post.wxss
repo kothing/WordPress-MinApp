@@ -106,7 +106,7 @@
 }
 
 .entry-content {
-  min-height: 50vh;
+  min-height: 45vh;
   padding: 0 45rpx 20rpx;
   line-height: 1.5rem;
   text-align: justify;

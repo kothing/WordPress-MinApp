@@ -1635,18 +1635,11 @@ button.icon.lg {
 }
 
 .cu-bar .content {
-	position: absolute;
-	text-align: center;
-	width: calc(100% - 340rpx);
-	left: 0;
-	right: 0;
-	bottom: 0;
-	top: 0;
-	margin: auto;
 	height: 60rpx;
+	margin: auto;
+	text-align: center;
 	font-size: 32rpx;
 	line-height: 60rpx;
-	cursor: none;
 	pointer-events: none;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -1658,6 +1651,11 @@ button.icon.lg {
 	height: 30px;
 	font-size: 32rpx;
 	line-height: 30px;
+}
+
+.cu-bar .right {
+	width: 100px;
+	height: 46rpx;
 }
 
 .cu-bar.btn-group {

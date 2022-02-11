@@ -8,6 +8,7 @@
   <view slot="content" class="index-headTitle">{{siteInfo.name}} 首页</view>
 </topbar>
 <view class="index">
+  <!-- Header -->
   <view class="header">
     <!-- <view class="app-title">
       <view class="app-title_text">{{siteInfo.name}}</view>
@@ -23,23 +24,27 @@
       </view>
     </view>
   </view>
+
+  <!-- Feature -->
   <view class="feature">
     <view wx:if="{{stickyLoading && stickyPost.length === 0}}" class="skeleton">
       <view class="skeleton-rect"></view>
     </view>
     <swiper wx:else class="screen-swiper square-dot" indicator-dots="true" circular="true" autoplay="true"
       interval="5000" duration="500">
-      <swiper-item class="index_article_figures" id="{{item.id}}" bindtap="bindDetail" id="{{item.id}}"
+      <swiper-item class="feature_article_figures" id="{{item.id}}" bindtap="bindDetail" id="{{item.id}}"
         wx:for="{{stickyPost}}" wx:for-index="i" wx:key="id">
-        <image class='index_article_figure_cover' src="{{item.meta.thumbnail}}" mode="aspectFill"></image>
-        <view class="index_article_figure_title">
+        <image class='feature_article_figure_cover' src="{{item.meta.thumbnail}}" mode="aspectFill"></image>
+        <view class="feature_article_figure_title">
           <text>{{item.title.rendered}}</text>
         </view>
       </swiper-item>
     </swiper>
   </view>
+
+  <!-- Portfolio -->
   <view class="portfolio">
-    <view wx:if="{{stickyLoading && stickyPost.length === 0}}" class="skeleton cu-list grid grid col-4 no-border">
+    <view wx:if="{{stickyLoading && stickyPost.length === 0}}" class="skeleton cu-list grid col-4 no-border">
       <view class="cu-item">
         <view class="skeleton-circle"></view>
       </view>
@@ -53,7 +58,7 @@
         <view class="skeleton-circle"></view>
       </view>
     </view>
-    <view wx:else class="cu-list grid grid col-4 no-border">
+    <view wx:else class="cu-list grid col-4 no-border">
       <view class="cu-item" bindtap="bindHotPosts">
         <view class="bg-img bg-imgz">
           <image src="../../images/portfolio-icon-hot.png"></image>
@@ -77,100 +82,109 @@
           <image src="../../images/portfolio-icon-service.png"></image>
         </view>
         <text>客服</text>
-        <button class="auth-btn" open-type="contact"></button>
+        <button class="service-btn" open-type="contact"></button>
       </view>
     </view>
   </view>
-  <!-- Tabs -->
-  <view class="tabs-list">
-    <tabs 
-      tabs="{{tabs}}" 
-      activeTab="{{activeTab}}" 
-      swiperClass="weui-tabs-swiper"
-      bindtabclick="onTabClick"
-      bindchange="onTabChange"
-      activeClass="tab-bar-title__selected"
-    >
-      <block wx:for="{{tabs}}" wx:key="id">
-        <view class="tabs-panel" slot="tab-content-{{index}}">
-          <!-- <view class="panel-desc">{{item.description}}</view> -->
-          <view wx:if="{{tabsLoading}}" class="panel-box">
-            <block wx:for="{{[1,2,3,4,5]}}" wx:key="key">
-              <view class="panel skeleton">
-                <view class="item-media-box__hd"></view>
-                <view class="item-media-box__bd"></view>
-              </view>
-            </block>
+
+  <!-- Itemize -->
+  <view class="itemize">
+    <view wx:if="{{catsLoading}}" class="tabs-box loading">
+      <view class="tabs-bar skeleton">
+        <block wx:for="{{[1,2,3]}}" wx:key="key">
+          <view class="bar"></view>
+        </block>
+      </view>
+      <view class="panel-box skeleton">
+        <block wx:for="{{[1,2,3,4,5]}}" wx:key="key">
+          <view class="panel">
+            <view class="item-media-box__hd"></view>
+            <view class="item-media-box__bd"></view>
           </view>
-          <view wx:else class="panel-box">
-            <block wx:for="{{tabsPaneData}}" wx:key="key" wx:for-item="subItem">
-              <a class="panel" href="javascript:" bindtap="bindDetail" id="{{subItem.id}}">
-                <view class="item-media-box__hd">
-                  <image mode="widthFix" class="item-media-box__cover" src="{{subItem.meta.thumbnail || '/images/default_thumb.png'}}"></image>
+        </block>
+      </view>
+    </view>
+    <block wx:else>
+      <tabs 
+        tabs="{{tabs}}" 
+        activeTab="{{activeTab}}" 
+        swiperClass="weui-tabs-swiper"
+        bindtabclick="onTabClick"
+        bindchange="onTabChange"
+        activeClass="tab-bar-title__selected"
+      >
+        <block wx:for="{{tabs}}" wx:key="id">
+          <view class="tabs-box" slot="tab-content-{{index}}">
+            <view wx:if="{{tabsLoading}}" class="panel-box skeleton">
+              <block wx:for="{{[1,2,3,4,5]}}" wx:key="key">
+                <view class="panel">
+                  <view class="item-media-box__hd"></view>
+                  <view class="item-media-box__bd"></view>
                 </view>
-                <text class="item-media-box__bd">{{subItem.title.rendered}}</text>
-              </a>
-            </block>
+              </block>
+            </view>
+            <view wx:else class="panel-box">
+              <block wx:for="{{tabsPaneData}}" wx:key="key" wx:for-item="subItem">
+                <a class="panel" href="javascript:" bindtap="bindDetail" id="{{subItem.id}}">
+                  <view class="item-media-box__hd">
+                    <image mode="widthFix" class="item-media-box__cover" src="{{subItem.meta.thumbnail || '/images/default_thumb.png'}}"></image>
+                  </view>
+                  <text class="item-media-box__bd">{{subItem.title.rendered}}</text>
+                </a>
+              </block>
+              <view class="tabs-panel__ft">
+                <a class="tabs-panel-more" bindtap="bindCateByID" id="{{item.id}}">查看更多</a>
+              </view>
+            </view>
           </view>
-          <view class="tabs-panel__ft">
-            <a class="tabs-panel-more" bindtap="bindCateByID" id="{{item.id}}">
-              <text class="cell__hd">查看更多</text>
-              <text class="cell__bd"></text>
-            </a>
-          </view>
-        </view>
-      </block>
-    </tabs>
+        </block>
+      </tabs>
+    </block>
   </view>
-  <view class="tab-content">
-    <view wx:if="{{listLoading == true && posts.length === 0}}" class="index_loading skeleton">
+
+  <!-- Latest -->
+  <view class="latest">
+    <view wx:if="{{listLoading == true && posts.length === 0}}" class="skeleton">
+      <view class="skeleton-label">
+        <view class="skeleton-label-title"></view>
+        <view class="skeleton-label-cat"></view>
+        <view class="skeleton-label-cat"></view>
+        <view class="skeleton-label-cat"></view>
+      </view>
       <view class="skeleton-rect"></view>
       <view class="skeleton-rect"></view>
     </view>
-    <view wx:else class="index-box">
-      <view wx:if="{{posts.length > 0}}" class="index_label">
-        <view class="index_label_title">为你精选</view>
-        <view class="index_label_bg"></view>
-        <view class="index_label_more">
+    <view wx:else class="latest_wrap">
+      <view wx:if="{{posts.length > 0}}" class="latest_label">
+        <view class="latest_label_title">为你精选</view>
+        <view class="latest_label_more">
           <view bindtap="bindCateByID" class="category" id="{{item.id}}" wx:for="{{category}}" wx:key="item">
             {{item.name}}
           </view>
           <image class="more" mode="heightFix" bindtap="bindCateList" src="../../images/more.png"></image>
         </view>
+        <view class="latest_label_bg"></view>
       </view>
-      <view wx:if="{{posts.length > 0}}" class="index_article">
+      <view wx:if="{{posts.length > 0}}" class="latest_article">
         <block wx:for="{{posts}}" wx:for-index="i" wx:key="id">
-          <block wx:if="{{i%5 == 0}}">
-            <view bindtap="bindDetail" class="index_article_box" id="{{item.id}}">
-              <view class="index_article_figure">
-                <image mode="aspectFill" class="index_article_cover"
-                  src="{{item.meta.thumbnail || '/images/default_thumb.png'}}"></image>
-                <view class="index_article_during">
-                  <text>{{item.category[0].name}}</text>
-                </view>
+          <view bindtap="bindDetail" class="latest_article_box" id="{{item.id}}">
+            <view class="latest_article_figure">
+              <image mode="aspectFill" class="latest_article_cover"
+                src="{{item.meta.thumbnail || '/images/default_thumb.png'}}"></image>
+              <view class="latest_article_during">
+                <text>{{item.category[0].name}}</text>
               </view>
-              <view class="index_article_title">{{item.title.rendered}}</view>
-              <view class="index_article_desc">{{item.excerpt.rendered}}</view>
             </view>
+            <view class="latest_article_title">{{item.title.rendered}}</view>
+            <view class="latest_article_desc">{{item.excerpt.rendered}}</view>
+            <span class="article-separator">
+              <i class="before"></i>
+              <i class="after"></i>
+            </span>
+          </view>
+          <block wx:if="{{i%5 == 0}}">
             <view wx:if="{{advert.type == 'unit'}}" class="advert">
               <ad unit-id="{{advert.code}}"></ad>
-            </view>
-          </block>
-          <block wx:else>
-            <view bindtap="bindDetail" class="index_article_box" id="{{item.id}}">
-              <view class="index_article_figure">
-                <image mode="aspectFill" class="index_article_cover"
-                  src="{{item.meta.thumbnail || '/images/default_thumb.png'}}"></image>
-                <view class="index_article_during">
-                  <text>{{item.category[0].name}}</text>
-                </view>
-              </view>
-              <view class="index_article_title">{{item.title.rendered}}</view>
-              <view class="index_article_desc">{{item.excerpt.rendered}}</view>
-              <span class="article-separator">
-                <i class="before"></i>
-                <i class="after"></i>
-              </span>
             </view>
           </block>
         </block>

@@ -9,25 +9,27 @@ Page({
   data: {
     siteInfo: '',
     user: app.globalData.user,
+    navBarHeight: wx.getSystemInfoSync().statusBarHeight,
+    placeHolder: '搜索、文章、图片、视频',
+    autoFocus: false,
+    inputEnable: true,
     stickyLoading: false,
     listLoading: false,
     stickyPost: [],
     posts: [],
     page: 1,
+    catsLoading: false,
     category: [],
-    indicatorDots: !1,
-    autoplay: !0,
-    interval: 3e3,
-    currentSwiper: 0,
-    navBarHeight: wx.getSystemInfoSync().statusBarHeight,
-    placeHolder: '搜索、文章、图片、视频',
-    autoFocus: false,
-    inputEnable: true,
-    isLastPage: false,
     tabsLoading: false,
     tabs: [],
     tabsPaneData: [],
     activeTab: 0,
+    indicatorDots: !1,
+    autoplay: !0,
+    interval: 3e3,
+    currentSwiper: 0,
+  
+    isLastPage: false,
   },
 
   onLoad: function () {
@@ -216,8 +218,12 @@ Page({
   },
 
   getCategories: function (args) {
+    this.setData({
+      catsLoading: true,
+    });
     API.getCategories(args).then(res => {
       this.setData({
+        catsLoading: false,
         category: res,
         tabs: res.map((item, index) => ({
           ...item,
