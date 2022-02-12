@@ -171,7 +171,7 @@
             <view class="latest_article_figure">
               <image mode="aspectFill" class="latest_article_cover"
                 src="{{item.meta.thumbnail || '/images/default_thumb.png'}}"></image>
-              <view class="latest_article_during">
+              <view class="latest_article_category">
                 <text>{{item.category[0].name}}</text>
               </view>
             </view>

@@ -255,6 +255,9 @@ page {
 .weui-tabs-swiper {
   min-height: 100%;
   height: var(--tbs-height);
+  padding: 0 24rpx;
+  background: #fff;
+  border-radius: 0 0 6px 6px;
 }
 
 .weui-tabs-bar__title {
@@ -279,9 +282,8 @@ page {
   width: 100%;
   min-height: 100%;
   height: var(--tbs-height);
-  padding: 0 24rpx;
   background-color: #fff;
-  border-radius: 0 0 6px 6px
+  border-radius: 0 0 6px 6px;
 }
 
 .itemize .panel-box {
@@ -594,7 +596,7 @@ page {
 .latest_article_desc {
   color: #888888;
   margin: 16rpx 0;
-  /* font-size: 90%; */
+  font-size: 95%;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -603,10 +605,10 @@ page {
   overflow: hidden;
 }
 
-.latest_article_during {
+.latest_article_category {
   position: absolute;
-  bottom: 16rpx;
-  left: 16rpx;
+  bottom: 24rpx;
+  left: 24rpx;
   z-index: 1;
   line-height: 40rpx;
   background: rgba(38, 38, 38, 1);
@@ -616,7 +618,7 @@ page {
   text-align: center;
 }
 
-.latest_article_during text {
+.latest_article_category text {
   font-size: 80%;
   color: #fff;
 }

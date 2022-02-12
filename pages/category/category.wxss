@@ -25,8 +25,7 @@
 }
 
 .section {
-  padding: 40rpx;
-  padding-bottom: 48rpx;
+  padding: 24rpx;
 }
 
 .section-features {
@@ -85,7 +84,7 @@
 .section-features .feature-list .feature-card .card-content text {
   margin: 0;
   margin-bottom: 10px;
-  font-size: 80%;
+  font-size: 85%;
 }
 
 .section-features .feature-list .feature-card .card-main .card-actions {

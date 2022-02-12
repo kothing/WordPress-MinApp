@@ -22,7 +22,7 @@
               <view class="list_article_figure">
                 <image mode="aspectFill" class="list_article_cover"
                   src="{{item.meta.thumbnail || '/images/default_thumb.png'}}"></image>
-                <view class="list_article_during">
+                <view class="list_article_category">
                   <text>{{item.category[0].name}}</text>
                 </view>
               </view>
@@ -38,7 +38,7 @@
               <view class="list_article_figure">
                 <image mode="aspectFill" class="list_article_cover"
                   src="{{item.meta.thumbnail || '/images/default_thumb.png'}}"></image>
-                <view class="list_article_during">
+                <view class="list_article_category">
                   <text>{{item.category[0].name}}</text>
                 </view>
               </view>

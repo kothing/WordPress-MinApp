@@ -26,7 +26,7 @@
   background-color: #fff;
   box-shadow: 0px 5px 20px -5px #ddd;
   border-radius: 10px;
-  margin: -90rpx 38rpx 0 38rpx;
+  margin: -90rpx 24rpx 0 24rpx;
   margin-bottom: 36rpx;
   z-index: 2;
   -webkit-overflow-scrolling: touch;
@@ -39,7 +39,7 @@
 
 .article-info {
   padding: 58rpx 0 40rpx;
-  margin: 0rpx 45rpx;
+  margin: 0rpx 24rpx;
   border-radius: 15rpx;
 }
 
@@ -107,11 +107,11 @@
 
 .entry-content {
   min-height: 45vh;
-  padding: 0 45rpx 20rpx;
+  padding: 0 24rpx 24rpx;
   line-height: 1.5rem;
   text-align: justify;
   font-family: PingFangSC-Regular, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 90%;
+  font-size: 95%;
   color: #404246;
   word-wrap: break-word;
   word-break: normal;

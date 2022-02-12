@@ -82,7 +82,7 @@
 }
 
 .user-items {
-  padding: 24rpx 40rpx;
+  padding: 24rpx 32rpx;
   margin: 24rpx;
   border-radius: 16rpx;
   background-color: #fff;
@@ -93,7 +93,7 @@
   position: relative;
   height: 120rpx;
   line-height: 120rpx;
-  font-size: 36rpx;
+  font-size: 32rpx;
   color: #3A3A3A;
   border-bottom: 1rpx solid #E8E8E8;
 }

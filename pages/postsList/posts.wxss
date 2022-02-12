@@ -6,7 +6,7 @@ page::-webkit-scrollbar {
 .list {
   height: 100%;
   min-height: 100vh;
-  padding: 20rpx 36rpx;
+  padding: 20rpx 24rpx;
   background: #fff;
 }
 
@@ -105,6 +105,7 @@ page::-webkit-scrollbar {
 .list_article_desc {
   color: #888888;
   margin-top: 16rpx;
+  font-size: 95%;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -113,10 +114,10 @@ page::-webkit-scrollbar {
   overflow: hidden;
 }
 
-.list_article_during {
+.list_article_category {
   position: absolute;
-  top: 326rpx;
-  left: 16rpx;
+  bottom: 24rpx;
+  left: 24rpx;
   z-index: 1;
   line-height: 40rpx;
   background: rgba(38, 38, 38, 1);
@@ -126,7 +127,7 @@ page::-webkit-scrollbar {
   text-align: center;
 }
 
-.list_article_during text {
+.list_article_category text {
   font-size: 80%;
   color: #fff;
 }
