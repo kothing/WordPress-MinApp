@@ -29,7 +29,8 @@
     </view>
   </view>
   <view wx:if="{{detail.content && detail.content.rendered}}" id="entry-content" class="entry-content clearfix">
-    <wxParse nodes="{{ detail.content.rendered }}" />
+    <!-- <wxParse nodes="{{ detail.content.rendered }}" /> -->
+    <rich-text class="rich-text" nodes="{{detail.content.rendered}}" />
   </view>
   <view wx:else id="entry-content" class="entry-content skeleton clearfix">
     <view class="skeleton-content">

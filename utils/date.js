@@ -25,6 +25,4 @@ function formatDate(date, format) {
   return format;
 }
 
-module.exports = {
-  formatDate: formatDate,
-};
+export { formatDate };

@@ -1528,7 +1528,7 @@ button.icon.lg {
 
 
 /* ==================
-          操作条
+  操作条
  ==================== */
 
 .cu-bar {
@@ -3931,4 +3931,25 @@ scroll-view.cu-steps .cu-item {
 .line-white,
 .lines-white {
 	color: var(--white);
+}
+
+/* ==================
+  富文本解析
+ ==================== */
+.rich-text {
+  line-height: 1.8;
+}
+
+.rich-text-p {
+	line-height: 24px;
+	margin-bottom: 0.8rem;
+}
+
+.rich-text .wp-block-separator {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid#EAECEF;
 }

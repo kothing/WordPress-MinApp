@@ -4,7 +4,7 @@
  */
 
 const API_HOST = 'https://works.nice-boy.com'  // https 协议Wordpress网站,
-const Auth = require('./auth')
+import Auth from './auth';
 
 const templates = {
 	comments: ['', ''], // 评论回复与审核模板ID
@@ -165,4 +165,4 @@ API.guard = function (fn) {
 	}
 }
 
-module.exports = API
+export default API

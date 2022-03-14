@@ -3,7 +3,7 @@
  * Github 地址: https://github.com/kothing/Wordress-MiniProgram
  */
 
-const API = require('./base')
+import API from './base';
 
 // 小程序基本信息
 const getSiteInfo = function (data) {
@@ -281,4 +281,4 @@ API.getTwitterPosts = getTwitterPosts;
 API.getTwitterDetail = getTwitterDetail;
 API.markComment = API.guard(markComment);
 
-module.exports = API;
+export default API;

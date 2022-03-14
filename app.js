@@ -2,7 +2,7 @@
  * Author: NiceBoy
  * Github 地址: https://github.com/kothing/Wordress-MiniProgram
  */
-const API = require('/utils/base');
+import API from '/utils/base';
 
 App({
 

@@ -86,4 +86,4 @@ Auth.getUserInfo = function () {
   });
 }
 
-module.exports = Auth
+export default Auth

@@ -1,5 +1,5 @@
 // pages/pagesList/pages.js
-const API = require('../../utils/api');
+import API from '../../utils/api';
 
 Page({
   /**

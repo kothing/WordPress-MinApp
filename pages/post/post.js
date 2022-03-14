@@ -4,7 +4,9 @@
  * Github 地址: https://github.com/kothing/Wordress-MiniProgram
  */
 const app = getApp();
-const API = require('../../utils/api');
+import API from '../../utils/api';
+import strs from '../../utils/strs';
+
 let isFocusing = false;
 
 Page({
@@ -118,6 +120,10 @@ Page({
         id: id,
         detail: {
           ...res,
+          content: {
+            ...res.content,
+            rendered: strs.addTagClass(res.content?.rendered ?? '')
+          },
           date: res.date ? /\d{4}-\d{1,2}-\d{1,2}/g.exec(res.date) : '-'
         }
       });

@@ -3,7 +3,7 @@
  * Github 地址: https://github.com/kothing/Wordress-MiniProgram
  */
 // pages/postsList/posts.js
-const API = require('../../utils/api');
+import API from '../../utils/api';
 
 const requestType = {
   all: {
